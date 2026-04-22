@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0067)file:///C:/Users/CHANDRA%20SEKHAR/Downloads/expert-apply%20(2).html -->
+<!-- saved from url=(0080)file:///C:/Users/CHANDRA%20SEKHAR/Downloads/Expert%20Application%20_%20SWYN.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="file:///C:/Users/CHANDRA%20SEKHAR/Downloads/reallogo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./Expert Application _ SWYN_files/css2" rel="stylesheet">
+  <link href="./Expert Application _ SWYN 3_files/css2" rel="stylesheet">
   
   <!-- File 1 Website Styles -->
   <link rel="stylesheet" href="file:///C:/Users/CHANDRA%20SEKHAR/Downloads/lead-pages.css">
@@ -50,11 +50,11 @@
     .form-wrapper-f2 input.valid{border-color:#7cb87f}
     .form-wrapper-f2 textarea{resize:vertical;min-height:110px;line-height:1.6}
     .form-wrapper-f2 .select-wrap{position:relative}
-    .form-wrapper-f2 .select-wrap::after{content:'▾';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none}
+    .form-wrapper-f2 .select-wrap::after{content:'\25BE';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none}
     .form-wrapper-f2 .select-wrap select{padding-right:36px;cursor:pointer}
     .form-wrapper-f2 .hint{font-size:12px;color:var(--muted);line-height:1.5}
     .form-wrapper-f2 .err-msg{color:var(--error);font-size:12px;display:flex;align-items:center;gap:4px;animation:errIn .18s ease}
-    .form-wrapper-f2 .err-msg::before{content:'⚠';font-size:11px}
+    .form-wrapper-f2 .err-msg::before{content:'\26A0';font-size:11px}
     @keyframes errIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
     .form-wrapper-f2 .other-box{display:none;flex-direction:column;gap:6px}
     .form-wrapper-f2 .other-box.visible{display:flex!important}
@@ -149,7 +149,7 @@ function validatePhone(inp) {
     if (!err) {
       var e = document.createElement('span');
       e.className = 'err-msg phone-err';
-      e.textContent = 'Enter a valid phone number (7â€“15 digits with country code).';
+      e.textContent = 'Enter a valid phone number (7-15 digits with country code).';
       wrap.appendChild(e);
     }
   } else {
@@ -175,7 +175,7 @@ function fileSelected(input, labelId) {
   var field = box ? box.closest('.field') : null;
   if (input.files && input.files.length > 0) {
     var name = input.files.length > 1 ? input.files.length + ' files selected' : input.files[0].name;
-    label.textContent = 'âœ“ ' + name;
+    label.textContent = '[OK] ' + name;
     if (box) { box.classList.add('upload-done'); box.style.borderStyle = 'solid'; box.style.borderColor = ''; box.style.background = ''; }
     if (field) { var e = field.querySelector('.err-msg'); if(e) e.remove(); }
   }
@@ -306,7 +306,7 @@ function selectRating(fieldId, groupId, val) {
           </div>
           <div class="card-f2">
         
-            <!-- â•â•â• STEP 1: Personal Details â•â•â• -->
+            <!-- STEP 1: Personal Details -->
             <div class="step active" id="step1">
               <div class="step-label">Step 01 of 05</div>
               <h1 class="card-title">Personal Details</h1>
@@ -343,7 +343,7 @@ function selectRating(fieldId, groupId, val) {
                 </div>
                 <div class="other-box field full" id="cityOtherBox">
                   <label>Please specify your city <span class="req">*</span></label>
-                  <input type="text" id="cityOther" placeholder="e.g. Coimbatore, Surat, Jaipurâ€¦">
+                  <input type="text" id="cityOther" placeholder="e.g. Coimbatore, Surat, Jaipur...">
                 </div>
                 <div class="field full">
                   <label>Current professional headline <span class="req">*</span></label>
@@ -372,7 +372,7 @@ function selectRating(fieldId, groupId, val) {
                 </div>
                 <div class="other-box field full" id="heardAboutOtherBox">
                   <label>Please specify</label>
-                  <input type="text" id="heardAboutOther" placeholder="e.g. Twitter, Friend&#39;s recommendationâ€¦">
+                  <input type="text" id="heardAboutOther" placeholder="e.g. Twitter, Friend&#39;s recommendation...">
                 </div>
               </div>
               <div class="actions">
@@ -383,7 +383,7 @@ function selectRating(fieldId, groupId, val) {
               </div>
             </div>
         
-            <!-- â•â•â• STEP 2: Professional Background â•â•â• -->
+            <!-- STEP 2: Professional Background -->
             <div class="step" id="step2">
               <div class="step-label">Step 02 of 05</div>
               <h1 class="card-title">Professional Background</h1>
@@ -403,8 +403,8 @@ function selectRating(fieldId, groupId, val) {
                   <div class="select-wrap">
                     <select id="yearsExperience">
                       <option value="">Select</option>
-                      <option>5â€“10 years</option><option>10â€“15 years</option>
-                      <option>15â€“20 years</option><option>20â€“25 years</option><option>25+ years</option>
+                      <option>5-10 years</option><option>10-15 years</option>
+                      <option>15-20 years</option><option>20-25 years</option><option>25+ years</option>
                     </select>
                   </div>
                 </div>
@@ -423,13 +423,13 @@ function selectRating(fieldId, groupId, val) {
                 </div>
                 <div class="other-box field full" id="industryOtherBox">
                   <label>If 'Other' Industry, please specify <span class="req">*</span></label>
-                  <input type="text" id="industryOther" placeholder="e.g. Agriculture, Media, Logisticsâ€¦">
+                  <input type="text" id="industryOther" placeholder="e.g. Agriculture, Media, Logistics...">
                 </div>
                 <div class="field full">
                   <label>Please provide a brief biography / professional summary <span class="req">*</span></label>
-                  <textarea id="biography" placeholder="Share your career journey, key achievements, and what makes you a great mentor (100â€“250 words)â€¦" oninput="updateCharCount(this,&#39;biographyCount&#39;,100,250)"></textarea>
+                  <textarea id="biography" placeholder="Share your career journey, key achievements, and what makes you a great mentor (100-250 words)..." oninput="updateCharCount(this,&#39;biographyCount&#39;,100,250)"></textarea>
                   <div style="display:flex;justify-content:space-between;align-items:center">
-                    <span class="hint">100â€“250 words recommended.</span>
+                    <span class="hint">100-250 words recommended.</span>
                     <span class="char-count" id="biographyCount">0 words</span>
                   </div>
                 </div>
@@ -479,7 +479,7 @@ function selectRating(fieldId, groupId, val) {
                   <label>Notable companies / organisations you have worked for</label>
                   <span class="hint" style="margin-bottom:8px;display:block;">Type a company name and press <strong>Add</strong> or hit Enter. These will be highlighted on your SWYN profile.</span>
                   <div style="display:flex;gap:10px;align-items:flex-start;">
-                    <input type="text" id="notableCompanyInput" placeholder="e.g. Goldman Sachs, Infosys, McKinseyâ€¦" style="flex:1;" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39;Go&#39;||event.keyCode===13){event.preventDefault();event.stopPropagation();addNotableCompany();}">
+                    <input type="text" id="notableCompanyInput" placeholder="e.g. Goldman Sachs, Infosys, McKinsey..." style="flex:1;" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39;Go&#39;||event.keyCode===13){event.preventDefault();event.stopPropagation();addNotableCompany();}">
                     <button type="button" onclick="addNotableCompany()" class="add-btn">+ Add</button>
                   </div>
                   <div id="notableCompanyTags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
@@ -513,7 +513,7 @@ function selectRating(fieldId, groupId, val) {
                   <label>Past clients or companies you've advised (as a consultant / advisor)</label>
                   <span class="hint" style="margin-bottom:8px;display:block;">Type a company or client name and press <strong>Add</strong> or hit Enter. You may anonymise if needed (e.g. "Series B Fintech, Mumbai").</span>
                   <div style="display:flex;gap:10px;align-items:flex-start;">
-                    <input type="text" id="pastClientInput" placeholder="e.g. Razorpay, Nykaa, Mid-size FMCG brandâ€¦" style="flex:1;" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39;Go&#39;||event.keyCode===13){event.preventDefault();event.stopPropagation();addPastClient();}">
+                    <input type="text" id="pastClientInput" placeholder="e.g. Razorpay, Nykaa, Mid-size FMCG brand..." style="flex:1;" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39;Go&#39;||event.keyCode===13){event.preventDefault();event.stopPropagation();addPastClient();}">
                     <button type="button" onclick="addPastClient()" class="add-btn">+ Add</button>
                   </div>
                   <div id="pastClientTags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
@@ -524,7 +524,7 @@ function selectRating(fieldId, groupId, val) {
                   <label>Specific Areas of Expertise for Mentorship <span class="req">*</span></label>
                   <div id="expertiseSelectWrap" class="select-wrap">
                     <select id="areasOfExpertise" onchange="addExpertise(this)">
-                      <option value="">Select an areaâ€¦</option>
+                      <option value="">Select an area...</option>
                       <option>Fundraising &amp; Investor Relations</option>
                       <option>Go-to-Market Strategy</option>
                       <option>Financial Modelling &amp; CFO Advisory</option>
@@ -545,11 +545,11 @@ function selectRating(fieldId, groupId, val) {
                   </div>
                   <div id="expertiseTags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;"></div>
                   <div id="expertiseOtherBox" style="display:none;position:relative;">
-                    <input type="text" id="expertiseOther" placeholder="Type your expertise areaâ€¦" style="width:100%;padding-right:70px;" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39;Go&#39;||event.keyCode===13){event.preventDefault();event.stopPropagation();addExpertiseOther();}">
+                    <input type="text" id="expertiseOther" placeholder="Type your expertise area..." style="width:100%;padding-right:70px;" onkeydown="if(event.key===&#39;Enter&#39;||event.key===&#39;Go&#39;||event.keyCode===13){event.preventDefault();event.stopPropagation();addExpertiseOther();}">
                     <button type="button" onclick="addExpertiseOther()" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);padding:6px 14px;background:var(--orange);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-family:&#39;DM Sans&#39;,sans-serif;">Add</button>
                   </div>
                   <input type="hidden" id="areasOfExpertiseHidden">
-                  <span class="hint">Select multiple. Click âœ• on a tag to remove.</span>
+                  <span class="hint">Select multiple. Click x on a tag to remove.</span>
                 </div>
               </div>
               <div class="actions">
@@ -558,7 +558,7 @@ function selectRating(fieldId, groupId, val) {
               </div>
             </div>
         
-            <!-- â•â•â• STEP 3: Availability & Engagement â•â•â• -->
+            <!-- STEP 3: Availability & Engagement -->
             <div class="step" id="step3">
               <div class="step-label">Step 03 of 05</div>
               <h1 class="card-title">Availability &amp; Engagement</h1>
@@ -569,12 +569,12 @@ function selectRating(fieldId, groupId, val) {
                 <div class="full"><div class="section-head" style="margin-top:0;margin-bottom:4px;">Rate Card</div></div>
         
                 <div class="field">
-                  <label>International clients â€” rate (USD) <span class="req">*</span></label>
+                  <label>International clients - rate (USD) <span class="req">*</span></label>
                   <div class="select-wrap">
                     <select id="hourlyRate" onchange="showOther(this,&#39;rateNegotiableBox&#39;,&#39;Negotiable&#39;)">
                       <option value="">Select</option>
-                      <option>$50â€“$100/hr</option><option>$100â€“$200/hr</option>
-                      <option>$200â€“$300/hr</option><option>$300â€“$500/hr</option>
+                      <option>$50-$100/hr</option><option>$100-$200/hr</option>
+                      <option>$200-$300/hr</option><option>$300-$500/hr</option>
                       <option>$500+/hr</option><option>Negotiable</option>
                       <option>Pro bono / Equity only</option>
                     </select>
@@ -582,24 +582,24 @@ function selectRating(fieldId, groupId, val) {
                 </div>
                 <div class="other-box field" id="rateNegotiableBox">
                   <label>If 'Negotiable' (USD), please specify</label>
-                  <input type="text" id="rateNegotiable" placeholder="e.g. Depends on stage, equity arrangementsâ€¦">
+                  <input type="text" id="rateNegotiable" placeholder="e.g. Depends on stage, equity arrangements...">
                 </div>
         
                 <div class="field">
-                  <label>Indian clients â€” rate (INR) <span class="req">*</span></label>
+                  <label>Indian clients - rate (INR) <span class="req">*</span></label>
                   <div class="select-wrap">
                     <select id="hourlyRateINR" onchange="showOther(this,&#39;rateNegotiableINRBox&#39;,&#39;Negotiable&#39;)">
                       <option value="">Select</option>
-                      <option>â‚¹500â€“â‚¹2,000/hr</option><option>â‚¹2,000â€“â‚¹5,000/hr</option><option>â‚¹5,000â€“â‚¹10,000/hr</option>
-                      <option>â‚¹10,000â€“â‚¹20,000/hr</option><option>â‚¹20,000â€“â‚¹40,000/hr</option>
-                      <option>â‚¹40,000+/hr</option><option>Negotiable</option>
+                      <option>Rs 500-Rs 2,000/hr</option><option>Rs 2,000-Rs 5,000/hr</option><option>Rs 5,000-Rs 10,000/hr</option>
+                      <option>Rs 10,000-Rs 20,000/hr</option><option>Rs 20,000-Rs 40,000/hr</option>
+                      <option>Rs 40,000+/hr</option><option>Negotiable</option>
                       <option>Pro bono / Equity only</option>
                     </select>
                   </div>
                 </div>
                 <div class="other-box field" id="rateNegotiableINRBox">
                   <label>If 'Negotiable' (INR), please specify</label>
-                  <input type="text" id="rateNegotiableINR" placeholder="e.g. Depends on stage, equity arrangementsâ€¦">
+                  <input type="text" id="rateNegotiableINR" placeholder="e.g. Depends on stage, equity arrangements...">
                 </div>
         
                 <div class="field">
@@ -607,8 +607,8 @@ function selectRating(fieldId, groupId, val) {
                   <div class="select-wrap">
                     <select id="hoursPerMonth">
                       <option value="">Select</option>
-                      <option>1â€“5 hours/month</option><option>5â€“10 hours/month</option>
-                      <option>10â€“20 hours/month</option><option>20+ hours/month</option>
+                      <option>1-5 hours/month</option><option>5-10 hours/month</option>
+                      <option>10-20 hours/month</option><option>20+ hours/month</option>
                     </select>
                   </div>
                 </div>
@@ -689,8 +689,8 @@ function selectRating(fieldId, groupId, val) {
                   <div class="select-wrap">
                     <select id="mentoringExperience">
                       <option value="">Select</option>
-                      <option>No experience yet</option><option>1â€“2 startups</option>
-                      <option>3â€“5 startups</option><option>5â€“10 startups</option><option>10+ startups</option>
+                      <option>No experience yet</option><option>1-2 startups</option>
+                      <option>3-5 startups</option><option>5-10 startups</option><option>10+ startups</option>
                     </select>
                   </div>
                 </div>
@@ -724,7 +724,7 @@ function selectRating(fieldId, groupId, val) {
               </div>
             </div>
         
-            <!-- â•â•â• STEP 4: Online Presence & Files â•â•â• -->
+            <!-- STEP 4: Online Presence & Files -->
             <div class="step" id="step4">
               <div class="step-label">Step 04 of 05</div>
               <h1 class="card-title">Online Presence</h1>
@@ -737,7 +737,7 @@ function selectRating(fieldId, groupId, val) {
                   <div class="upload-box" id="cvUploadBox" onclick="driveUpload(&#39;cv&#39;)" style="cursor:pointer;">
                     <div class="upload-icon">ðŸ“„</div>
                     <p id="cvLabel">Click to upload your file!</p>
-                    <span>PDF or Word â€” choose from Disk to upload</span>
+                    <span>PDF or Word - choose from Disk to upload</span>
                   </div>
                   <input type="hidden" id="cvDriveUrl">
                 </div>
@@ -747,7 +747,7 @@ function selectRating(fieldId, groupId, val) {
                   <div class="upload-box" id="photoUploadBox" onclick="driveUpload(&#39;photo&#39;)" style="cursor:pointer;">
                     <div class="upload-icon">ðŸ–¼ï¸</div>
                     <p id="photoLabel">Click to upload your file!</p>
-                    <span>JPG or PNG â€” choose from Disk to upload</span>
+                    <span>JPG or PNG - choose from Disk to upload</span>
                   </div>
                   <input type="hidden" id="photoDriveUrl">
                 </div>
@@ -766,7 +766,7 @@ function selectRating(fieldId, groupId, val) {
         
                 <div class="field">
                   <label>Any published articles or media mentions</label>
-                  <input type="url" id="articleUrl" placeholder="https://economictimes.com/â€¦">
+                  <input type="url" id="articleUrl" placeholder="https://economictimes.com/...">
                 </div>
         
                 <div class="field full">
@@ -774,7 +774,7 @@ function selectRating(fieldId, groupId, val) {
                   <div class="upload-box" id="workSamplesUploadBox" onclick="driveUpload(&#39;worksamples&#39;)" style="cursor:pointer;">
                     <div class="upload-icon">ðŸ“</div>
                     <p id="workSamplesLabel">Click to upload your file!</p>
-                    <span>Anonymised deliverables, models, frameworks â€” choose from Disk to upload</span>
+                    <span>Anonymised deliverables, models, frameworks - choose from Disk to upload</span>
                   </div>
                   <input type="hidden" id="workSamplesDriveUrl">
                 </div>
@@ -786,7 +786,7 @@ function selectRating(fieldId, groupId, val) {
               </div>
             </div>
         
-            <!-- â•â•â• STEP 5: Final â•â•â• -->
+            <!-- STEP 5: Final -->
             <div class="step" id="step5">
               <div class="step-label">Step 05 of 05</div>
               <h1 class="card-title">Final Details</h1>
@@ -796,153 +796,19 @@ function selectRating(fieldId, groupId, val) {
         
                 <div class="field full">
                   <label>Top Achievements <span class="req">*</span></label>
-                  <textarea id="topAchievements" style="min-height:140px;" placeholder="e.g. Led a â‚¹500Cr debt restructuring at XYZ Bank reducing NPAs by 40%, Scaled a SaaS startup from &lt;div class=" form-wrapper-f2"="">        &lt;div class="progress-wrap"&gt;
-          &lt;div class="progress-bar"&gt;&lt;div class="progress-fill" id="progressFill" style="width:20%"&gt;&lt;/div&gt;&lt;/div&gt;
-          &lt;div class="progress-label" id="progressLabel"&gt;Step 1 of 5&lt;/div&gt;
-        &lt;/div&gt;
-        
-        &lt;div class="card-f2"&gt;
-          &lt;!-- STEP 1 --&gt;
-          &lt;div class="step active" id="step1"&gt;
-            &lt;div class="step-label"&gt;Step 01 of 05&lt;/div&gt;
-            &lt;h1 class="card-title"&gt;Personal Details&lt;/h1&gt;
-            &lt;p class="card-subtitle"&gt;Tell us who you are. This information helps us create your verified expert profile.&lt;/p&gt;
-            &lt;hr class="divider"/&gt;
-            &lt;div class="form-grid"&gt;
-              &lt;div class="field"&gt;
-                &lt;label&gt;First name &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;input type="text" id="firstName" placeholder="Rajesh"/&gt;
-              &lt;/div&gt;
-              &lt;div class="field"&gt;
-                &lt;label&gt;Last name &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;input type="text" id="lastName" placeholder="Sharma"/&gt;
-              &lt;/div&gt;
-              &lt;div class="field"&gt;
-                &lt;label&gt;Personal email &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com"/&gt;
-              &lt;/div&gt;
-              &lt;div class="field"&gt;
-                &lt;label&gt;Mobile number &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;input type="tel" id="phoneNumber" placeholder="+91 98765 43210" onkeydown="return allowPhoneKeys(event)" oninput="validatePhone(this)"/&gt;
-              &lt;/div&gt;
-              &lt;div class="field"&gt;
-                &lt;label&gt;City &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;select id="city" onchange="showOther(this,'cityOtherBox','Other')"&gt;
-                  &lt;option value=""&gt;Select city&lt;/option&gt;
-                  &lt;option&gt;Mumbai&lt;/option&gt;&lt;option&gt;Delhi&lt;/option&gt;&lt;option&gt;Bengaluru&lt;/option&gt;&lt;option value="Other"&gt;Other&lt;/option&gt;
-                &lt;/select&gt;
-              &lt;/div&gt;
-              &lt;div class="field" style="display:none;" id="cityOtherBox"&gt;
-                &lt;label&gt;Specify city &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;input type="text" id="cityOther"/&gt;
-              &lt;/div&gt;
-              &lt;div class="field full"&gt;
-                &lt;label&gt;Current professional headline &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-                &lt;input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs"/&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="actions"&gt;
-              &lt;div class="step-dots"&gt;&lt;div class="dot active"&gt;&lt;/div&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;/div&gt;
-              &lt;button type="button" class="btn-next" onclick="nextStep(1)"&gt;Continue →&lt;/button&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-
-          &lt;!-- STEP 2 (Logic preserved, simplified for brevity but all File 2 features included in final script) --&gt;
-          &lt;div class="step" id="step2"&gt;
-            &lt;div class="step-label"&gt;Step 02 of 05&lt;/div&gt;
-            &lt;h1 class="card-title"&gt;Professional Background&lt;/h1&gt;
-            &lt;hr class="divider"/&gt;
-            &lt;div class="form-grid"&gt;
-              &lt;div class="field"&gt;&lt;label&gt;Job Title &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;&lt;input type="text" id="jobTitle"/&gt;&lt;/div&gt;
-              &lt;div class="field"&gt;&lt;label&gt;Years of Experience &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;&lt;select id="yearsExperience"&gt;&lt;option value=""&gt;Select&lt;/option&gt;&lt;option&gt;10-15 years&lt;/option&gt;&lt;option&gt;25+ years&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
-              &lt;div class="field full"&gt;&lt;label&gt;Biography &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;&lt;textarea id="biography" placeholder="100-250 words..."&gt;</textarea></div>
-              <div class="field full">
-                <label>Key sectors <span class="req">*</span></label>
-                <div class="pill-grid" id="sectorGrid">
-                  <label class="pill"><input type="checkbox" value="BFSI"> BFSI</label>
-                  <label class="pill"><input type="checkbox" value="SaaS"> SaaS</label>
-                  <label class="pill"><input type="checkbox" value="Fintech"> Fintech</label>
-                </div>
-              </div>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(2)">← Back</button>
-              <button type="button" class="btn-next" onclick="nextStep(2)">Continue →</button>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="step" id="step3">
-            <div class="step-label">Step 03 of 05</div>
-            <h1 class="card-title">Engagement</h1>
-            <hr class="divider">
-            <div class="form-grid">
-                <div class="field"><label>Indian Rate (INR) <span class="req">*</span></label><select id="hourlyRateINR"><option value="">Select</option><option>â‚¹5,000-â‚¹10,000</option><option>Negotiable</option></select></div>
-                <div class="field"><label>Hours/Month <span class="req">*</span></label><select id="hoursPerMonth"><option value="">Select</option><option>5-10 hrs</option><option>20+ hrs</option></select></div>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(3)">← Back</button>
-              <button type="button" class="btn-next" onclick="nextStep(3)">Continue →</button>
-            </div>
-          </div>
-
-          <!-- STEP 4 -->
-          <div class="step" id="step4">
-            <div class="step-label">Step 04 of 05</div>
-            <h1 class="card-title">Presence</h1>
-            <hr class="divider">
-            <div class="form-grid">
-              <div class="field full"><label>LinkedIn URL <span class="req">*</span></label><input type="url" id="linkedinProfile"></div>
-              <div class="field full">
-                <label>Upload CV <span class="req">*</span></label>
-                <div class="upload-box" id="cvBox" onclick="triggerFile(&#39;cv&#39;)"><p id="cvLabel">Click to upload CV</p></div>
-              </div>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(4)">← Back</button>
-              <button type="button" class="btn-next" onclick="nextStep(4)">Continue →</button>
-            </div>
-          </div>
-
-          <!-- STEP 5 -->
-          <div class="step" id="step5">
-            <div class="step-label">Step 05 of 05</div>
-            <h1 class="card-title">Final Details</h1>
-            <hr class="divider">
-            <div class="field full"><label>Top Achievements <span class="req">*</span></label><textarea id="topAchievements"></textarea></div>
-            <label class="terms-box" style="margin-top:20px;">
-                <input type="checkbox" id="termsCheck">
-                <p>I confirm the information is accurate and consent to SWYN processing my data.</p>
-            </label>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(5)">← Back</button>
-              <button type="button" class="btn-next" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
-            </div>
-          </div>
-
-          <!-- SUCCESS -->
-          <div class="step" id="stepSuccess">
-            <div style="text-align:center; padding: 40px 0;">
-                <div style="font-size:50px; color:var(--orange);">âœ“</div>
-                <h2 class="card-title">Submitted!</h2>
-                <p>We will contact you within 3-5 business days.</p>
-            </div>
-          </div>
-
-        </div>
-      </div> to $5M ARR in 18 months, Built and exited a fintech company acquired by HDFCâ€¦" oninput="updateCharCount(this,'achieveCount',0,0)"&gt;
+                  <textarea id="topAchievements" style="min-height:140px;" placeholder="e.g. Led a Rs 500Cr debt restructuring at XYZ Bank reducing NPAs by 40%, Scaled a SaaS startup from $0 to $5M ARR in 18 months, Built and exited a fintech company acquired by HDFC..." oninput="updateCharCount(this,&#39;achieveCount&#39;,0,0)"></textarea>
                   <div style="display:flex;justify-content:space-between;align-items:center">
-                    <span class="hint">Share your 2â€“3 most impactful achievements with numbers and outcomes.</span>
+                    <span class="hint">Share your 2-3 most impactful achievements with numbers and outcomes.</span>
                     <span class="char-count" id="achieveCount">0 words</span>
                   </div>
-                </main></div>
+                </div>
         
                 <div class="field full">
                   <label>Anything else you'd like SWYN to know?</label>
                   <textarea id="additionalInfo" placeholder="Non-compete clauses, geographic restrictions, causes you care about, sectors you won&#39;t work in, etc."></textarea>
                 </div>
         
-              
+              </div>
         
               <!-- Website listing consent -->
               <div style="margin-top:28px;">
@@ -971,28 +837,28 @@ function selectRating(fieldId, groupId, val) {
                 <button type="button" class="btn-back" id="back5">← Back</button>
                 <button type="button" class="btn-next" id="btnSubmit" style="padding:12px 36px;">Submit Application →</button>
               </div>
-            
+            </div>
         
             <!-- SUCCESS -->
             <div class="step" id="stepSuccess">
               <div class="success">
                 <div class="success-icon">✓</div>
                 <h2>Application Submitted!</h2>
-                <p>Thank you for applying to join SWYN's expert mentor network.<br>Our team will review your profile and get in touch within <strong>3â€“5 business days</strong>.</p>
+                <p>Thank you for applying to join SWYN's expert mentor network.<br>Our team will review your profile and get in touch within <strong>3-5 business days</strong>.</p>
                 <p style="margin-top:20px;font-size:13px;color:var(--muted);">Questions? Write to us at IKKASA <a href="file:///C:/cdn-cgi/l/email-protection#0d64636b624d7e7a7463236463" style="color:var(--orange);"><span class="__cf_email__" data-cfemail="630a0d050c2310141a0d4d0a0d">info@swyn.in</span></a></p>
               </div>
             </div>
         
-          
-        
+          </div>
+        </div>
       
-    
-  
+    </main>
+  </div>
 
   <!-- EXACT JAVASCRIPT LOGIC FROM FILE 2 -->
   <script>
 
-// â”€â”€ Global Variables â”€â”€
+// Global Variables
 var current = 1; 
 var totalSteps = 5;
 
@@ -1003,7 +869,7 @@ var uploadedFileData = {
   worksamples: null
 };
 
-// â”€â”€ UI Logic (Preserved) â”€â”€
+// UI Logic (Preserved)
 function showStep(n) {
   document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
   var t = n==='success' ? document.getElementById('stepSuccess') : document.getElementById('step'+n);
@@ -1072,7 +938,7 @@ function getPillValues(gridId) {
   return Array.from(document.querySelectorAll('#'+gridId+' input:checked')).map(function(i){return i.value;}).join(', ');
 }
 
-// â”€â”€ NEW: File Upload via Base64 (No Google Login Required) â”€â”€
+// NEW: File Upload via Base64 (No Google Login Required)
 function driveUpload(type) {
   var config = {
     cv: { labelId: 'cvLabel', boxId: 'cvUploadBox', accept: '.pdf,.doc,.docx' },
@@ -1092,7 +958,7 @@ function driveUpload(type) {
     var label = document.getElementById(cfg.labelId);
     var box = document.getElementById(cfg.boxId);
     
-    label.textContent = "â³ Reading file...";
+    label.textContent = "Reading file...";
     
     var reader = new FileReader();
     reader.onload = function(evt) {
@@ -1103,7 +969,7 @@ function driveUpload(type) {
       };
       
       // Update UI
-      label.textContent = "âœ“ " + file.name;
+      label.textContent = "[OK] " + file.name;
       box.classList.add('upload-done');
       box.style.borderColor = 'var(--orange)';
       box.style.borderStyle = 'solid';
@@ -1113,7 +979,7 @@ function driveUpload(type) {
       if (field) { var errMsg = field.querySelector('.err-msg'); if(errMsg) errMsg.remove(); }
     };
     reader.onerror = function() {
-      label.textContent = "âŒ Error reading file";
+      label.textContent = "Error reading file";
     };
     reader.readAsDataURL(file);
   };
@@ -1260,8 +1126,8 @@ document.addEventListener('DOMContentLoaded', function() {
       'Types of engagements you\'re open to': getPillValues('engagementTypeGrid'),
       'Past clients or companies you\'ve advised (as a consultant / advisor)': getVal('pastClientsHidden'),
       'Specific Areas of Expertise for Mentorship': getVal('areasOfExpertiseHidden'),
-      'International clients â€” rate (USD)': getVal('hourlyRate'),
-      'Indian clients â€” rate (INR)': getVal('hourlyRateINR'),
+      'International clients - rate (USD)': getVal('hourlyRate'),
+      'Indian clients - rate (INR)': getVal('hourlyRateINR'),
       "If 'Negotiable' (USD), please specify": getVal('rateNegotiable'),
       "If 'Negotiable' (INR), please specify": getVal('rateNegotiableINR'),
       'Hours per month for mentoring startup founders': getVal('hoursPerMonth'),
@@ -1290,7 +1156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update this section in your script
     var btn = document.getElementById('btnSubmit');
-    btn.textContent = 'â³ Submittingâ€¦'; btn.disabled = true; btn.classList.add('loading');
+    btn.textContent = 'Submitting...'; btn.disabled = true; btn.classList.add('loading');
 
     // ENSURE THIS IS YOUR LATEST /EXEC URL
     var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyS52hxWr5CuAb_4xPLejLlcmcZrNAjeuXPbBOvuTU0JPOP9NtcHo81VYtBiI5WOPcH/exec';
@@ -1309,7 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
           alert("Error: " + response.error);
           btn.disabled = false;
-          btn.textContent = 'Submit Application â†’';
+          btn.textContent = 'Submit Application ->';
       }
     })
     .catch(function(err) {
