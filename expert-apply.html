@@ -7,132 +7,128 @@
   <link rel="icon" type="image/png" href="./reallogo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./lead-pages.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   
+  <!-- File 1 Foundation -->
+  <link rel="stylesheet" href="./lead-pages.css" />
+
   <style>
-    /* --- EXACT REPLICATION OF OG FORM STYLING --- */
+    /* --- EXACT DIMENSIONAL REPLICATION OF IMAGE 2 --- */
     :root {
-      --swyn-orange: #d4621a;
-      --swyn-text: #1a1208;
-      --swyn-muted: #7a6a54;
-      --swyn-border: #ddd5c4;
-      --swyn-bg: #faf7f2;
+      --bg: #f5f0e8;
+      --card: #faf7f2;
+      --orange: #d4621a;
+      --text: #1a1208;
+      --muted: #7a6a54;
+      --border: #ddd5c4;
+      --radius: 8px;
     }
 
-    /* Card Layout - Left Aligned like Image 2 */
-    .lead-shell { max-width: 850px !important; width: 100% !important; margin: 0 auto !important; }
-    .lead-card { 
-        background: #fff !important; 
-        border: 1px solid var(--swyn-border) !important;
-        border-radius: 12px !important;
-        padding: 60px !important; 
+    /* Force the website shell to allow the wider form dimensions */
+    .lead-shell { 
+        max-width: 900px !important; 
+        width: 100% !important; 
+        margin: 0 auto !important; 
+    }
+
+    /* REPLICATING THE EXACT CARD FROM IMAGE 2 */
+    .lead-card {
+        max-width: 700px !important; /* DIMENSION FROM FILE 2 */
+        width: 100% !important;
+        margin: 40px auto !important;
+        padding: 40px 44px !important; /* PADDING FROM FILE 2 */
+        background: var(--card) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 4px 24px rgba(0,0,0,.08) !important;
         text-align: left !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.02) !important;
     }
 
-    /* Title & Eyebrow Styling */
-    .step-eyebrow {
-        color: var(--swyn-orange);
+    /* TYPOGRAPHY REPLICATION */
+    .step-label {
+        font-family: 'DM Sans', sans-serif;
         font-size: 11px;
         font-weight: 700;
+        letter-spacing: .12em;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        color: var(--orange);
         margin-bottom: 8px;
         display: block;
     }
     .card-title {
         font-family: 'Playfair Display', serif;
-        font-size: 36px;
+        font-size: 28px;
         font-weight: 700;
-        color: var(--swyn-text);
-        margin-bottom: 12px;
+        color: var(--text);
+        margin-bottom: 6px;
+        line-height: 1.2;
     }
     .card-subtitle {
         font-family: 'DM Sans', sans-serif;
-        font-size: 15px;
-        color: var(--swyn-muted);
-        margin-bottom: 40px;
-        line-height: 1.5;
-    }
-
-    /* Form Fields */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 30px; }
-    .full { grid-column: 1 / -1; }
-    .field { display: flex; flex-direction: column; text-align: left; }
-    
-    .field label {
         font-size: 14px;
-        font-weight: 500;
-        color: var(--swyn-text);
-        margin-bottom: 8px;
+        color: var(--muted);
+        margin-bottom: 24px;
+        line-height: 1.65;
     }
 
-    /* Inputs & Selects */
+    hr.divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+
+    /* FORM GRID REPLICATION */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+    .full { grid-column: 1 / -1; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-size: 13px; font-weight: 500; color: var(--text); }
+    .req { color: var(--orange); margin-left: 2px; }
+
+    /* INPUT STYLING REPLICATION */
     input, select, textarea {
-      background: #fff;
-      border: 1px solid var(--swyn-border);
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      color: var(--swyn-text);
-      outline: none;
-      transition: border-color 0.2s;
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 11px 14px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        color: var(--text);
+        outline: none;
+        transition: border-color .18s;
     }
-    input::placeholder { color: #aaa; }
-    input:focus, select:focus { border-color: var(--swyn-orange); }
+    input:focus { border-color: var(--orange); }
 
-    /* Custom Dropdown Arrow */
-    select {
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237a6a54' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 16px center;
-        padding-right: 40px;
-    }
-
-    /* Hint text */
-    .hint {
-        font-size: 12px;
-        color: var(--swyn-muted);
-        margin-top: 6px;
-        line-height: 1.4;
-    }
-
-    /* Progress Dots - Matching Image 2 bottom left */
-    .bottom-nav {
+    /* FOOTER & DOTS REPLICATION */
+    .actions {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 50px;
-        padding-top: 30px;
-        border-top: 1px solid #eee;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
     }
-    .progress-dots { display: flex; gap: 8px; align-items: center; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #eeeae3; transition: all 0.3s; }
-    .dot.active { width: 24px; border-radius: 4px; background: var(--swyn-orange); }
+    .step-dots { display: flex; gap: 7px; align-items: center; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange-muted); transition: all .35s; }
+    .dot.active { background: var(--orange); width: 24px; border-radius: 4px; }
 
-    /* Button Styling - Matching Image 2 */
-    .btn-continue {
-        background: var(--swyn-orange);
+    /* BUTTON REPLICATION */
+    .btn-next {
+        background: var(--orange);
         color: #fff;
         border: none;
-        border-radius: 6px;
-        padding: 14px 36px;
+        border-radius: var(--radius);
+        padding: 12px 28px;
         font-family: 'DM Sans', sans-serif;
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 14px;
+        font-weight: 600;
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 10px;
-        transition: transform 0.2s;
+        gap: 8px;
+        box-shadow: 0 2px 8px rgba(212,98,26,.25);
     }
-    .btn-continue:hover { background: #b55114; transform: translateY(-1px); }
 
     .step { display: none; }
-    .step.active { display: block; }
+    .step.active { display: block; animation: stepIn .3s ease; }
+    @keyframes stepIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    
+    .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
   </style>
 </head>
 <body data-form-page="expert">
@@ -148,115 +144,95 @@
     </header>
 
     <main class="lead-shell">
-      <!-- Intro Section remains consistent with website -->
+      <!-- Website Intro -->
       <section class="lead-intro">
         <span class="lead-intro__eyebrow">For senior leaders</span>
         <h1>Join the bench on your terms.</h1>
       </section>
 
+      <!-- REPLICATED FORM AREA -->
       <section class="lead-card">
-        <div id="leadCardBody">
-          <form id="multiStepForm" onsubmit="return false;">
-            
-            <!-- STEP 1 -->
-            <div class="step active" id="step1">
-              <span class="step-eyebrow">Step 01 of 05</span>
-              <h2 class="card-title">Personal Details</h2>
-              <p class="card-subtitle">Tell us who you are. This information helps us create your verified expert profile.</p>
+        <form id="expertForm" onsubmit="return false;">
+          
+          <!-- STEP 1: Personal Details -->
+          <div class="step active" id="step1">
+            <span class="step-label">Step 01 of 05</span>
+            <h1 class="card-title">Personal Details</h1>
+            <p class="card-subtitle">Tell us who you are. This information helps us create your verified expert profile.</p>
+            <hr class="divider"/>
 
-              <div class="form-grid">
-                <div class="field">
-                  <label>First name <span style="color:var(--swyn-orange)">*</span></label>
-                  <input type="text" id="firstName" placeholder="Rajesh" required />
-                </div>
-                <div class="field">
-                  <label>Last name <span style="color:var(--swyn-orange)">*</span></label>
-                  <input type="text" id="lastName" placeholder="Sharma" required />
-                </div>
-                <div class="field">
-                  <label>Personal email <span style="color:var(--swyn-orange)">*</span></label>
-                  <input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com" required />
-                </div>
-                <div class="field">
-                  <label>Mobile number (with country code) <span style="color:var(--swyn-orange)">*</span></label>
-                  <input type="tel" id="phoneNumber" placeholder="+91 98765 43210" required />
-                  <span class="hint">Include country code, e.g. +91 for India. Numbers only.</span>
-                </div>
-                <div class="field">
-                  <label>City <span style="color:var(--swyn-orange)">*</span></label>
-                  <select id="city" required>
-                    <option value="" disabled selected>Select city</option>
-                    <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>Other</option>
-                  </select>
-                </div>
-                <div class="field full">
-                  <label>Current professional headline <span style="color:var(--swyn-orange)">*</span></label>
-                  <input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs | 22 years in Finance" required />
-                  <span class="hint">This appears on your SWYN profile card. Keep it crisp and credibility-forward.</span>
-                </div>
-                <div class="field">
-                    <label>Gender</label>
-                    <select id="gender">
-                        <option value="">Select</option>
-                        <option>Male</option><option>Female</option><option>Other</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label>How did you hear about SWYN?</label>
-                    <select id="heardAbout">
-                        <option value="">Select</option>
-                        <option>LinkedIn</option><option>Referral</option>
-                    </select>
-                </div>
+            <div class="form-grid">
+              <div class="field">
+                <label>First name <span class="req">*</span></label>
+                <input type="text" id="firstName" placeholder="Rajesh" required />
               </div>
-
-              <div class="bottom-nav">
-                <div class="progress-dots">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-                <button type="button" class="btn-continue" onclick="nextStep(1)">Continue →</button>
+              <div class="field">
+                <label>Last name <span class="req">*</span></label>
+                <input type="text" id="lastName" placeholder="Sharma" required />
+              </div>
+              <div class="field">
+                <label>Personal email <span class="req">*</span></label>
+                <input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com" required />
+              </div>
+              <div class="field">
+                <label>Mobile number (with country code) <span class="req">*</span></label>
+                <input type="tel" id="phoneNumber" placeholder="+91 98765 43210" required />
+                <span class="hint">Include country code, e.g. +91 for India.</span>
+              </div>
+              <div class="field">
+                <label>City <span class="req">*</span></label>
+                <select id="city" required>
+                  <option value="" disabled selected>Select city</option>
+                  <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>Other</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>Current professional headline <span class="req">*</span></label>
+                <input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs | 22 years in Finance" required />
+                <span class="hint">Keep it crisp and credibility-forward.</span>
+              </div>
+              <div class="field">
+                <label>Gender</label>
+                <select id="gender"><option value="">Select</option><option>Male</option><option>Female</option></select>
+              </div>
+              <div class="field">
+                <label>How did you hear about SWYN?</label>
+                <select id="heardAbout"><option value="">Select</option><option>LinkedIn</option><option>Referral</option></select>
               </div>
             </div>
 
-            <!-- Additional steps would follow the same pattern... -->
-            <div class="step" id="step2">
-                 <h2 class="card-title">Background</h2>
-                 <button type="button" class="btn-continue" onclick="nextStep(2)">Continue →</button>
+            <div class="actions">
+              <div class="step-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+              <button type="button" class="btn-next" onclick="nextStep(1)">Continue →</button>
             </div>
+          </div>
 
-          </form>
-        </div>
+          <!-- SUCCESS STATE -->
+          <div class="step" id="stepSuccess">
+            <div style="text-align: center; padding: 40px 0;">
+                <h1 class="card-title">Application Submitted</h1>
+                <p class="card-subtitle">Thank you. We will be in touch shortly.</p>
+            </div>
+          </div>
+
+        </form>
       </section>
     </main>
   </div>
 
   <script>
     let currentStep = 1;
-
     function nextStep(step) {
-        // Validation check for Step 1
-        if (step === 1) {
-            const inputs = document.getElementById('step1').querySelectorAll('[required]');
-            let valid = true;
-            inputs.forEach(input => {
-                if(!input.value) {
-                    input.style.borderColor = '#c0392b';
-                    valid = false;
-                } else {
-                    input.style.borderColor = '';
-                }
-            });
-            if(!valid) return;
-        }
-
         document.getElementById('step' + currentStep).classList.remove('active');
         currentStep++;
-        const nextStepEl = document.getElementById('step' + currentStep);
-        if(nextStepEl) nextStepEl.classList.add('active');
+        const next = document.getElementById('step' + currentStep);
+        if(next) next.classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
