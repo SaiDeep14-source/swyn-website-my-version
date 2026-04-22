@@ -9,65 +9,103 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  
-  <!-- File 1 Shell Styles -->
   <link rel="stylesheet" href="./lead-pages.css" />
-
-  <!-- EXACT STYLES FROM FILE 2 -->
   <style>
-    :root{
-      --bg:#f5f0e8;--card:#faf7f2;--orange:#d4621a;--orange-light:#e8793a;
-      --orange-muted:#f0e0d0;--text:#1a1208;--muted:#7a6a54;--border:#ddd5c4;
-      --input-bg:#ffffff;--radius:8px;--error:#c0392b;--success:#2e7d32;
-      --shadow:0 4px 24px rgba(0,0,0,.08);
+    /* --- FLEXIBLE DIMENSIONS & PROFESSIONAL BLENDING --- */
+    :root {
+      --orange: #d4621a;
+      --orange-muted: #f0e0d0;
+      --text: #1a1208;
+      --muted: #7a6a54;
+      --border: #ddd5c4;
+      --card-bg: #faf7f2;
     }
-    /* Integration Fixes */
-    .lead-card { background: transparent !important; box-shadow: none !important; border: none !important; padding: 0 !important; max-width: 700px !important; margin: 0 auto !important; }
-    
-    .card-f2{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px 44px;box-shadow:var(--shadow);transition:box-shadow .3s; color: var(--text); font-family: 'DM Sans', sans-serif;}
-    .progress-wrap{margin-bottom:10px; font-family: 'DM Sans', sans-serif;}
-    .progress-bar{height:5px;background:var(--orange-muted);border-radius:3px;overflow:hidden}
-    .progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-light));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-    .progress-label{font-size:11px;color:var(--muted);text-align:right;margin-top:6px;font-weight:500;letter-spacing:.04em}
-    .step-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px; display: block;}
-    .card-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.2; text-align: left;}
-    .card-subtitle{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65; text-align: left;}
-    hr.divider{border:none;border-top:1px solid var(--border);margin-bottom:24px}
-    .section-head{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin:28px 0 18px;display:flex;align-items:center;gap:12px}
-    .section-head::before,.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
-    .form-grid .full{grid-column:1/-1}
-    .field-f2{display:flex;flex-direction:column;gap:5px; text-align: left;}
-    .field-f2 label{font-size:13px;font-weight:500;color:var(--text);line-height:1.4}
-    .req{color:var(--orange);margin-left:2px}
-    input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
-      background:var(--input-bg); border:1.5px solid var(--border); border-radius:var(--radius);
-      padding:11px 14px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text);
-      width:100%; transition:all .18s; outline:none;
+
+    /* Expanding File 1's shell for a wide, professional form */
+    .lead-shell {
+      max-width: 950px !important; /* Made wider for better field alignment */
+      width: 95% !important;
     }
-    input:focus,select:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(212,98,26,.12);}
-    .hint{font-size:12px;color:var(--muted);line-height:1.5}
-    .pill-grid{display:flex;flex-wrap:wrap;gap:8px}
-    .pill{
-      display:inline-flex;align-items:center;gap:6px;padding:8px 15px;
-      border:1.5px solid var(--border);border-radius:30px;background:var(--input-bg);
-      font-size:13px;cursor:pointer;transition:all .15s;user-select:none;
+
+    .lead-card {
+      max-width: 100% !important; /* Allow card to fill the shell */
+      padding: 50px 60px !important; /* Generous professional padding */
+      background: var(--card-bg) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.03) !important;
+      transition: height 0.3s ease; /* Smooth transition when steps change */
     }
-    .pill.selected{border-color:var(--orange);background:var(--orange-muted);color:var(--orange);font-weight:600}
-    .pill input{accent-color:var(--orange);width:13px;height:13px;}
-    .upload-box{border:2px dashed var(--border);border-radius:12px;padding:26px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--input-bg)}
-    .upload-done{border-color:var(--orange);background:#fff8f4; border-style: solid;}
-    .actions-f2{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
-    .btn-back-f2{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:var(--radius);padding:11px 22px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;}
-    .btn-next-f2{background:var(--orange);color:#fff;border:none;border-radius:var(--radius);padding:12px 28px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;}
-    .step{display:none;}
-    .step.active{display:block; animation: stepIn .3s ease;}
-    @keyframes stepIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-    .err-msg{color:var(--error);font-size:12px;display:flex;align-items:center;gap:4px;}
-    .char-count{font-size:11px;color:var(--muted);text-align:right;}
-    .add-btn-f2{padding:10px 18px;background:var(--orange);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600;}
-    .terms-box{background:var(--input-bg);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;cursor:pointer; text-align: left;}
-    .terms-box input{accent-color:var(--orange); width:16px; height:16px; margin-top:3px;}
+
+    /* Multi-step Logic */
+    .step { display: none; }
+    .step.active { display: block; animation: stepIn .4s ease-out; }
+    @keyframes stepIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }
+
+    /* Progress UI */
+    .progress-container { margin-bottom: 35px; }
+    .bar-bg { height: 4px; background: #eeeae3; border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--orange); transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .progress-label { font-size: 11px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; display: block; text-align: right; }
+
+    /* Form Typography */
+    .card-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .card-subtitle { font-size: 15px; color: var(--muted); margin-bottom: 30px; line-height: 1.6; }
+    .form-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin: 40px 0 20px; display: flex; align-items: center; gap: 12px; }
+    .form-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Layout Grids */
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+    .full-width { grid-column: 1 / -1; }
+    .field-group { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .field-group label { font-size: 14px; font-weight: 600; color: var(--text); }
+    .req { color: var(--orange); }
+
+    /* Inputs */
+    input, select, textarea {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 13px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+      transition: all 0.2s; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(212,98,26,0.08); }
+
+    /* Feature: Pill Grids */
+    .pill-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+      border: 1.5px solid var(--border); border-radius: 40px; background: #fff;
+      font-size: 13px; cursor: pointer; transition: 0.2s; user-select: none;
+    }
+    .pill:hover { border-color: var(--orange); background: #fdfaf7; }
+    .pill.selected { border-color: var(--orange); background: var(--orange-muted); color: var(--orange); font-weight: 700; }
+    .pill input { display: none; }
+
+    /* Feature: Add+ Tags */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .tag {
+      background: var(--orange-muted); border: 1px solid var(--orange); color: var(--orange);
+      padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
+    }
+    .tag-remove { cursor: pointer; font-weight: bold; }
+
+    /* Feature: File Uploads */
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: 12px; padding: 40px;
+      text-align: center; cursor: pointer; background: #fff; transition: 0.2s;
+    }
+    .upload-zone:hover { border-color: var(--orange); background: #fdfaf7; }
+    .upload-zone.done { border-color: #2e7d32; background: #f1f8f1; border-style: solid; }
+
+    /* Actions */
+    .actions-row { display: flex; justify-content: space-between; align-items: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border); }
+    .btn-next { background: var(--orange); color: #fff; border: none; border-radius: 8px; padding: 14px 40px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .btn-next:hover { background: #b55114; transform: translateY(-1px); }
+    .btn-back { background: none; border: none; font-weight: 600; color: var(--muted); cursor: pointer; text-decoration: underline; font-family: 'DM Sans'; }
+
+    @media (max-width: 768px) {
+      .lead-card { padding: 30px 20px !important; }
+      .field-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body data-form-page="expert">
@@ -94,249 +132,230 @@
         </div>
       </section>
 
-      <!-- FORM AREA: FULL REPLICATION OF FILE 2 -->
       <section class="lead-card">
-        <div class="progress-wrap">
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
-            <div class="progress-label" id="progressLabel">Step 1 of 5</div>
+        <!-- Progress Bar Integrated -->
+        <div class="progress-container">
+          <div class="bar-bg"><div class="bar-fill" id="progressFill" style="width: 20%;"></div></div>
+          <span class="progress-label" id="progressLabel">Step 1 of 5</span>
         </div>
 
-        <div class="card-f2">
-          <!-- STEP 1: Personal Details -->
-          <div class="step active" id="step1">
-            <span class="step-label">Step 01 of 05</span>
-            <h1 class="card-title">Personal Details</h1>
-            <p class="card-subtitle">Tell us who you are. This information helps us create your verified profile.</p>
-            <hr class="divider"/>
-            <div class="form-grid">
-              <div class="field-f2"><label>First name <span class="req">*</span></label><input type="text" id="firstName" placeholder="Rajesh"/></div>
-              <div class="field-f2"><label>Last name <span class="req">*</span></label><input type="text" id="lastName" placeholder="Sharma"/></div>
-              <div class="field-f2"><label>Personal email <span class="req">*</span></label><input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com"/></div>
-              <div class="field-f2"><label>Mobile number <span class="req">*</span></label><input type="tel" id="phoneNumber" placeholder="+91 98765 43210" onkeydown="return allowPhoneKeys(event)" oninput="validatePhone(this)"/></div>
-              <div class="field-f2"><label>City <span class="req">*</span></label>
-                <select id="city" onchange="showOther(this,'cityOtherBox','Other')">
-                  <option value="">Select city</option>
-                  <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="field-f2" id="cityOtherBox" style="display:none;"><label>Specify city <span class="req">*</span></label><input type="text" id="cityOther"/></div>
-              <div class="field-f2 full"><label>Current professional headline <span class="req">*</span></label><input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs"/></div>
-            </div>
-            <div class="actions-f2">
-              <span></span>
-              <button type="button" class="btn-next-f2" onclick="nextStep(1)">Continue &#8594;</button>
-            </div>
-          </div>
+        <div id="leadCardBody">
+          <form class="lead-form" onsubmit="return false;">
+            
+            <!-- STEP 1: Personal Details (Flexible 2-column) -->
+            <div class="step active" id="step1">
+              <h2 class="card-title">Personal Details</h2>
+              <p class="card-subtitle">Tell us who you are. This information helps us create your verified profile.</p>
 
-          <!-- STEP 2: Professional Background -->
-          <div class="step" id="step2">
-            <span class="step-label">Step 02 of 05</span>
-            <h1 class="card-title">Professional Background</h1>
-            <p class="card-subtitle">Help us understand your experience so we can match you with the right opportunities.</p>
-            <hr class="divider"/>
-            <div class="form-grid">
-              <div class="field-f2"><label>Job Title <span class="req">*</span></label><input type="text" id="jobTitle"/></div>
-              <div class="field-f2"><label>Years of Experience <span class="req">*</span></label>
-                <select id="yearsExperience">
-                    <option value="">Select</option><option>10-15 years</option><option>15-20 years</option><option>25+ years</option>
-                </select>
+              <div class="field-grid">
+                <div class="field-group"><label>First name <span class="req">*</span> <input type="text" id="firstName" placeholder="Rajesh" required/></label></div>
+                <div class="field-group"><label>Last name <span class="req">*</span> <input type="text" id="lastName" placeholder="Sharma" required/></label></div>
+                <div class="field-group"><label>Personal email <span class="req">*</span> <input type="email" id="primaryEmail" placeholder="yourname@gmail.com" required/></label></div>
+                <div class="field-group"><label>Mobile number <span class="req">*</span> <input type="tel" id="phoneNumber" placeholder="+91 98765 43210" required/></label></div>
+                <div class="field-group">
+                  <label>City <span class="req">*</span>
+                    <select id="city" onchange="toggleOther(this, 'cityOtherBox')" required>
+                      <option value="">Select city</option>
+                      <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>Chennai</option><option>Hyderabad</option><option>Pune</option><option value="Other">Other</option>
+                    </select>
+                  </label>
+                  <div id="cityOtherBox" style="display:none; margin-top:10px;"><input type="text" id="cityOther" placeholder="Specify city..."/></div>
+                </div>
+                <div class="field-group">
+                    <label>Gender <select id="gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></label>
+                </div>
+                <div class="field-group full-width"><label>Professional headline <span class="req">*</span> <input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs | 22 years in Finance" required/></label></div>
               </div>
-              <div class="field-f2 full"><label>Biography <span class="req">*</span></label><textarea id="biography" oninput="updateWordCount(this,'bioCount')" placeholder="Career highlights..."></textarea><span class="char-count" id="bioCount">0 words</span></div>
-              
-              <div class="full"><div class="section-head">Expertise</div></div>
-              <div class="field-f2 full"><label>Key Sectors <span class="req">*</span></label>
-                <div class="pill-grid" id="sectorGrid">
-                  <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
-                  <label class="pill"><input type="checkbox" value="SaaS"/> Technology / SaaS</label>
-                  <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
-                  <label class="pill"><input type="checkbox" value="Retail"/> Retail / D2C</label>
+
+              <div class="actions-row">
+                <span></span>
+                <button type="button" class="btn-next" onclick="nextStep(1)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 2: Background (Feature-Rich) -->
+            <div class="step" id="step2">
+              <h2 class="card-title">Professional Background</h2>
+              <p class="card-subtitle">Help us understand your depth of experience so we can match you with the right mandates.</p>
+
+              <div class="field-grid">
+                <div class="field-group"><label>Job Title <span class="req">*</span> <input type="text" id="jobTitle" required/></label></div>
+                <div class="field-group"><label>Total Experience <span class="req">*</span> 
+                    <select id="yearsExp" required>
+                        <option value="">Select</option><option>10-15 years</option><option>15-20 years</option><option>25+ years</option>
+                    </select>
+                </label></div>
+                <div class="field-group full-width">
+                    <label>Biography / Summary <span class="req">*</span>
+                        <textarea id="biography" oninput="updateWordCount(this, 'bioCount')" placeholder="Share your career highlights and achievements..." required></textarea>
+                        <span class="char-count" id="bioCount">0 words</span>
+                    </label>
+                </div>
+
+                <div class="full-width"><span class="form-section-title">Sectors & Companies</span></div>
+
+                <div class="field-group full-width">
+                    <label>Key sectors of expertise <span class="req">*</span></label>
+                    <div class="pill-grid" id="sectorGrid">
+                        <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
+                        <label class="pill"><input type="checkbox" value="SaaS"/> Technology / SaaS</label>
+                        <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
+                        <label class="pill"><input type="checkbox" value="Healthcare"/> Healthcare</label>
+                        <label class="pill"><input type="checkbox" value="D2C"/> Retail / D2C</label>
+                    </div>
+                </div>
+
+                <div class="field-group full-width">
+                    <label>Add notable companies worked for</label>
+                    <div style="display:flex; gap:12px; margin-top:8px;">
+                        <input type="text" id="coInput" placeholder="e.g. Google, McKinsey" style="flex:1;"/>
+                        <button type="button" class="btn-next" onclick="addTag('coInput', 'coTags', 'coStore')" style="width:auto; padding:0 24px; margin:0;">+ Add</button>
+                    </div>
+                    <div class="tag-cloud" id="coTags"></div>
+                    <input type="hidden" id="coStore"/>
                 </div>
               </div>
 
-              <div class="field-f2 full">
-                <label>Notable Companies worked for</label>
-                <div style="display:flex; gap:10px;">
-                  <input type="text" id="notableCoInput" placeholder="e.g. Google"/><button type="button" class="add-btn-f2" onclick="addTag('notableCoInput','coTags','coHidden')">+ Add</button>
+              <div class="actions-row">
+                <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
+                <button type="button" class="btn-next" onclick="nextStep(2)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Engagement -->
+            <div class="step" id="step3">
+                <h2 class="card-title">Engagement</h2>
+                <p class="card-subtitle">Define your working preferences and rates.</p>
+
+                <div class="field-grid">
+                    <div class="field-group"><label>Indian Rate (INR/hr) <span class="req">*</span> <select id="rateINR" required><option>₹5k-10k</option><option>₹10k-20k</option><option>Negotiable</option></select></label></div>
+                    <div class="field-group"><label>Monthly Availability <span class="req">*</span> <select id="hours" required><option>1-5 hrs</option><option>5-10 hrs</option><option>20+ hrs</option></select></label></div>
+                    
+                    <div class="full-width"><span class="form-section-title">Preferences</span></div>
+                    
+                    <div class="field-group full-width">
+                        <label>Open to these engagement types <span class="req">*</span></label>
+                        <div class="pill-grid">
+                            <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
+                            <label class="pill"><input type="checkbox" value="Advisory"/> Advisory</label>
+                            <label class="pill"><input type="checkbox" value="Board"/> Board Seat</label>
+                            <label class="pill"><input type="checkbox" value="Project"/> Project Consulting</label>
+                        </div>
+                    </div>
                 </div>
-                <div id="coTags" class="pill-grid" style="margin-top:10px;"></div>
-                <input type="hidden" id="coHidden"/>
-              </div>
 
-              <div class="field-f2 full">
-                <label>Areas of Expertise <span class="req">*</span></label>
-                <select onchange="addExpertiseTag(this)"><option value="">Select areas...</option><option>Fundraising</option><option>GTM Strategy</option><option>CFO Advisory</option></select>
-                <div id="expTags" class="pill-grid" style="margin-top:10px;"></div>
-                <input type="hidden" id="expHidden"/>
-              </div>
-            </div>
-            <div class="actions-f2">
-              <button type="button" class="btn-back-f2" onclick="prevStep(2)">&#8592; Back</button>
-              <button type="button" class="btn-next-f2" onclick="nextStep(2)">Continue &#8594;</button>
-            </div>
-          </div>
-
-          <!-- STEP 3: Engagement -->
-          <div class="step" id="step3">
-            <span class="step-label">Step 03 of 05</span>
-            <h1 class="card-title">Engagement & Rates</h1>
-            <hr class="divider"/>
-            <div class="form-grid">
-              <div class="field-f2"><label>Indian Rate (INR/hr) <span class="req">*</span></label><select id="hourlyRateINR"><option value="">Select</option><option>₹5,000-₹10,000</option><option>₹10,000-₹20,000</option><option>Negotiable</option></select></div>
-              <div class="field-f2"><label>Hours/Month <span class="req">*</span></label><select id="hoursPerMonth"><option value="">Select</option><option>5-10 hrs</option><option>10-20 hrs</option><option>20+ hrs</option></select></div>
-              <div class="field-f2 full"><label>Engagement types open to <span class="req">*</span></label>
-                <div class="pill-grid">
-                  <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
-                  <label class="pill"><input type="checkbox" value="Advisory"/> Advisory / Mentoring</label>
-                  <label class="pill"><input type="checkbox" value="Board"/> Board Seat</label>
+                <div class="actions-row">
+                  <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
+                  <button type="button" class="btn-next" onclick="nextStep(3)">Continue →</button>
                 </div>
-              </div>
             </div>
-            <div class="actions-f2">
-              <button type="button" class="btn-back-f2" onclick="prevStep(3)">&#8592; Back</button>
-              <button type="button" class="btn-next-f2" onclick="nextStep(3)">Continue &#8594;</button>
-            </div>
-          </div>
 
-          <!-- STEP 4: Files -->
-          <div class="step" id="step4">
-            <span class="step-label">Step 04 of 05</span>
-            <h1 class="card-title">Verification</h1>
-            <hr class="divider"/>
-            <div class="form-grid">
-              <div class="field-f2 full"><label>LinkedIn URL <span class="req">*</span></label><input type="url" id="linkedin" placeholder="https://..."/></div>
-              <div class="field-f2 full"><label>Upload CV <span class="req">*</span></label>
-                <div class="upload-box" id="cvZone" onclick="triggerFile('cv')"><span id="cvLabel">Click to upload CV (PDF/Word)</span></div>
-              </div>
-              <div class="field-f2 full"><label>Upload Photo</label>
-                <div class="upload-box" id="photoZone" onclick="triggerFile('photo')"><span id="photoLabel">Click to upload Photo (JPG/PNG)</span></div>
-              </div>
-            </div>
-            <div class="actions-f2">
-              <button type="button" class="btn-back-f2" onclick="prevStep(4)">&#8592; Back</button>
-              <button type="button" class="btn-next-f2" onclick="nextStep(4)">Continue &#8594;</button>
-            </div>
-          </div>
+            <!-- STEP 4: Verification -->
+            <div class="step" id="step4">
+                <h2 class="card-title">Verification</h2>
+                <p class="card-subtitle">Upload your professional track record.</p>
 
-          <!-- STEP 5: Final Details -->
-          <div class="step" id="step5">
-            <span class="step-label">Step 05 of 05</span>
-            <h1 class="card-title">Final Details</h1>
-            <hr class="divider"/>
-            <div class="field-f2 full"><label>Top Achievements <span class="req">*</span></label><textarea id="achievements" placeholder="Key outcomes delivered..."></textarea></div>
-            <label class="terms-box" style="margin-top:20px;">
-              <input type="checkbox" id="termsCheck"/>
-              <p>I confirm the information is accurate and consent to SWYN processing my data for mandate matching in accordance with DPDPA 2023.</p>
-            </label>
-            <div class="actions-f2">
-              <button type="button" class="btn-back-f2" onclick="prevStep(5)">&#8592; Back</button>
-              <button type="button" class="btn-next-f2" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
-            </div>
-          </div>
+                <div class="field-grid">
+                    <div class="field-group full-width"><label>LinkedIn URL <span class="req">*</span> <input type="url" id="linkedin" required/></label></div>
+                    <div class="field-group full-width">
+                        <label>Upload CV / Resume <span class="req">*</span></label>
+                        <div class="upload-zone" id="cvZone" onclick="triggerFile('cv')"><span id="cvLabel">Click to upload PDF/Word</span></div>
+                    </div>
+                    <div class="field-group"><label>Upload Photo <div class="upload-zone" onclick="triggerFile('photo')"><span id="photoLabel">JPG/PNG</span></div></label></div>
+                    <div class="field-group"><label>Work Samples <div class="upload-zone" onclick="triggerFile('samples')"><span id="samplesLabel">Portfolio/PDF</span></div></label></div>
+                </div>
 
-          <!-- SUCCESS STATE -->
-          <div class="step" id="stepSuccess">
-            <div style="text-align:center; padding: 50px 0;">
-                <div style="font-size:60px; color:var(--orange);">✓</div>
-                <h2 class="card-title" style="text-align:center; margin-top:20px;">Submission Successful</h2>
-                <p>Thank you for applying. Our team will review your application and reach out within 3-5 business days.</p>
+                <div class="actions-row">
+                  <button type="button" class="btn-back" onclick="prevStep(4)">Back</button>
+                  <button type="button" class="btn-next" onclick="nextStep(4)">Continue →</button>
+                </div>
             </div>
-          </div>
 
+            <!-- STEP 5: Review -->
+            <div class="step" id="step5">
+                <h2 class="card-title">Final Review</h2>
+                <div class="field-group full-width"><label>Top 2-3 Achievements <span class="req">*</span> <textarea id="achievements" placeholder="Impact delivered..." required></textarea></label></div>
+                
+                <div class="field-group full-width" style="margin-top:30px;">
+                    <label class="pill" style="border:none; padding:0; background:transparent;">
+                        <input type="checkbox" id="consent" style="width:22px; height:22px; margin-right:12px;"/>
+                        <span style="font-size:13px; color:var(--muted);">I confirm information is accurate and consent to SWYN processing my profile under DPDPA 2023.</span>
+                    </label>
+                </div>
+
+                <div class="actions-row">
+                  <button type="button" class="btn-back" onclick="prevStep(5)">Back</button>
+                  <button type="button" class="btn-next" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
+                </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="step" id="stepSuccess">
+                <div style="text-align: center; padding: 60px 0;">
+                    <span style="font-size:70px; color:#2e7d32; display:block; margin-bottom: 25px;">✓</span>
+                    <h2 class="card-title">Application Submitted</h2>
+                    <p style="color:var(--muted); font-size: 16px;">Our team will review your application and reach out within 3-5 business days.</p>
+                </div>
+            </div>
+
+          </form>
         </div>
       </section>
     </main>
   </div>
 
   <script>
-    /* --- EXACT JS ENGINE FROM FILE 2 --- */
     let currentStep = 1;
-    let fileData = { cv: null, photo: null };
-    let tagsStore = { co: [], exp: [] };
+    let files = { cv: null, photo: null, samples: null };
+    let tagsStore = { co: [] };
+
+    // Navigation
+    function updateProgress() {
+        document.getElementById('progressFill').style.width = (currentStep / 5) * 100 + '%';
+        document.getElementById('progressLabel').innerText = `Step ${currentStep} of 5`;
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
 
     function nextStep(s) {
-        const stepEl = document.getElementById('step' + s);
+        const stepEl = document.getElementById('step'+s);
         const reqs = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
         let ok = true;
-        reqs.forEach(r => { if(!r.value) { r.style.borderColor = 'var(--error)'; ok = false; } else { r.style.borderColor = ''; }});
-        if(s === 4 && !fileData.cv) { alert("Please upload your CV document."); ok = false; }
+        reqs.forEach(r => { if(!r.value) { r.style.borderColor = '#c0392b'; ok = false; } else { r.style.borderColor = ''; }});
+        if(s===4 && !files.cv) { alert("Please upload your CV document."); ok = false; }
         if(ok) {
-            document.getElementById('step' + currentStep).classList.remove('active');
+            stepEl.classList.remove('active');
             currentStep++;
-            document.getElementById('step' + currentStep).classList.add('active');
+            document.getElementById('step'+currentStep).classList.add('active');
             updateProgress();
         }
     }
 
     function prevStep(s) {
-        document.getElementById('step' + currentStep).classList.remove('active');
+        document.getElementById('step'+currentStep).classList.remove('active');
         currentStep--;
-        document.getElementById('step' + currentStep).classList.add('active');
+        document.getElementById('step'+currentStep).classList.add('active');
         updateProgress();
     }
 
-    function updateProgress() {
-        document.getElementById('progressFill').style.width = (currentStep / 5) * 100 + '%';
-        document.getElementById('progressLabel').innerText = 'Step ' + currentStep + ' of 5';
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    function allowPhoneKeys(e) {
-      if ([8,9,13,27,46,35,36,37,38,39,40].indexOf(e.keyCode) !== -1) return true;
-      if (e.key === '+' || e.key === ' ' || e.key === '-') return true;
-      if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) return true;
-      e.preventDefault(); return false;
-    }
-
-    function validatePhone(inp) {
-      let digits = inp.value.replace(/\D/g,'');
-      inp.style.borderColor = (digits.length >= 7 && digits.length <= 15) ? '' : 'var(--error)';
-    }
-
-    function showOther(sel, boxId, val) {
-        document.getElementById(boxId).style.display = sel.value === val ? 'flex' : 'none';
-    }
-
+    // Logic Helpers
+    function toggleOther(sel, id) { document.getElementById(id).style.display = sel.value === 'Other' ? 'block' : 'none'; }
+    
     function updateWordCount(el, id) {
         let count = el.value.trim() === '' ? 0 : el.value.trim().split(/\s+/).length;
         document.getElementById(id).innerText = count + ' words';
     }
 
-    // Tag Logic
     function addTag(inputId, cloudId, hiddenId) {
         const inp = document.getElementById(inputId);
-        const val = inp.value.trim();
-        if(!val || tagsStore.co.includes(val)) return;
-        tagsStore.co.push(val);
-        renderTags(cloudId, tagsStore.co, hiddenId);
+        if(!inp.value || tagsStore.co.includes(inp.value)) return;
+        tagsStore.co.push(inp.value);
+        const tag = document.createElement('div');
+        tag.className = 'tag';
+        tag.innerHTML = `${inp.value} <span class="tag-remove" onclick="this.parentElement.remove(); tagsStore.co = tagsStore.co.filter(x=>x!=='${inp.value}')">✕</span>`;
+        document.getElementById(cloudId).appendChild(tag);
         inp.value = '';
     }
 
-    function addExpertiseTag(sel) {
-        if(!sel.value || tagsStore.exp.includes(sel.value)) return;
-        tagsStore.exp.push(sel.value);
-        renderTags('expTags', tagsStore.exp, 'expHidden');
-        sel.value = '';
-    }
-
-    function renderTags(cloudId, array, hiddenId) {
-        const cloud = document.getElementById(cloudId);
-        cloud.innerHTML = '';
-        array.forEach(t => {
-            const tag = document.createElement('div');
-            tag.className = 'pill selected';
-            tag.innerHTML = t + ` <span style="cursor:pointer; margin-left:8px;" onclick="removeTag('${t}','${cloudId}','${hiddenId}')">✕</span>`;
-            cloud.appendChild(tag);
-        });
-        document.getElementById(hiddenId).value = array.join(', ');
-    }
-
-    function removeTag(val, cloudId, hiddenId) {
-        const key = cloudId === 'coTags' ? 'co' : 'exp';
-        tagsStore[key] = tagsStore[key].filter(x => x !== val);
-        renderTags(cloudId, tagsStore[key], hiddenId);
-    }
-
-    // File Logic
     function triggerFile(type) {
         const input = document.createElement('input');
         input.type = 'file';
@@ -344,42 +363,36 @@
             const file = e.target.files[0];
             const reader = new FileReader();
             reader.onload = evt => {
-                fileData[type] = { base64: evt.target.result, name: file.name };
-                document.getElementById(type + 'Label').innerText = '✓ ' + file.name;
-                document.getElementById(type + 'Zone').classList.add('upload-done');
+                files[type] = { base64: evt.target.result, name: file.name };
+                document.getElementById(type+'Label').innerText = '✓ ' + file.name;
+                document.getElementById(type+'Zone')?.classList.add('done');
             };
             reader.readAsDataURL(file);
         };
         input.click();
     }
 
-    // Submission Logic
     function doSubmit() {
-        if(!document.getElementById('termsCheck').checked) { alert("Please accept the terms to proceed."); return; }
+        if(!document.getElementById('consent').checked) { alert("Please accept the terms."); return; }
         const btn = document.getElementById('submitBtn');
-        btn.innerText = "Submitting...";
-        btn.disabled = true;
+        btn.innerText = "Submitting..."; btn.disabled = true;
 
-        const payload = {
-            'Name': document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
-            'Email': document.getElementById('primaryEmail').value,
-            'CV': fileData.cv,
-            'Companies': tagsStore.co.join(', '),
-            'Expertise': tagsStore.exp.join(', '),
-            'Timestamp': new Date().toLocaleString()
+        const data = {
+            name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+            email: document.getElementById('primaryEmail').value,
+            cv: files.cv,
+            timestamp: new Date().toLocaleString()
         };
 
-        const URL = 'https://script.google.com/macros/s/AKfycbyS52hxWr5CuAb_4xPLejLlcmcZrNAjeuXPbBOvuTU0JPOP9NtcHo81VYtBiI5WOPcH/exec';
-
-        fetch(URL, { method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(payload) })
-        .finally(() => {
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyS52hxWr5CuAb_4xPLejLlcmcZrNAjeuXPbBOvuTU0JPOP9NtcHo81VYtBiI5WOPcH/exec';
+        fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) }).finally(() => {
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.getElementById('stepSuccess').classList.add('active');
             document.getElementById('progressFill').style.width = '100%';
         });
     }
 
-    // Checkbox styling toggle
+    // Toggle selected state for pill checkboxes
     document.querySelectorAll('.pill input').forEach(p => {
         p.onchange = () => p.closest('.pill').classList.toggle('selected', p.checked);
     });
