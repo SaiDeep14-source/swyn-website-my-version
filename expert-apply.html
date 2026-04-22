@@ -735,7 +735,7 @@ function selectRating(fieldId, groupId, val) {
                 <div class="field full">
                   <label>Upload your CV / Resume <span class="req">*</span></label>
                   <div class="upload-box" id="cvUploadBox" onclick="driveUpload(&#39;cv&#39;)" style="cursor:pointer;">
-                    <div class="upload-icon">ðŸ“„</div>
+                   <div class="upload-icon">📄</div>
                     <p id="cvLabel">Click to upload your file!</p>
                     <span>PDF or Word - choose from Disk to upload</span>
                   </div>
@@ -745,7 +745,7 @@ function selectRating(fieldId, groupId, val) {
                 <div class="field full">
                   <label>Upload a professional photo <span style="color:var(--muted);font-weight:400;">(optional but recommended)</span></label>
                   <div class="upload-box" id="photoUploadBox" onclick="driveUpload(&#39;photo&#39;)" style="cursor:pointer;">
-                    <div class="upload-icon">ðŸ–¼ï¸</div>
+                   <div class="upload-icon">🖼️</div>
                     <p id="photoLabel">Click to upload your file!</p>
                     <span>JPG or PNG - choose from Disk to upload</span>
                   </div>
@@ -772,7 +772,7 @@ function selectRating(fieldId, groupId, val) {
                 <div class="field full">
                   <label>Upload work samples <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
                   <div class="upload-box" id="workSamplesUploadBox" onclick="driveUpload(&#39;worksamples&#39;)" style="cursor:pointer;">
-                    <div class="upload-icon">ðŸ“</div>
+                   <div class="upload-icon">📁</div>
                     <p id="workSamplesLabel">Click to upload your file!</p>
                     <span>Anonymised deliverables, models, frameworks - choose from Disk to upload</span>
                   </div>
@@ -1175,7 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
           alert("Error: " + response.error);
           btn.disabled = false;
-          btn.textContent = 'Submit Application ->';
+          btn.textContent = 'Submit Application →';
       }
     })
     .catch(function(err) {
