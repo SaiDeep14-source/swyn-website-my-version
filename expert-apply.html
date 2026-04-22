@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="file:///C:/Users/CHANDRA%20SEKHAR/Downloads/reallogo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./Expert Application _ SWYN 4_files/css2" rel="stylesheet">
+  <link href="./Expert Application _ SWYN 5_files/css2" rel="stylesheet">
   
   <!-- File 1 Website Styles -->
   <link rel="stylesheet" href="file:///C:/Users/CHANDRA%20SEKHAR/Downloads/lead-pages.css">
@@ -300,28 +300,27 @@ function selectRating(fieldId, groupId, val) {
 
       <!-- FORM AREA: EXACTLY FILE 2 -->
       <div class="form-wrapper-f2">
-  <div class="progress-wrap">
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill" style="width:20%"></div>
-    </div>
-    <div class="progress-label" id="progressLabel">Step 1 of 5</div>
-  </div>
-  <div class="card-f2">
-
-    <div class="step active" id="step1">
-      <div class="step-label">Step 01 of 05</div>
-      <h1 class="card-title">Personal Details</h1>
-      <p class="card-subtitle">Tell us who you are. This information helps us create your verified expert profile.</p>
-      <hr class="divider">
-      <div class="form-grid">
-        <div class="field">
-          <label>First name <span class="req">*</span></label>
-          <input type="text" id="firstName" placeholder="Rajesh">
-        </div>
-        <div class="field">
-          <label>Last name <span class="req">*</span></label>
-          <input type="text" id="lastName" placeholder="Sharma">
-        </div>
+        <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+            <div class="progress-label" id="progressLabel">Step 1 of 5</div>
+          </div>
+          <div class="card-f2">
+        
+            <!-- STEP 1: Personal Details -->
+            <div class="step active" id="step1">
+              <div class="step-label">Step 01 of 05</div>
+              <h1 class="card-title">Personal Details</h1>
+              <p class="card-subtitle">Tell us who you are. This information helps us create your verified expert profile.</p>
+              <hr class="divider">
+              <div class="form-grid">
+                <div class="field">
+                  <label>First name <span class="req">*</span></label>
+                  <input type="text" id="firstName" placeholder="Rajesh">
+                </div>
+                <div class="field">
+                  <label>Last name <span class="req">*</span></label>
+                  <input type="text" id="lastName" placeholder="Sharma">
+                </div>
                 <div class="field">
                   <label>Personal email <span class="req">*</span></label>
                   <input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com">
@@ -736,7 +735,7 @@ function selectRating(fieldId, groupId, val) {
                 <div class="field full">
                   <label>Upload your CV / Resume <span class="req">*</span></label>
                   <div class="upload-box" id="cvUploadBox" onclick="driveUpload(&#39;cv&#39;)" style="cursor:pointer;">
-                   <div class="upload-icon">📄</div>
+                    <div class="upload-icon">ðŸ“„</div>
                     <p id="cvLabel">Click to upload your file!</p>
                     <span>PDF or Word - choose from Disk to upload</span>
                   </div>
@@ -746,7 +745,7 @@ function selectRating(fieldId, groupId, val) {
                 <div class="field full">
                   <label>Upload a professional photo <span style="color:var(--muted);font-weight:400;">(optional but recommended)</span></label>
                   <div class="upload-box" id="photoUploadBox" onclick="driveUpload(&#39;photo&#39;)" style="cursor:pointer;">
-                   <div class="upload-icon">🖼️</div>
+                    <div class="upload-icon">ðŸ–¼ï¸</div>
                     <p id="photoLabel">Click to upload your file!</p>
                     <span>JPG or PNG - choose from Disk to upload</span>
                   </div>
@@ -773,7 +772,7 @@ function selectRating(fieldId, groupId, val) {
                 <div class="field full">
                   <label>Upload work samples <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
                   <div class="upload-box" id="workSamplesUploadBox" onclick="driveUpload(&#39;worksamples&#39;)" style="cursor:pointer;">
-                   <div class="upload-icon">📁</div>
+                    <div class="upload-icon">ðŸ“</div>
                     <p id="workSamplesLabel">Click to upload your file!</p>
                     <span>Anonymised deliverables, models, frameworks - choose from Disk to upload</span>
                   </div>
@@ -1176,7 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
           alert("Error: " + response.error);
           btn.disabled = false;
-          btn.textContent = 'Submit Application →';
+          btn.textContent = 'Submit Application ->';
       }
     })
     .catch(function(err) {
