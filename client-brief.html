@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Brief | SWYN</title>
+  <meta name="description" content="Tell SWYN who you need and we will match you with the right operator." />
+  <link rel="icon" type="image/png" href="./reallogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./lead-pages.css" />
+</head>
+<body data-form-page="client">
+  <div class="lead-page">
+    <header class="lead-topbar">
+      <div class="lead-topbar__inner">
+        <a class="lead-brand" href="./index.html">
+          <img src="./reallogo.png" alt="SWYN logo" />
+          <span>SWYN</span>
+        </a>
+        <a class="lead-topbar__link" href="./index.html">Back to website</a>
+      </div>
+    </header>
+
+    <main class="lead-shell">
+      <section class="lead-intro">
+        <span class="lead-intro__eyebrow">For companies</span>
+        <h1>Tell us who do you need.</h1>
+        <p>Share the function, the stage, and the business challenge. We will come back with the operator who makes sense for the moment, not a generic list of profiles.</p>
+        <div class="lead-points">
+          <span>Fractional, advisory, and project-based leadership</span>
+          <span>Built for founder-led teams and high-stakes transitions</span>
+          <span>Designed to take minutes, not meetings</span>
+        </div>
+      </section>
+
+      <section class="lead-card">
+        <div class="lead-card__header">
+          <h2>Client brief</h2>
+          <p>Five minutes around your mandate. We will take it from there.</p>
+        </div>
+        <div id="leadCardBody">
+          <form class="lead-form" action="https://formsubmit.co/aniket297706@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New SWYN client brief" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="form_type" value="Client brief" />
+            <label class="lead-form__honeypot" aria-hidden="true">
+              Leave this field empty
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+            </label>
+            <p class="lead-form__section-title">Basic Info</p>
+            <div class="lead-form__row">
+              <label>
+                Email
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="phone" required />
+              </label>
+            </div>
+            <div class="lead-form__row">
+              <label>
+                Company
+                <input type="text" name="company" required />
+              </label>
+              <label>
+                Website / LinkedIn URL
+                <input type="url" name="website_or_linkedin" required />
+              </label>
+            </div>
+            <div class="lead-form__row">
+              <label>
+                Function needed
+                <select name="fractional_role" required>
+                  <option value="" disabled selected>Select a function</option>
+                  <option value="CFO">CFO — Finance</option>
+                  <option value="CMO">CMO — Marketing</option>
+                  <option value="CTO">CTO — Technology</option>
+                  <option value="COO">COO — Operations</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label>
+                Revenue
+                <input type="text" name="revenue" required />
+              </label>
+            </div>
+            <label>
+              Need for CXO
+              <textarea name="cxo_need" required></textarea>
+            </label>
+            <div class="lead-form__row">
+              <label>
+                City
+                <input type="text" name="city" required />
+              </label>
+              <label>
+                Engagement Type
+                <select name="engagement_type" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="Virtual">Virtual</option>
+                  <option value="In-person">In-person</option>
+                </select>
+              </label>
+            </div>
+            <button class="lead-form__submit" type="submit">Submit brief →</button>
+            <p class="lead-form__note">This page keeps the form flow on its own dedicated route instead of opening a popup.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./lead-form-pages.js"></script>
+</body>
+</html>

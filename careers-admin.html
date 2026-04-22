@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWYN Careers Admin</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/png" href="./reallogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./careers.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-shell" id="adminShell">
+    <div class="admin-shell__topbar">
+      <div>
+        <p class="careers-badge">Careers admin</p>
+        <h1 style="margin: 1rem 0 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 0.95;">Manage careers</h1>
+        <p style="margin: 0.85rem 0 0; max-width: 680px; color: var(--careers-muted);">This page is intentionally not linked anywhere on the public website. Add, edit, or draft openings here, and published opportunities will appear on the public careers page automatically.</p>
+      </div>
+      <a class="careers-topbar__link" href="./careers.html" target="_blank" rel="noopener noreferrer">Open careers page ↗</a>
+    </div>
+
+    <div class="admin-layout">
+      <section class="admin-card">
+        <h2 id="jobFormTitle">Add opportunity</h2>
+        <p>Add or update roles here. Published roles appear automatically on the careers page, and every role now uses SWYN&apos;s built-in application form.</p>
+        <form class="admin-form" id="jobForm">
+          <label>
+            Title
+            <input type="text" name="title" required />
+          </label>
+          <div class="admin-field-grid">
+            <label>
+              Team
+              <input type="text" name="team" placeholder="Finance, Operations, Marketing..." required />
+            </label>
+            <label>
+              Status
+              <select name="status">
+                <option value="open">Open</option>
+                <option value="draft">Draft</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Summary
+            <textarea name="summary" required></textarea>
+          </label>
+          <div class="admin-field-grid">
+            <label>
+              Location
+              <input type="text" name="location" placeholder="India / Remote" required />
+            </label>
+            <label>
+              Work mode
+              <input type="text" name="workMode" placeholder="Remote, Hybrid, On-site" required />
+            </label>
+          </div>
+          <div class="admin-field-grid">
+            <label>
+              Employment type
+              <input type="text" name="employmentType" placeholder="Full-time, Fractional, Project-based" required />
+            </label>
+          </div>
+          <div class="admin-card__actions">
+            <button class="admin-button" type="submit">Save opportunity</button>
+            <button class="admin-button admin-button--ghost" type="button" id="cancelEdit" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-card">
+        <div class="admin-shell__topbar" style="margin-bottom: 1rem;">
+          <div>
+            <h2 style="margin-bottom: 0.25rem;">Current roles</h2>
+            <p style="margin: 0;">Draft roles stay in admin only. Open roles appear on the public careers page.</p>
+          </div>
+          <div class="admin-card__actions">
+            <button class="admin-button admin-button--ghost" type="button" id="exportJobs">Export JSON</button>
+            <label class="admin-button admin-button--ghost" style="cursor: pointer;">
+              Import JSON
+              <input id="importJobs" type="file" accept="application/json" hidden />
+            </label>
+          </div>
+        </div>
+        <div class="admin-list" id="jobsAdminList"></div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./careers-admin.js"></script>
+</body>
+</html>

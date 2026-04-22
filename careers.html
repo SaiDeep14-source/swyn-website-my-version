@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | SWYN</title>
+  <meta name="description" content="Explore current opportunities at SWYN." />
+  <link rel="icon" type="image/png" href="./reallogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./careers.css" />
+</head>
+<body>
+  <div class="careers-shell">
+    <header class="careers-topbar">
+      <div class="careers-topbar__inner">
+        <a class="careers-brand" href="./index.html">
+          <img src="./reallogo.png" alt="SWYN logo" />
+          <span>SWYN</span>
+        </a>
+        <div class="careers-topbar__actions">
+          <a class="careers-topbar__link" href="./index.html">Back to website</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="careers-main">
+      <section class="careers-hero">
+        <span class="careers-badge">We&apos;re hiring</span>
+        <h1>Be part of what we are building.</h1>
+        <p>We are looking for people who can operate with clarity, taste, and ownership. If you want to help ambitious companies access sharper leadership, there may be a place for you here.</p>
+      </section>
+
+      <section class="careers-panel">
+        <div class="careers-panel__topline">
+          <p>Open roles update automatically when you publish them from the hidden admin, and every apply button opens a built-in form with resume upload.</p>
+          <p id="careersCount">0 opportunities</p>
+        </div>
+        <div class="careers-notice" id="careersNotice" hidden></div>
+        <div class="careers-filters" id="careersFilters"></div>
+        <div class="careers-list" id="careersList"></div>
+      </section>
+
+      <footer class="careers-footer">
+        <span>SWYN Careers</span>
+        <div class="careers-footer__links">
+          <a href="./index.html">Main site</a>
+          <a href="./about.html">About Us</a>
+          <a href="https://www.linkedin.com/company/skillswhichyouneed/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="career-modal" id="careerModal" hidden>
+    <div class="career-modal__backdrop" data-modal-close></div>
+    <div class="career-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="careerModalTitle">
+      <button class="career-modal__close" type="button" id="careerModalClose" aria-label="Close application form">×</button>
+      <div class="career-modal__header">
+        <p class="career-modal__eyebrow">Career application</p>
+        <h2 id="careerModalTitle">Apply</h2>
+        <p id="careerModalBody">Share the essentials, upload your resume, and we will review your application.</p>
+        <div class="career-modal__meta" id="careerModalMeta"></div>
+      </div>
+
+      <form
+        class="career-apply-form"
+        id="careerApplyForm"
+        action="https://formsubmit.co/aniket297706@gmail.com"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="_subject" value="New SWYN career application" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="form_type" value="Career application" />
+        <input type="hidden" name="job_id" value="" />
+        <input type="hidden" name="job_title" value="" />
+        <input type="hidden" name="job_team" value="" />
+        <input type="hidden" name="job_location" value="" />
+        <input type="hidden" name="employment_type" value="" />
+        <input type="hidden" name="source_page" value="" />
+        <label class="career-apply-form__honeypot" aria-hidden="true">
+          Leave this field empty
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+        </label>
+
+        <div class="career-apply-form__grid">
+          <label>
+            Full name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+        </div>
+
+        <div class="career-apply-form__grid">
+          <label>
+            Phone
+            <input type="tel" name="phone" />
+          </label>
+          <label>
+            Current city
+            <input type="text" name="current_city" />
+          </label>
+        </div>
+
+        <div class="career-apply-form__grid">
+          <label>
+            LinkedIn or portfolio
+            <input type="url" name="profile_link" placeholder="https://linkedin.com/in/..." />
+          </label>
+          <label>
+            Years of experience
+            <input type="number" name="years_experience" min="0" step="1" />
+          </label>
+        </div>
+
+        <label>
+          Why are you a fit for this role?
+          <textarea name="application_note" required></textarea>
+        </label>
+
+        <label>
+          Resume
+          <input type="file" name="attachment" accept=".pdf,.doc,.docx" required />
+        </label>
+
+        <p class="career-apply-form__hint">Accepted resume formats: PDF, DOC, or DOCX. Keep the file under 10MB.</p>
+        <p class="career-apply-form__feedback" id="careerApplyFeedback" role="status" aria-live="polite" hidden></p>
+
+        <button class="career-apply-form__submit" type="submit">Send application →</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="./careers.js"></script>
+</body>
+</html>

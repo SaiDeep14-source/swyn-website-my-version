@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expert Application | SWYN</title>
+  <meta name="description" content="Apply to join the SWYN expert bench." />
+  <link rel="icon" type="image/png" href="./reallogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./lead-pages.css" />
+</head>
+<body data-form-page="expert">
+  <div class="lead-page">
+    <header class="lead-topbar">
+      <div class="lead-topbar__inner">
+        <a class="lead-brand" href="./index.html">
+          <img src="./reallogo.png" alt="SWYN logo" />
+          <span>SWYN</span>
+        </a>
+        <a class="lead-topbar__link" href="./index.html">Back to website</a>
+      </div>
+    </header>
+
+    <main class="lead-shell">
+      <section class="lead-intro">
+        <span class="lead-intro__eyebrow">For senior leaders</span>
+        <h1>Join the bench on your terms.</h1>
+        <p>If you have built something significant and want to engage selectively, this is where you can introduce yourself. We are looking for proven operators, not polished resumes.</p>
+        <div class="lead-points">
+          <span>Advisory, fractional, and project-based mandates</span>
+          <span>High-trust work with ambitious companies</span>
+          <span>Built for depth, not volume</span>
+        </div>
+      </section>
+
+      <section class="lead-card">
+        <div class="lead-card__header">
+          <h2>Expert application</h2>
+          <p>Tell us who you are, what you have built, and where you are most valuable.</p>
+        </div>
+        <div id="leadCardBody">
+          <form class="lead-form" action="https://formsubmit.co/aniket297706@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New SWYN expert application" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="form_type" value="Expert application" />
+            <label class="lead-form__honeypot" aria-hidden="true">
+              Leave this field empty
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+            </label>
+            <p class="lead-form__section-title">Basic Info</p>
+            <div class="lead-form__row">
+              <label>
+                Email
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="phone" required />
+              </label>
+            </div>
+            <div class="lead-form__row">
+              <label>
+                Company
+                <input type="text" name="company" required />
+              </label>
+              <label>
+                Role
+                <input type="text" name="role" required />
+              </label>
+            </div>
+            <label>
+              LinkedIn
+              <input type="url" name="linkedin" required />
+            </label>
+            <p class="lead-form__section-title">Availability &amp; Preferences</p>
+            <label>
+              When are you available
+              <input type="text" name="availability" required />
+            </label>
+            <div class="lead-form__row">
+              <label>
+                City
+                <input type="text" name="city" required />
+              </label>
+              <label>
+                Can you do virtual assignments?
+                <select name="virtual_assignments" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </label>
+            </div>
+            <button class="lead-form__submit" type="submit">Submit application →</button>
+            <p class="lead-form__note">This page gives experts a dedicated application flow instead of pushing them through a popup.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./lead-form-pages.js"></script>
+</body>
+</html>
