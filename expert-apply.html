@@ -8,116 +8,88 @@
   <link rel="icon" type="image/png" href="./reallogo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./lead-pages.css" />
-  
   <style>
-    /* CUSTOM BLENDING STYLES */
-    :root {
-      --brand-orange: #d4621a;
-      --brand-text: #1a1208;
-      --brand-muted: #7a6a54;
-      --brand-bg-card: #faf7f2;
-      --brand-border: #ddd5c4;
+    /* 
+       THE BLENDING CODE: 
+       This ensures the Multi-Step features look like they were 
+       always part of the File 1 design.
+    */
+    .step { display: none; }
+    .step.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Progress UI matching the 'Senior Leader' aesthetic */
+    .step-progress {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-
-    /* Progress Bar Blending */
-    .progress-container { margin-bottom: 32px; }
-    .progress-bar-bg { height: 4px; background: var(--brand-border); border-radius: 2px; overflow: hidden; }
-    .progress-bar-fill { height: 100%; background: var(--brand-orange); transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-    .progress-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-orange); margin-top: 10px; display: block; text-align: right; }
-
-    /* Step Transitions */
-    .step { display: none; animation: fadeInForm 0.4s ease-out; }
-    .step.active { display: block; }
-    @keyframes fadeInForm { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Blending Section Titles with File 1 style */
-    .form-section-title {
+    .step-progress__bar {
+      flex: 1;
+      height: 2px;
+      background: #ddd5c4;
+      position: relative;
+    }
+    .step-progress__fill {
+      position: absolute;
+      left: 0; top: 0; height: 100%;
+      background: #d4621a;
+      transition: width 0.4s ease;
+    }
+    .step-progress__label {
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--brand-muted);
-      margin: 32px 0 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--brand-border);
-      display: block;
+      letter-spacing: 0.1em;
+      color: #d4621a;
     }
 
-    /* Custom Pill Styling to match "Senior Leader" vibe */
-    .pill-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-    .pill-item {
-      padding: 10px 18px;
-      border: 1px solid var(--brand-border);
-      border-radius: 50px;
+    /* Pill Selection styling for key sectors */
+    .pill-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .pill {
+      padding: 8px 16px;
+      border: 1px solid #ddd5c4;
+      border-radius: 40px;
       font-size: 13px;
-      font-family: 'Inter', sans-serif;
       cursor: pointer;
-      background: #fff;
-      transition: all 0.2s;
-      user-select: none;
-      color: var(--brand-text);
-    }
-    .pill-item:hover { border-color: var(--brand-orange); background: #fdfaf7; }
-    .pill-item.selected { background: var(--brand-orange); color: #fff; border-color: var(--brand-orange); }
-    .pill-item input { display: none; }
-
-    /* File Upload Blending */
-    .upload-zone {
-      border: 1.5px dashed var(--brand-border);
-      border-radius: 8px;
-      padding: 40px 20px;
-      text-align: center;
-      background: #fff;
-      cursor: pointer;
+      background: white;
       transition: 0.2s;
     }
-    .upload-zone:hover { border-color: var(--brand-orange); background: #fdfaf7; }
-    .upload-zone.success { border-style: solid; border-color: #2e7d32; background: #f1f8f1; }
-    .upload-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .pill.selected { background: #d4621a; color: white; border-color: #d4621a; }
+    .pill input { display: none; }
 
-    /* Action Buttons */
-    .form-actions {
+    /* File upload button styling */
+    .upload-zone {
+      padding: 30px;
+      border: 1.5px dashed #ddd5c4;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      background: #faf7f2;
+      transition: 0.2s;
+    }
+    .upload-zone:hover { border-color: #d4621a; }
+    .upload-zone.done { border-color: #2e7d32; background: #f1f8f1; border-style: solid; }
+
+    /* Nav actions */
+    .step-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 40px;
-      padding-top: 24px;
-      border-top: 1px solid var(--brand-border);
+      margin-top: 32px;
     }
     .btn-back {
-      background: transparent;
-      border: none;
-      color: var(--brand-muted);
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      padding: 10px;
-      transition: color 0.2s;
+      background: none; border: none; 
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+      color: #7a6a54; cursor: pointer; text-decoration: underline;
     }
-    .btn-back:hover { color: var(--brand-orange); }
 
-    /* Tag Styling */
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tag {
-      background: #f0ede7;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--brand-text);
-      border: 1px solid var(--brand-border);
-    }
-    .tag-remove { cursor: pointer; font-weight: bold; color: var(--brand-orange); }
-
-    /* Error States */
-    .input-error { border-color: #c0392b !important; }
-    .error-text { color: #c0392b; font-size: 12px; margin-top: 4px; font-weight: 500; }
+    .lead-form__note { margin-top: 20px; font-size: 12px; color: #7a6a54; line-height: 1.4; }
+    .error-msg { color: #c0392b; font-size: 12px; margin-top: 4px; display: block; }
   </style>
 </head>
 <body data-form-page="expert">
@@ -146,24 +118,19 @@
 
       <section class="lead-card">
         <div class="lead-card__header">
-          <h2>Expert Application</h2>
-          <p id="step-description">Step 1: Tell us about your basic professional identity.</p>
-        </div>
-
-        <!-- Progress Indicator -->
-        <div class="progress-container">
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progressFill" style="width: 20%;"></div>
+          <h2>Expert application</h2>
+          <div class="step-progress">
+             <div class="step-progress__bar"><div class="step-progress__fill" id="progressFill" style="width: 20%"></div></div>
+             <span class="step-progress__label" id="progressLabel">1 of 5</span>
           </div>
-          <span class="progress-text" id="progressText">Step 1 of 5</span>
         </div>
 
         <div id="leadCardBody">
           <form class="lead-form" onsubmit="return false;">
             
-            <!-- STEP 1: Basic Info -->
+            <!-- STEP 1 -->
             <div class="step active" id="step1">
-              <span class="form-section-title">Personal Details</span>
+              <p class="lead-form__section-title">Basic Info</p>
               <div class="lead-form__row">
                 <label>First Name <input type="text" id="firstName" required /></label>
                 <label>Last Name <input type="text" id="lastName" required /></label>
@@ -172,142 +139,101 @@
                 <label>Email <input type="email" id="primaryEmail" required /></label>
                 <label>Phone <input type="tel" id="phoneNumber" placeholder="+91..." required /></label>
               </div>
-              <label>City 
-                <select id="city" onchange="toggleCityOther(this)">
-                  <option value="">Select City</option>
-                  <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option>
-                  <option>Chennai</option><option>Hyderabad</option><option>Pune</option>
-                  <option value="Other">Other</option>
-                </select>
-              </label>
-              <div id="cityOtherBox" style="display:none; margin-top:15px;">
-                <label>Specify City <input type="text" id="cityOther" /></label>
-              </div>
-              <label>Professional Headline <input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-McKinsey" required /></label>
-              
-              <div class="form-actions">
-                <span></span>
-                <button class="lead-form__submit" type="button" onclick="goNext(1)">Continue →</button>
-              </div>
+              <label>Professional Headline <input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Google" required /></label>
+              <button class="lead-form__submit" type="button" onclick="nextStep(1)">Continue →</button>
             </div>
 
-            <!-- STEP 2: Background -->
+            <!-- STEP 2 -->
             <div class="step" id="step2">
-              <span class="form-section-title">Experience & Expertise</span>
+              <p class="lead-form__section-title">Background & Sectors</p>
               <div class="lead-form__row">
                 <label>Current Role <input type="text" id="jobTitle" required /></label>
-                <label>Experience 
-                  <select id="yearsExperience">
-                    <option>10–15 years</option><option>15–20 years</option><option>25+ years</option>
-                  </select>
-                </label>
-              </div>
-              <label>Biography Summary 
-                <textarea id="biography" placeholder="Briefly describe your career highlights..." style="min-height:120px;"></textarea>
-              </label>
-
-              <span class="form-section-title">Sectors</span>
-              <div class="pill-container" id="sectorGrid">
-                <label class="pill-item"><input type="checkbox" value="BFSI"/>BFSI</label>
-                <label class="pill-item"><input type="checkbox" value="SaaS"/>SaaS</label>
-                <label class="pill-item"><input type="checkbox" value="Consumer"/>Consumer/D2C</label>
-                <label class="pill-item"><input type="checkbox" value="Fintech"/>Fintech</label>
-                <label class="pill-item"><input type="checkbox" value="Healthcare"/>Healthcare</label>
-              </div>
-
-              <span class="form-section-title">Add Your Specific Expertise Areas</span>
-              <div class="lead-form__row" style="align-items: flex-end;">
-                <label style="flex: 2;">Select Expertise
-                  <select id="expSelector">
-                    <option value="">Choose area...</option>
-                    <option>Fundraising</option><option>GTM Strategy</option><option>Product Led Growth</option>
-                    <option>Financial Modelling</option><option>M&A</option>
-                  </select>
-                </label>
-                <button class="lead-form__submit" type="button" onclick="addExpertiseTag()" style="margin-bottom: 5px; flex: 0.5;">Add</button>
-              </div>
-              <div class="tag-cloud" id="expertiseTags"></div>
-              <input type="hidden" id="expertiseHidden" />
-
-              <div class="form-actions">
-                <button class="btn-back" type="button" onclick="goBack(2)">← Back</button>
-                <button class="lead-form__submit" type="button" onclick="goNext(2)">Continue →</button>
-              </div>
-            </div>
-
-            <!-- STEP 3: Engagement -->
-            <div class="step" id="step3">
-              <span class="form-section-title">Availability & Rates</span>
-              <div class="lead-form__row">
-                <label>Target Rate (INR/hr) 
-                    <select id="rateINR">
-                        <option>₹5,000–₹10,000</option><option>₹10,000–₹20,000</option><option>Negotiable</option>
-                    </select>
-                </label>
-                <label>Hours/Month 
-                    <select id="hoursMonth">
-                        <option>1–5 hrs</option><option>5–10 hrs</option><option>10+ hrs</option>
+                <label>Total Experience 
+                    <select id="yearsExperience">
+                        <option>10-15 years</option><option>15-20 years</option><option>25+ years</option>
                     </select>
                 </label>
               </div>
-              <span class="form-section-title">Preferred Mandates</span>
-              <div class="pill-container" id="mandateGrid">
-                <label class="pill-item"><input type="checkbox" value="Fractional"/>Fractional</label>
-                <label class="pill-item"><input type="checkbox" value="Advisory"/>Advisory</label>
-                <label class="pill-item"><input type="checkbox" value="Board Seat"/>Board Seat</label>
-                <label class="pill-item"><input type="checkbox" value="Project"/>Project Based</label>
-              </div>
-
-              <div class="form-actions">
-                <button class="btn-back" type="button" onclick="goBack(3)">← Back</button>
-                <button class="lead-form__submit" type="button" onclick="goNext(3)">Continue →</button>
-              </div>
-            </div>
-
-            <!-- STEP 4: Presence -->
-            <div class="step" id="step4">
-              <span class="form-section-title">Verification</span>
-              <label>LinkedIn Profile URL <input type="url" id="linkedinUrl" placeholder="https://linkedin.com/in/..." required /></label>
+              <label>Brief Biography <textarea id="biography" placeholder="Highlights of your journey..." style="min-height: 100px;"></textarea></label>
               
-              <span class="form-section-title">Resume / CV</span>
-              <div class="upload-zone" id="cvDropzone" onclick="triggerFileUpload()">
-                <span class="upload-icon">📄</span>
-                <p id="cvStatus">Click to upload your CV (PDF or Word)</p>
+              <p class="lead-form__section-title" style="font-size: 12px; margin-top: 15px;">Key Sectors</p>
+              <div class="pill-grid" id="sectorGrid">
+                <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
+                <label class="pill"><input type="checkbox" value="SaaS"/> SaaS</label>
+                <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
+                <label class="pill"><input type="checkbox" value="Healthcare"/> Healthcare</label>
               </div>
 
-              <div class="form-actions">
-                <button class="btn-back" type="button" onclick="goBack(4)">← Back</button>
-                <button class="lead-form__submit" type="button" onclick="goNext(4)">Continue →</button>
+              <div class="step-actions">
+                <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
+                <button class="lead-form__submit" type="button" style="width: auto; padding: 0 40px;" onclick="nextStep(2)">Next →</button>
               </div>
             </div>
 
-            <!-- STEP 5: Final -->
+            <!-- STEP 3 -->
+            <div class="step" id="step3">
+                <p class="lead-form__section-title">Availability & Engagement</p>
+                <div class="lead-form__row">
+                    <label>Target Rate (INR/hr) <input type="text" id="rateINR" placeholder="e.g. ₹10,000" /></label>
+                    <label>Hours/Month 
+                        <select id="hoursMonth">
+                            <option>1-5 hrs</option><option>5-10 hrs</option><option>20+ hrs</option>
+                        </select>
+                    </label>
+                </div>
+                <p class="lead-form__section-title" style="font-size: 12px; margin-top: 15px;">Mandates you are open to</p>
+                <div class="pill-grid" id="mandateGrid">
+                  <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
+                  <label class="pill"><input type="checkbox" value="Advisory"/> Advisory</label>
+                  <label class="pill"><input type="checkbox" value="Project"/> Project Based</label>
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
+                  <button class="lead-form__submit" type="button" style="width: auto; padding: 0 40px;" onclick="nextStep(3)">Next →</button>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step" id="step4">
+                <p class="lead-form__section-title">Social & Verification</p>
+                <label>LinkedIn URL <input type="url" id="linkedinUrl" placeholder="https://linkedin.com/in/..." required /></label>
+                
+                <p class="lead-form__section-title" style="font-size: 12px; margin-top: 15px;">Resume / CV</p>
+                <div class="upload-zone" id="cvZone" onclick="handleFileUpload()">
+                    <span id="cvLabel">Click to upload CV (PDF/Word)</span>
+                </div>
+
+                <div class="step-actions">
+                  <button type="button" class="btn-back" onclick="prevStep(4)">Back</button>
+                  <button class="lead-form__submit" type="button" style="width: auto; padding: 0 40px;" onclick="nextStep(4)">Next →</button>
+                </div>
+            </div>
+
+            <!-- STEP 5 -->
             <div class="step" id="step5">
-              <span class="form-section-title">Key Accomplishments</span>
-              <label>What are your top 2 achievements?
-                <textarea id="achievements" placeholder="Example: Led $50M exit for Series B SaaS startup..." style="min-height: 150px;"></textarea>
-              </label>
+                <p class="lead-form__section-title">Final Details</p>
+                <label>Top Achievements <textarea id="achievements" placeholder="Tell us about the big things you've built..." style="min-height: 120px;"></textarea></label>
+                
+                <label class="pill" style="border:none; background:transparent; display:flex; align-items:flex-start; margin-top:20px; padding:0;">
+                    <input type="checkbox" id="consent" style="display:block; width:18px; height:18px; margin-right:10px;"/>
+                    <span style="font-size:12px; line-height:1.4; color:#7a6a54;">I confirm the information is accurate and consent to SWYN processing my profile for mandates.</span>
+                </label>
 
-              <label class="pill-item" style="border:none; background:transparent; display:flex; align-items:flex-start; margin-top:20px;">
-                <input type="checkbox" id="consentCheck" style="display:block; width:20px; height:20px; margin-right:15px;" />
-                <span style="font-size: 13px; line-height: 1.5; font-weight: normal; color: var(--brand-muted);">I certify that this information is accurate and I agree to SWYN's privacy policy regarding expert data processing.</span>
-              </label>
-
-              <div class="form-actions">
-                <button class="btn-back" type="button" onclick="goBack(5)">← Back</button>
-                <button class="lead-form__submit" id="finalSubmit" type="button" onclick="submitExpertForm()">Submit Application →</button>
-              </div>
+                <div class="step-actions">
+                  <button type="button" class="btn-back" onclick="prevStep(5)">Back</button>
+                  <button class="lead-form__submit" id="submitBtn" type="button" style="width: auto; padding: 0 40px;" onclick="finalSubmit()">Submit →</button>
+                </div>
             </div>
 
             <!-- SUCCESS -->
             <div class="step" id="stepSuccess">
-              <div style="text-align: center; padding: 40px 0;">
-                <span style="font-size: 50px; display:block; margin-bottom: 20px;">✨</span>
-                <h2 style="font-family:'Playfair Display'; font-size: 28px;">Application Received</h2>
-                <p style="color: var(--brand-muted); margin-top: 15px;">We review profiles for depth and fit. Expect to hear from our team within 3–5 business days.</p>
-              </div>
+                <div style="text-align: center; padding: 40px 0;">
+                    <h2 style="font-family:'Playfair Display'; font-size: 24px; color: #1a1208;">Application Submitted</h2>
+                    <p style="color: #7a6a54; margin-top: 10px;">We will review your profile and reach out within 3-5 business days.</p>
+                </div>
             </div>
 
+            <p class="lead-form__note">Experts on our bench are selected for their track record as operators, not just their credentials.</p>
           </form>
         </div>
       </section>
@@ -315,107 +241,50 @@
   </div>
 
   <script>
-    /* 
-       Dynamic Step Logic 
-    */
-    let currentStep = 1;
-    const totalSteps = 5;
+    let current = 1;
     let fileData = null;
 
-    function updateUI() {
-        // Update Progress Bar
+    function updateProgress() {
         const fill = document.getElementById('progressFill');
-        const text = document.getElementById('progressText');
-        const desc = document.getElementById('step-description');
-        
-        const pct = (currentStep / totalSteps) * 100;
-        fill.style.width = pct + '%';
-        text.innerText = `Step ${currentStep} of ${totalSteps}`;
-
-        // Descriptions
-        const descriptions = [
-            "Step 1: Basic professional identity.",
-            "Step 2: Deep dive into your expertise.",
-            "Step 3: Engagement and availability.",
-            "Step 4: Social verification and resume.",
-            "Step 5: Final validation."
-        ];
-        desc.innerText = descriptions[currentStep-1];
-
-        // Toggle Visibility
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('step' + currentStep).classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        const label = document.getElementById('progressLabel');
+        fill.style.width = (current / 5) * 100 + '%';
+        label.innerText = current + ' of 5';
     }
 
-    function goNext(step) {
-        // Simple validation check
-        const currentStepEl = document.getElementById('step' + step);
-        const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
+    function nextStep(step) {
+        // Simple required check
+        const inputs = document.getElementById('step'+step).querySelectorAll('input[required]');
         let valid = true;
-        
         inputs.forEach(i => {
-            if(!i.value) {
-                i.classList.add('input-error');
-                valid = false;
-            } else {
-                i.classList.remove('input-error');
-            }
+            if(!i.value) { i.style.borderColor = '#c0392b'; valid = false; }
+            else { i.style.borderColor = ''; }
         });
 
         if(valid) {
-            currentStep++;
-            updateUI();
+            document.getElementById('step'+current).classList.remove('active');
+            current++;
+            document.getElementById('step'+current).classList.add('active');
+            updateProgress();
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     }
 
-    function goBack(step) {
-        currentStep--;
-        updateUI();
+    function prevStep(step) {
+        document.getElementById('step'+current).classList.remove('active');
+        current--;
+        document.getElementById('step'+current).classList.add('active');
+        updateProgress();
     }
 
-    // City Toggle
-    function toggleCityOther(sel) {
-        document.getElementById('cityOtherBox').style.display = sel.value === 'Other' ? 'block' : 'none';
-    }
-
-    // Pill Toggle Logic
-    document.querySelectorAll('.pill-item input').forEach(cb => {
-        cb.addEventListener('change', function() {
+    // Handle Pill Selection
+    document.querySelectorAll('.pill input').forEach(input => {
+        input.addEventListener('change', function() {
             this.parentElement.classList.toggle('selected', this.checked);
         });
     });
 
-    // Expertise Tags
-    let expertises = [];
-    function addExpertiseTag() {
-        const sel = document.getElementById('expSelector');
-        if(!sel.value || expertises.includes(sel.value)) return;
-        
-        expertises.push(sel.value);
-        renderExpertise();
-        sel.value = "";
-    }
-
-    function renderExpertise() {
-        const cloud = document.getElementById('expertiseTags');
-        cloud.innerHTML = '';
-        expertises.forEach(ex => {
-            const tag = document.createElement('div');
-            tag.className = 'tag';
-            tag.innerHTML = `${ex} <span class="tag-remove" onclick="removeTag('${ex}')">✕</span>`;
-            cloud.appendChild(tag);
-        });
-        document.getElementById('expertiseHidden').value = expertises.join(', ');
-    }
-
-    function removeTag(val) {
-        expertises = expertises.filter(e => e !== val);
-        renderExpertise();
-    }
-
     // File Upload
-    function triggerFileUpload() {
+    function handleFileUpload() {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = '.pdf,.doc,.docx';
@@ -424,44 +293,41 @@
             const reader = new FileReader();
             reader.onload = evt => {
                 fileData = { base64: evt.target.result, name: file.name };
-                document.getElementById('cvStatus').innerHTML = `<strong>✓ Attached:</strong> ${file.name}`;
-                document.getElementById('cvDropzone').classList.add('success');
+                document.getElementById('cvLabel').innerText = '✓ Attached: ' + file.name;
+                document.getElementById('cvZone').classList.add('done');
             };
             reader.readAsDataURL(file);
         };
         input.click();
     }
 
-    // Final Submission to Google Sheets / Apps Script
-    function submitExpertForm() {
-        const check = document.getElementById('consentCheck');
-        if(!check.checked) {
-            alert("Please accept the data processing terms.");
-            return;
+    // Google Apps Script Submission
+    function finalSubmit() {
+        if(!document.getElementById('consent').checked) {
+            alert("Please accept the terms."); return;
         }
 
-        const btn = document.getElementById('finalSubmit');
+        const btn = document.getElementById('submitBtn');
         btn.innerText = "Submitting...";
         btn.disabled = true;
 
-        const formData = {
+        const payload = {
             name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
             email: document.getElementById('primaryEmail').value,
             phone: document.getElementById('phoneNumber').value,
             headline: document.getElementById('headline').value,
-            expertise: document.getElementById('expertiseHidden').value,
+            role: document.getElementById('jobTitle').value,
             linkedin: document.getElementById('linkedinUrl').value,
             cv: fileData,
             timestamp: new Date().toLocaleString()
         };
 
-        // Your Apps Script URL from File 2
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyS52hxWr5CuAb_4xPLejLlcmcZrNAjeuXPbBOvuTU0JPOP9NtcHo81VYtBiI5WOPcH/exec';
 
         fetch(SCRIPT_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(payload)
         })
         .then(() => {
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
@@ -469,7 +335,7 @@
             document.getElementById('progressFill').style.width = '100%';
         })
         .catch(() => {
-            // Handle as success because Apps Script often triggers CORS error even when successful
+            // Success fallback (GAS often triggers CORS errors but saves data)
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.getElementById('stepSuccess').classList.add('active');
         });
