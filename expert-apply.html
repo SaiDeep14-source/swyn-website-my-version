@@ -5,303 +5,283 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Expert Application | SWYN</title>
   <meta name="description" content="Apply to join the SWYN expert bench." />
-  
-  <!-- Standard Web Fonts -->
+  <link rel="icon" type="image/png" href="./reallogo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+  <!-- File 4 Base Styles -->
+  <link rel="stylesheet" href="./lead-pages.css" />
 
   <style>
-    /* --- PROFESSIONAL BRAND STYLES (INTERNAL) --- */
+    /* --- INTEGRATED STYLES FROM FILE 3 --- */
     :root {
-      --bg: #f5f0e8;
-      --card: #faf7f2;
-      --orange: #d4621a;
-      --orange-light: #e8793a;
-      --orange-muted: #f0e0d0;
-      --text: #1a1208;
-      --muted: #7a6a54;
-      --border: #ddd5c4;
-      --input-bg: #ffffff;
-      --radius: 8px;
-      --error: #c0392b;
-      --shadow: 0 4px 24px rgba(0,0,0,.08);
+      --bg:#f5f0e8; --card:#faf7f2; --orange:#d4621a; --orange-light:#e8793a;
+      --orange-muted:#f0e0d0; --text:#1a1208; --muted:#7a6a54; --border:#ddd5c4;
+      --input-bg:#ffffff; --radius:8px; --error:#c0392b; --success:#2e7d32;
+      --shadow:0 4px 24px rgba(0,0,0,.08);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--text); min-height: 100vh; padding: 40px 20px; }
-
-    /* Topbar Shell */
-    .lead-topbar { max-width: 1100px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center; }
-    .lead-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); font-family: 'Playfair Display'; font-weight: 700; font-size: 24px; }
-    .lead-brand img { height: 40px; }
-    .back-link { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; }
-
-    /* Main Container */
-    .wrapper { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
-
-    /* Left Intro Section */
-    .lead-intro { padding-top: 40px; }
-    .eyebrow { color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
-    .lead-intro h1 { font-family: 'Playfair Display'; font-size: 52px; line-height: 1.1; margin-bottom: 20px; }
-    .lead-intro p { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 25px; }
-    .point { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 12px; font-weight: 500; }
-    .point::before { content: "●"; color: var(--orange); font-size: 10px; }
-
-    /* Right Form Card Section */
-    .card-f2 { 
-        background: var(--card); border: 1px solid var(--border); border-radius: 18px; 
-        padding: 40px; box-shadow: var(--shadow); position: relative;
+    /* Adjusting dimensions for the Side-by-Side Design */
+    .lead-shell { max-width: 1200px !important; width: 100% !important; margin: 0 auto !important; padding: 0 20px; }
+    
+    /* Replicating File 3 Card inside File 4 Shell */
+    .lead-card {
+        background: var(--card) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 18px !important;
+        padding: 40px !important;
+        box-shadow: var(--shadow) !important;
+        text-align: left !important;
     }
 
-    /* Progress UI */
-    .progress-wrap { margin-bottom: 20px; }
+    .progress-wrap { margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
     .progress-bar { height: 5px; background: var(--orange-muted); border-radius: 3px; overflow: hidden; }
-    .progress-fill { height: 100%; background: var(--orange); transition: width 0.5s ease; }
-    .progress-label { font-size: 11px; color: var(--muted); text-align: right; margin-top: 6px; font-weight: 700; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg,var(--orange),var(--orange-light)); border-radius: 3px; transition: width .5s ease; }
+    .progress-label { font-size: 11px; color: var(--muted); text-align: right; margin-top: 6px; font-weight: 500; letter-spacing: .04em; }
 
-    /* Form Typography */
-    .step-label { font-size: 11px; font-weight: 700; color: var(--orange); text-transform: uppercase; margin-bottom: 8px; display: block; }
-    .card-title { font-family: 'Playfair Display'; font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .card-subtitle { font-size: 14px; color: var(--muted); margin-bottom: 30px; line-height: 1.5; }
-    hr.divider { border: none; border-top: 1px solid var(--border); margin-bottom: 30px; }
+    .step-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; display: block; }
+    .card-title-f2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.2; }
+    .card-subtitle-f2 { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.65; }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
 
-    /* Grids & Inputs */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+    .section-head { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-align: center; margin: 28px 0 18px; display: flex; align-items: center; gap: 12px; }
+    .section-head::before, .section-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
     .full { grid-column: 1 / -1; }
-    .field { display: flex; flex-direction: column; gap: 6px; text-align: left; }
-    .field label { font-size: 13px; font-weight: 600; }
+    .field-f2 { display: flex; flex-direction: column; gap: 5px; text-align: left; }
+    .field-f2 label { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
     .req { color: var(--orange); margin-left: 2px; }
 
-    input, select, textarea {
-      background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius);
-      padding: 13px 16px; font-family: 'DM Sans'; font-size: 14px; color: var(--text);
-      transition: all 0.2s; outline: none; width: 100%;
+    input[type=text], input[type=email], input[type=tel], input[type=url], select, textarea {
+      background: var(--input-bg); border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+      width: 100%; transition: border-color .18s, box-shadow .18s; outline: none;
     }
-    input:focus, select:focus, textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(212, 98, 26, 0.08); }
+    input:focus, select:focus, textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(212,98,26,.12); }
 
-    /* Pill Selection Grids */
-    .pill-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
+    /* Pill Selection Logic */
+    .pill-grid { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px;
-      border: 1.5px solid var(--border); border-radius: 40px; background: #fff;
-      font-size: 13px; cursor: pointer; transition: 0.2s; user-select: none;
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 15px;
+      border: 1.5px solid var(--border); border-radius: 30px; background: var(--input-bg);
+      font-size: 13px; cursor: pointer; transition: all .15s; user-select: none;
     }
-    .pill:hover { border-color: var(--orange); background: #fdfaf7; }
-    .pill.selected { border-color: var(--orange); background: var(--orange-muted); color: var(--orange); font-weight: 700; }
+    .pill:hover { border-color: var(--orange); background: #fdf6f1; transform: translateY(-1px); }
+    .pill.selected { border-color: var(--orange); background: var(--orange-muted); color: var(--orange); font-weight: 600; }
     .pill input { display: none; }
 
-    /* Interactive Tags */
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    /* Tags Cloud */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .tag {
       background: var(--orange-muted); border: 1px solid var(--orange); color: var(--orange);
-      padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
     }
     .tag-remove { cursor: pointer; font-weight: bold; }
 
-    /* File Upload Box */
-    .upload-box {
-      border: 2px dashed var(--border); border-radius: 12px; padding: 35px;
-      text-align: center; cursor: pointer; background: #fff; transition: 0.2s;
-    }
-    .upload-box.upload-done { border-color: #2e7d32; background: #f1f8f1; border-style: solid; }
+    /* Upload Box */
+    .upload-box { border: 2px dashed var(--border); border-radius: 12px; padding: 26px 20px; text-align: center; cursor: pointer; background: var(--input-bg); transition: all 0.2s; }
+    .upload-box:hover { border-color: var(--orange); background: #fdf6f1; }
+    .upload-icon { font-size: 30px; margin-bottom: 8px; display: block; }
+    .upload-done { border-color: var(--orange); background: #fff8f4; border-style: solid; }
 
-    /* Buttons */
-    .actions { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--border); }
-    .btn-next { background: var(--orange); color: #fff; border: none; border-radius: 6px; padding: 14px 36px; font-weight: 700; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 12px rgba(212, 98, 26, 0.2); }
-    .btn-next:hover { background: var(--orange-light); transform: translateY(-1px); }
-    .btn-back { background: none; border: none; font-weight: 600; color: var(--muted); cursor: pointer; text-decoration: underline; font-family: 'DM Sans'; }
+    /* Actions */
+    .actions-f2 { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .btn-back-f2 { background: transparent; border: 1.5px solid var(--border); color: var(--muted); border-radius: var(--radius); padding: 11px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .btn-next-f2 { background: var(--orange); color: #fff; border: none; border-radius: var(--radius); padding: 12px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(212,98,26,.25); }
+    
+    .step { display: none; animation: stepIn .3s ease; }
+    .step.active { display: block; }
+    @keyframes stepIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-    /* Utility */
-    .step { display: none; }
-    .step.active { display: block; animation: fadeIn 0.4s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-    .other-box { display: none; margin-top: 10px; }
-    .err-msg { color: var(--error); font-size: 12px; margin-top: 4px; display: block; }
-    .char-count { font-size: 11px; color: var(--muted); text-align: right; display: block; margin-top: 4px; }
+    .err-msg { color: var(--error); font-size: 12px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+    .char-count { font-size: 11px; color: var(--muted); text-align: right; }
+    .add-btn { padding: 10px 18px; background: var(--orange); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; }
 
-    @media (max-width: 800px) {
-        .wrapper { grid-template-columns: 1fr; padding: 20px; }
-        .lead-intro { text-align: center; }
-        .card-f2 { padding: 25px; }
+    @media (max-width: 900px) {
+        .lead-shell { grid-template-columns: 1fr; }
+        .lead-intro { text-align: center; margin-bottom: 40px; }
     }
   </style>
 </head>
-<body>
+<body data-form-page="expert">
+  <div class="lead-page">
+    <header class="lead-topbar">
+      <div class="lead-topbar__inner">
+        <a class="lead-brand" href="./index.html">
+          <img src="./reallogo.png" alt="SWYN logo" />
+          <span>SWYN</span>
+        </a>
+        <a class="lead-topbar__link" href="./index.html">Back to website</a>
+      </div>
+    </header>
 
-  <header class="lead-topbar">
-    <a href="#" class="lead-brand">
-      <span>SWYN</span>
-    </a>
-    <a href="#" class="back-link">Back to website</a>
-  </header>
-
-  <main class="wrapper">
-    <!-- LEFT SIDE: INTRO -->
-    <section class="lead-intro">
-        <span class="eyebrow">For senior leaders</span>
+    <main class="lead-shell" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; padding-top: 40px;">
+      
+      <!-- LEFT SECTION FROM FILE 4 -->
+      <section class="lead-intro">
+        <span class="lead-intro__eyebrow">For senior leaders</span>
         <h1>Join the bench on your terms.</h1>
         <p>If you have built something significant and want to engage selectively, this is where you can introduce yourself. We are looking for proven operators, not polished resumes.</p>
-        <div class="point">Advisory, fractional, and project-based mandates</div>
-        <div class="point">High-trust work with ambitious companies</div>
-        <div class="point">Built for depth, not volume</div>
-    </section>
+        <div class="lead-points">
+          <span style="display: block; margin-bottom: 10px;">● Advisory, fractional, and project-based mandates</span>
+          <span style="display: block; margin-bottom: 10px;">● High-trust work with ambitious companies</span>
+          <span style="display: block; margin-bottom: 10px;">● Built for depth, not volume</span>
+        </div>
+      </section>
 
-    <!-- RIGHT SIDE: MULTI-STEP FORM -->
-    <section class="card-f2">
-      <div class="progress-wrap">
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
-        <div class="progress-label" id="progressLabel">Step 1 of 5</div>
+      <!-- RIGHT SECTION: MULTI-STEP FORM ENGINE FROM FILE 3 -->
+      <div>
+        <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 20%"></div></div>
+            <div class="progress-label" id="progressLabel">Step 1 of 5</div>
+        </div>
+
+        <section class="lead-card">
+          <form id="masterForm" onsubmit="return false;">
+            
+            <!-- STEP 1: Personal Details -->
+            <div class="step active" id="step1">
+              <span class="step-label">Step 01 of 05</span>
+              <h1 class="card-title-f2">Personal Details</h1>
+              <p class="card-subtitle-f2">Tell us who you are. This information helps us create your verified profile.</p>
+              <hr class="divider"/>
+              <div class="form-grid">
+                <div class="field-f2"><label>First name <span class="req">*</span></label><input type="text" id="firstName" placeholder="Rajesh" required/></div>
+                <div class="field-f2"><label>Last name <span class="req">*</span></label><input type="text" id="lastName" placeholder="Sharma" required/></div>
+                <div class="field-f2"><label>Personal email <span class="req">*</span></label><input type="email" id="primaryEmail" placeholder="yourname@gmail.com" required/></div>
+                <div class="field-f2"><label>Mobile number <span class="req">*</span></label><input type="tel" id="phoneNumber" placeholder="+91 98765 43210" required onkeydown="return allowPhoneKeys(event)"/></div>
+                <div class="field-f2">
+                  <label>City <span class="req">*</span></label>
+                  <select id="city" required onchange="showOther(this, 'cityOtherBox', 'Other')">
+                    <option value="">Select city</option>
+                    <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="field-f2" id="cityOtherBox" style="display:none;"><label>Specify city</label><input type="text" id="cityOther"/></div>
+                <div class="field-f2 full"><label>Professional headline <span class="req">*</span></label><input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs" required/></div>
+              </div>
+              <div class="actions-f2">
+                <span></span>
+                <button type="button" class="btn-next-f2" onclick="nextStep(1)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 2: Background -->
+            <div class="step" id="step2">
+              <span class="step-label">Step 02 of 05</span>
+              <h1 class="card-title-f2">Professional Background</h1>
+              <hr class="divider"/>
+              <div class="form-grid">
+                <div class="field-f2"><label>Current Role <span class="req">*</span></label><input type="text" id="jobTitle" required/></div>
+                <div class="field-f2"><label>Experience <span class="req">*</span></label><select id="yearsExp" required><option value="">Select</option><option>10-15 years</option><option>25+ years</option></select></div>
+                <div class="field-f2 full"><label>Biography <span class="req">*</span></label><textarea id="biography" oninput="updateWordCount(this, 'bioCount')" required></textarea><span class="char-count" id="bioCount">0 words</span></div>
+                
+                <div class="full"><div class="section-head">Expertise Checkboxes</div></div>
+                <div class="field-f2 full">
+                  <div class="pill-grid">
+                    <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
+                    <label class="pill"><input type="checkbox" value="SaaS"/> Technology / SaaS</label>
+                    <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
+                  </div>
+                </div>
+
+                <div class="full"><div class="section-head">Notable Companies (Add Tags)</div></div>
+                <div class="field-f2 full">
+                  <div style="display:flex; gap:10px;"><input type="text" id="coInput" placeholder="Google, McKinsey..."/><button type="button" class="add-btn" onclick="addTag('coInput', 'coTags')">Add</button></div>
+                  <div id="coTags" class="tag-cloud"></div>
+                </div>
+              </div>
+              <div class="actions-f2">
+                <button type="button" class="btn-back-f2" onclick="prevStep(2)">Back</button>
+                <button type="button" class="btn-next-f2" onclick="nextStep(2)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Engagement -->
+            <div class="step" id="step3">
+              <span class="step-label">Step 03 of 05</span>
+              <h1 class="card-title-f2">Engagement</h1>
+              <hr class="divider"/>
+              <div class="form-grid">
+                <div class="field-f2"><label>Indian Rate (INR) <span class="req">*</span></label><select id="rateINR" required><option>₹5k-10k</option><option>Negotiable</option></select></div>
+                <div class="field-f2"><label>Hours / Month <span class="req">*</span></label><select id="hours" required><option>1-5 hrs</option><option>20+ hrs</option></select></div>
+                <div class="field-f2 full"><label>Mandates open to <span class="req">*</span></label>
+                  <div class="pill-grid">
+                    <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
+                    <label class="pill"><input type="checkbox" value="Board"/> Board Seat</label>
+                    <label class="pill"><input type="checkbox" value="Advisory"/> Advisory</label>
+                  </div>
+                </div>
+              </div>
+              <div class="actions-f2">
+                <button type="button" class="btn-back-f2" onclick="prevStep(3)">Back</button>
+                <button type="button" class="btn-next-f2" onclick="nextStep(3)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Files -->
+            <div class="step" id="step4">
+              <span class="step-label">Step 04 of 05</span>
+              <h1 class="card-title-f2">Verification</h1>
+              <hr class="divider"/>
+              <div class="form-grid">
+                <div class="field-f2 full"><label>LinkedIn URL <span class="req">*</span></label><input type="url" id="linkedin" required/></div>
+                <div class="field-f2 full">
+                  <label>Upload CV <span class="req">*</span></label>
+                  <div class="upload-box" id="cvZone" onclick="triggerFile('cv')"><span class="upload-icon">📄</span><span id="cvLabel">Click to upload (PDF)</span></div>
+                </div>
+              </div>
+              <div class="actions-f2">
+                <button type="button" class="btn-back-f2" onclick="prevStep(4)">Back</button>
+                <button type="button" class="btn-next-f2" onclick="nextStep(4)">Continue →</button>
+              </div>
+            </div>
+
+            <!-- STEP 5: Final -->
+            <div class="step" id="step5">
+              <span class="step-label">Step 05 of 05</span>
+              <h1 class="card-title-f2">Final Review</h1>
+              <hr class="divider"/>
+              <div class="field-f2 full"><label>Top Achievements <span class="req">*</span></label><textarea id="achievements" required></textarea></div>
+              <label class="pill" style="border:none; background:transparent; display:flex; gap:12px; margin-top:20px; align-items:flex-start;">
+                <input type="checkbox" id="consent" style="display:block; width:18px; height:18px;"/>
+                <span style="font-size:12px; color:var(--muted); line-height:1.4;">I confirm information is accurate and consent to SWYN processing my data for mandate facilitation.</span>
+              </label>
+              <div class="actions-f2">
+                <button type="button" class="btn-back-f2" onclick="prevStep(5)">Back</button>
+                <button type="button" class="btn-next-f2" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
+              </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="step" id="stepSuccess">
+              <div style="text-align: center; padding: 40px 0;">
+                <div style="font-size: 50px; color: var(--success); margin-bottom: 20px;">✓</div>
+                <h1 class="card-title-f2">Received!</h1>
+                <p style="color:var(--muted);">We will review your profile and reach out within 3-5 days.</p>
+              </div>
+            </div>
+
+          </form>
+        </section>
       </div>
-
-      <form id="expertForm" onsubmit="return false;">
-        
-        <!-- STEP 1: Personal Details -->
-        <div class="step active" id="step1">
-          <span class="step-label">Step 01 / 05</span>
-          <h2 class="card-title">Personal Details</h2>
-          <p class="card-subtitle">Tell us who you are. This information helps us create your verified profile.</p>
-          <hr class="divider"/>
-
-          <div class="form-grid">
-            <div class="field"><label>First name <span class="req">*</span></label><input type="text" id="firstName" placeholder="Rajesh" required/></div>
-            <div class="field"><label>Last name <span class="req">*</span></label><input type="text" id="lastName" placeholder="Sharma" required/></div>
-            <div class="field"><label>Personal email <span class="req">*</span></label><input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com" required/></div>
-            <div class="field"><label>Mobile number <span class="req">*</span></label><input type="tel" id="phoneNumber" placeholder="+91 98765 43210" required onkeydown="return allowPhoneKeys(event)"/></div>
-            
-            <div class="field">
-              <label>City <span class="req">*</span></label>
-              <select id="city" onchange="showOther(this, 'cityOtherBox', 'Other')" required>
-                <option value="">Select city</option>
-                <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="field"><label>Gender</label><select id="gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div>
-            <div class="field full other-box" id="cityOtherBox"><label>Please specify city</label><input type="text" id="cityOther"/></div>
-            
-            <div class="field full"><label>Current professional headline <span class="req">*</span></label><input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs" required/></div>
-          </div>
-
-          <div class="actions">
-            <span></span>
-            <button type="button" class="btn-next" onclick="nextStep(1)">Continue →</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: Background (Restoring all Tags/Features) -->
-        <div class="step" id="step2">
-            <span class="step-label">Step 02 / 05</span>
-            <h2 class="card-title">Background</h2>
-            <p class="card-subtitle">Help us understand your experience so we can match you with the right opportunities.</p>
-            <hr class="divider"/>
-            <div class="form-grid">
-              <div class="field"><label>Current Role <span class="req">*</span></label><input type="text" id="jobTitle" required/></div>
-              <div class="field"><label>Experience <span class="req">*</span></label><select id="yearsExperience" required><option value="">Select</option><option>10-15 years</option><option>15-25 years</option><option>25+ years</option></select></div>
-              <div class="field full"><label>Biography <span class="req">*</span></label><textarea id="biography" oninput="updateCount(this, 'bioCount')" required></textarea><span class="char-count" id="bioCount">0 words</span></div>
-              
-              <div class="full"><div class="section-head">Sectors</div></div>
-              <div class="field full">
-                <div class="pill-grid" id="sectorGrid">
-                  <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
-                  <label class="pill"><input type="checkbox" value="SaaS"/> SaaS</label>
-                  <label class="pill"><input type="checkbox" value="Healthcare"/> Healthcare</label>
-                  <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
-                </div>
-              </div>
-
-              <div class="field full">
-                <label>Add Notable Companies</label>
-                <div style="display:flex; gap:10px;"><input type="text" id="coInp"/><button type="button" class="btn-next" style="width:auto; padding:0 20px;" onclick="addTag('coInp','coTags')">Add</button></div>
-                <div class="tag-cloud" id="coTags"></div>
-              </div>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
-              <button type="button" class="btn-next" onclick="nextStep(2)">Continue →</button>
-            </div>
-        </div>
-
-        <!-- STEP 3: Engagement -->
-        <div class="step" id="step3">
-            <span class="step-label">Step 03 / 05</span>
-            <h2 class="card-title">Engagement</h2>
-            <hr class="divider"/>
-            <div class="form-grid">
-                <div class="field"><label>Indian Rate (INR) <span class="req">*</span></label><select id="rateINR" required><option>₹5k-10k</option><option>Negotiable</option></select></div>
-                <div class="field"><label>Hours / Month <span class="req">*</span></label><select id="hours" required><option>1-5 hrs</option><option>10+ hrs</option></select></div>
-                <div class="field full"><label>Mandates you're open to <span class="req">*</span></label>
-                    <div class="pill-grid">
-                        <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
-                        <label class="pill"><input type="checkbox" value="Advisory"/> Advisory</label>
-                        <label class="pill"><input type="checkbox" value="Board"/> Board Seat</label>
-                    </div>
-                </div>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
-              <button type="button" class="btn-next" onclick="nextStep(3)">Continue →</button>
-            </div>
-        </div>
-
-        <!-- STEP 4: Verification -->
-        <div class="step" id="step4">
-            <span class="step-label">Step 04 / 05</span>
-            <h2 class="card-title">Verification</h2>
-            <hr class="divider"/>
-            <div class="field full"><label>LinkedIn Profile URL <span class="req">*</span></label><input type="url" id="linkedin" required/></div>
-            <div class="field full" style="margin-top:20px;">
-                <label>Upload CV / Resume <span class="req">*</span></label>
-                <div class="upload-box" id="cvZone" onclick="triggerFile('cv')"><span id="cvLabel">Click to upload (PDF)</span></div>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(4)">Back</button>
-              <button type="button" class="btn-next" onclick="nextStep(4)">Continue →</button>
-            </div>
-        </div>
-
-        <!-- STEP 5: Final -->
-        <div class="step" id="step5">
-            <span class="step-label">Step 05 / 05</span>
-            <h2 class="card-title">Final Review</h2>
-            <hr class="divider"/>
-            <div class="field full"><label>Top Achievements <span class="req">*</span></label><textarea id="achievements" required></textarea></div>
-            <div class="field full" style="margin-top:20px;">
-                <label class="pill" style="border:none; padding:0; background:transparent;">
-                    <input type="checkbox" id="consent" style="display:inline-block; width:18px; height:18px; margin-right:10px;"/>
-                    <span style="font-size:12px; color:var(--muted); line-height:1.4;">I confirm information is accurate and consent to SWYN processing my data.</span>
-                </label>
-            </div>
-            <div class="actions">
-              <button type="button" class="btn-back" onclick="prevStep(5)">Back</button>
-              <button type="button" class="btn-next" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
-            </div>
-        </div>
-
-        <!-- SUCCESS -->
-        <div class="step" id="stepSuccess">
-            <div style="text-align: center; padding: 40px 0;">
-                <div style="font-size: 50px; color: #2e7d32;">✓</div>
-                <h2 class="card-title" style="text-align:center;">Received!</h2>
-                <p style="color:var(--muted);">We will contact you within 3-5 business days.</p>
-            </div>
-        </div>
-
-      </form>
-    </section>
-  </main>
+    </main>
+  </div>
 
   <script>
-    /* --- JS LOGIC --- */
     let current = 1;
     let files = { cv: null };
-    let tags = { co: [] };
+    let tagsStore = { co: [] };
 
     function nextStep(s) {
         const stepEl = document.getElementById('step' + s);
         const reqs = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
         let ok = true;
         reqs.forEach(r => { if(!r.value) { r.style.borderColor = 'var(--error)'; ok = false; } else { r.style.borderColor = ''; }});
-        if(s===4 && !files.cv) { alert("Please upload CV"); ok = false; }
+        if(s === 4 && !files.cv) { alert("Please upload CV"); ok = false; }
         if(ok) {
             document.getElementById('step' + current).classList.remove('active');
             current++;
@@ -319,21 +299,23 @@
 
     function updateProgress() {
         document.getElementById('progressFill').style.width = (current / 5) * 100 + '%';
-        document.getElementById('progressLabel').innerText = `Step ${current} of 5`;
+        document.getElementById('progressLabel').innerText = 'Step ' + current + ' of 5';
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    function showOther(sel, boxId, val) { document.getElementById(boxId).style.display = sel.value === val ? 'flex' : 'none'; }
-    function updateCount(el, id) { let count = el.value.trim().split(/\s+/).filter(x=>x).length; document.getElementById(id).innerText = count + ' words'; }
+    // Interactive Logic
     function allowPhoneKeys(e) { if (!/[0-9\+\-\s]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault(); }
+    function showOther(sel, id, val) { document.getElementById(id).style.display = sel.value === val ? 'flex' : 'none'; }
+    function updateWordCount(el, id) { let count = el.value.trim().split(/\s+/).filter(x=>x).length; document.getElementById(id).innerText = count + ' words'; }
 
     function addTag(inputId, cloudId) {
         const inp = document.getElementById(inputId);
-        if(!inp.value || tags.co.includes(inp.value)) return;
-        tags.co.push(inp.value);
+        const val = inp.value.trim();
+        if(!val || tagsStore.co.includes(val)) return;
+        tagsStore.co.push(val);
         const tag = document.createElement('div');
         tag.className = 'tag';
-        tag.innerHTML = `${inp.value} <span class="tag-remove" onclick="this.parentElement.remove(); tags.co=tags.co.filter(x=>x!=='${inp.value}')">✕</span>`;
+        tag.innerHTML = `${val} <span class="tag-remove" onclick="this.parentElement.remove(); tagsStore.co=tagsStore.co.filter(t=>t!=='${val}')">✕</span>`;
         document.getElementById(cloudId).appendChild(tag);
         inp.value = '';
     }
@@ -355,9 +337,9 @@
     }
 
     function doSubmit() {
-        if(!document.getElementById('consent').checked) { alert("Accept terms"); return; }
-        const btn = document.getElementById('submitBtn'); btn.innerText = "Sending..."; btn.disabled = true;
-        
+        if(!document.getElementById('consent').checked) { alert("Accept terms to proceed."); return; }
+        const btn = document.getElementById('submitBtn'); btn.innerText = "Submitting..."; btn.disabled = true;
+
         const payload = {
             name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
             email: document.getElementById('primaryEmail').value,
@@ -373,6 +355,7 @@
         });
     }
 
+    // Pill CSS Logic
     document.querySelectorAll('.pill input').forEach(p => {
         p.onchange = () => p.closest('.pill').classList.toggle('selected', p.checked);
     });
