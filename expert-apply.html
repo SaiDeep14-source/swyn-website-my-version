@@ -9,26 +9,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+  <!-- File 1 Shell Styles -->
   <link rel="stylesheet" href="./lead-pages.css" />
+
+  <!-- EXACT STYLES FROM FILE 2 -->
   <style>
-    /* --- EXACT STYLES FROM FILE 2 --- */
     :root{
       --bg:#f5f0e8;--card:#faf7f2;--orange:#d4621a;--orange-light:#e8793a;
       --orange-muted:#f0e0d0;--text:#1a1208;--muted:#7a6a54;--border:#ddd5c4;
       --input-bg:#ffffff;--radius:8px;--error:#c0392b;--success:#2e7d32;
       --shadow:0 4px 24px rgba(0,0,0,.08);
     }
-    .progress-wrap{margin-bottom:10px}
+    /* Integration Fixes */
+    .lead-card { background: transparent !important; box-shadow: none !important; border: none !important; padding: 0 !important; max-width: 700px !important; margin: 0 auto !important; }
+    
+    .card-f2{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px 44px;box-shadow:var(--shadow);transition:box-shadow .3s; color: var(--text); font-family: 'DM Sans', sans-serif;}
+    .progress-wrap{margin-bottom:10px; font-family: 'DM Sans', sans-serif;}
     .progress-bar{height:5px;background:var(--orange-muted);border-radius:3px;overflow:hidden}
     .progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-light));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}
     .progress-label{font-size:11px;color:var(--muted);text-align:right;margin-top:6px;font-weight:500;letter-spacing:.04em}
-    
-    /* Blending into File 1 Card */
-    .lead-card { background: var(--card) !important; border: 1px solid var(--border) !important; padding: 40px 44px !important; }
-    
     .step-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px; display: block;}
-    .card-title-f2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.2; text-align: left;}
-    .card-subtitle-f2{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65; text-align: left;}
+    .card-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.2; text-align: left;}
+    .card-subtitle{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65; text-align: left;}
     hr.divider{border:none;border-top:1px solid var(--border);margin-bottom:24px}
     .section-head{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin:28px 0 18px;display:flex;align-items:center;gap:12px}
     .section-head::before,.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -37,11 +40,13 @@
     .field-f2{display:flex;flex-direction:column;gap:5px; text-align: left;}
     .field-f2 label{font-size:13px;font-weight:500;color:var(--text);line-height:1.4}
     .req{color:var(--orange);margin-left:2px}
-    .lead-form input, .lead-form select, .lead-form textarea {
+    input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
       background:var(--input-bg); border:1.5px solid var(--border); border-radius:var(--radius);
       padding:11px 14px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text);
-      width:100%; transition:all .18s; outline:none; margin:0;
+      width:100%; transition:all .18s; outline:none;
     }
+    input:focus,select:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(212,98,26,.12);}
+    .hint{font-size:12px;color:var(--muted);line-height:1.5}
     .pill-grid{display:flex;flex-wrap:wrap;gap:8px}
     .pill{
       display:inline-flex;align-items:center;gap:6px;padding:8px 15px;
@@ -61,6 +66,8 @@
     .err-msg{color:var(--error);font-size:12px;display:flex;align-items:center;gap:4px;}
     .char-count{font-size:11px;color:var(--muted);text-align:right;}
     .add-btn-f2{padding:10px 18px;background:var(--orange);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600;}
+    .terms-box{background:var(--input-bg);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;cursor:pointer; text-align: left;}
+    .terms-box input{accent-color:var(--orange); width:16px; height:16px; margin-top:3px;}
   </style>
 </head>
 <body data-form-page="expert">
@@ -87,152 +94,154 @@
         </div>
       </section>
 
+      <!-- FORM AREA: FULL REPLICATION OF FILE 2 -->
       <section class="lead-card">
         <div class="progress-wrap">
-          <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
-          <div class="progress-label" id="progressLabel">Step 1 of 5</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+            <div class="progress-label" id="progressLabel">Step 1 of 5</div>
         </div>
 
-        <div id="leadCardBody">
-          <form class="lead-form" onsubmit="return false;">
-            
-            <!-- STEP 1: Personal Details -->
-            <div class="step active" id="step1">
-              <span class="step-label">Step 01 of 05</span>
-              <h1 class="card-title-f2">Personal Details</h1>
-              <p class="card-subtitle-f2">Tell us who you are. This information helps us create your verified profile.</p>
-              <hr class="divider"/>
-              <div class="form-grid">
-                <div class="field-f2"><label>First name <span class="req">*</span></label><input type="text" id="firstName" placeholder="Rajesh"/></div>
-                <div class="field-f2"><label>Last name <span class="req">*</span></label><input type="text" id="lastName" placeholder="Sharma"/></div>
-                <div class="field-f2"><label>Personal email <span class="req">*</span></label><input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com"/></div>
-                <div class="field-f2"><label>Mobile number <span class="req">*</span></label><input type="tel" id="phoneNumber" placeholder="+91 98765 43210" onkeydown="return allowPhoneKeys(event)" oninput="validatePhone(this)"/></div>
-                <div class="field-f2"><label>City <span class="req">*</span></label>
-                  <select id="city" onchange="showOther(this,'cityOtherBox','Other')">
-                    <option value="">Select city</option>
-                    <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option value="Other">Other</option>
-                  </select>
-                </div>
-                <div class="field-f2" id="cityOtherBox" style="display:none;"><label>Specify city <span class="req">*</span></label><input type="text" id="cityOther"/></div>
-                <div class="field-f2 full"><label>Current professional headline <span class="req">*</span></label><input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs"/></div>
-                <div class="field-f2"><label>Gender</label><select id="gender"><option value="">Select</option><option>Male</option><option>Female</option></select></div>
-                <div class="field-f2"><label>How did you hear about SWYN?</label><select id="heardAbout" onchange="showOther(this,'heardOtherBox','Other')"><option value="">Select</option><option>LinkedIn</option><option value="Other">Other</option></select></div>
-                <div class="field-f2 full" id="heardOtherBox" style="display:none;"><label>Please specify</label><input type="text" id="heardAboutOther"/></div>
+        <div class="card-f2">
+          <!-- STEP 1: Personal Details -->
+          <div class="step active" id="step1">
+            <span class="step-label">Step 01 of 05</span>
+            <h1 class="card-title">Personal Details</h1>
+            <p class="card-subtitle">Tell us who you are. This information helps us create your verified profile.</p>
+            <hr class="divider"/>
+            <div class="form-grid">
+              <div class="field-f2"><label>First name <span class="req">*</span></label><input type="text" id="firstName" placeholder="Rajesh"/></div>
+              <div class="field-f2"><label>Last name <span class="req">*</span></label><input type="text" id="lastName" placeholder="Sharma"/></div>
+              <div class="field-f2"><label>Personal email <span class="req">*</span></label><input type="email" id="primaryEmail" placeholder="e.g. yourname@gmail.com"/></div>
+              <div class="field-f2"><label>Mobile number <span class="req">*</span></label><input type="tel" id="phoneNumber" placeholder="+91 98765 43210" onkeydown="return allowPhoneKeys(event)" oninput="validatePhone(this)"/></div>
+              <div class="field-f2"><label>City <span class="req">*</span></label>
+                <select id="city" onchange="showOther(this,'cityOtherBox','Other')">
+                  <option value="">Select city</option>
+                  <option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option value="Other">Other</option>
+                </select>
               </div>
-              <div class="actions-f2">
-                <span></span>
-                <button type="button" class="btn-next-f2" onclick="nextStep(1)">Continue &#8594;</button>
+              <div class="field-f2" id="cityOtherBox" style="display:none;"><label>Specify city <span class="req">*</span></label><input type="text" id="cityOther"/></div>
+              <div class="field-f2 full"><label>Current professional headline <span class="req">*</span></label><input type="text" id="headline" placeholder="e.g. Fractional CFO | Ex-Goldman Sachs"/></div>
+            </div>
+            <div class="actions-f2">
+              <span></span>
+              <button type="button" class="btn-next-f2" onclick="nextStep(1)">Continue &#8594;</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Professional Background -->
+          <div class="step" id="step2">
+            <span class="step-label">Step 02 of 05</span>
+            <h1 class="card-title">Professional Background</h1>
+            <p class="card-subtitle">Help us understand your experience so we can match you with the right opportunities.</p>
+            <hr class="divider"/>
+            <div class="form-grid">
+              <div class="field-f2"><label>Job Title <span class="req">*</span></label><input type="text" id="jobTitle"/></div>
+              <div class="field-f2"><label>Years of Experience <span class="req">*</span></label>
+                <select id="yearsExperience">
+                    <option value="">Select</option><option>10-15 years</option><option>15-20 years</option><option>25+ years</option>
+                </select>
+              </div>
+              <div class="field-f2 full"><label>Biography <span class="req">*</span></label><textarea id="biography" oninput="updateWordCount(this,'bioCount')" placeholder="Career highlights..."></textarea><span class="char-count" id="bioCount">0 words</span></div>
+              
+              <div class="full"><div class="section-head">Expertise</div></div>
+              <div class="field-f2 full"><label>Key Sectors <span class="req">*</span></label>
+                <div class="pill-grid" id="sectorGrid">
+                  <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
+                  <label class="pill"><input type="checkbox" value="SaaS"/> Technology / SaaS</label>
+                  <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
+                  <label class="pill"><input type="checkbox" value="Retail"/> Retail / D2C</label>
+                </div>
+              </div>
+
+              <div class="field-f2 full">
+                <label>Notable Companies worked for</label>
+                <div style="display:flex; gap:10px;">
+                  <input type="text" id="notableCoInput" placeholder="e.g. Google"/><button type="button" class="add-btn-f2" onclick="addTag('notableCoInput','coTags','coHidden')">+ Add</button>
+                </div>
+                <div id="coTags" class="pill-grid" style="margin-top:10px;"></div>
+                <input type="hidden" id="coHidden"/>
+              </div>
+
+              <div class="field-f2 full">
+                <label>Areas of Expertise <span class="req">*</span></label>
+                <select onchange="addExpertiseTag(this)"><option value="">Select areas...</option><option>Fundraising</option><option>GTM Strategy</option><option>CFO Advisory</option></select>
+                <div id="expTags" class="pill-grid" style="margin-top:10px;"></div>
+                <input type="hidden" id="expHidden"/>
               </div>
             </div>
+            <div class="actions-f2">
+              <button type="button" class="btn-back-f2" onclick="prevStep(2)">&#8592; Back</button>
+              <button type="button" class="btn-next-f2" onclick="nextStep(2)">Continue &#8594;</button>
+            </div>
+          </div>
 
-            <!-- STEP 2: Professional Background -->
-            <div class="step" id="step2">
-              <span class="step-label">Step 02 of 05</span>
-              <h1 class="card-title-f2">Professional Background</h1>
-              <hr class="divider"/>
-              <div class="form-grid">
-                <div class="field-f2"><label>Current Role <span class="req">*</span></label><input type="text" id="jobTitle"/></div>
-                <div class="field-f2"><label>Years of Experience <span class="req">*</span></label><select id="yearsExperience"><option value="">Select</option><option>10-15 years</option><option>25+ years</option></select></div>
-                <div class="field-f2 full"><label>Biography <span class="req">*</span></label><textarea id="biography" oninput="updateWordCount(this,'bioCount')" placeholder="Career highlights..."></textarea><span class="char-count" id="bioCount">0 words</span></div>
-                
-                <div class="full"><div class="section-head">Expertise</div></div>
-                <div class="field-f2 full"><label>Key Sectors <span class="req">*</span></label>
-                  <div class="pill-grid" id="sectorGrid">
-                    <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
-                    <label class="pill"><input type="checkbox" value="SaaS"/> Technology / SaaS</label>
-                    <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
-                  </div>
+          <!-- STEP 3: Engagement -->
+          <div class="step" id="step3">
+            <span class="step-label">Step 03 of 05</span>
+            <h1 class="card-title">Engagement & Rates</h1>
+            <hr class="divider"/>
+            <div class="form-grid">
+              <div class="field-f2"><label>Indian Rate (INR/hr) <span class="req">*</span></label><select id="hourlyRateINR"><option value="">Select</option><option>₹5,000-₹10,000</option><option>₹10,000-₹20,000</option><option>Negotiable</option></select></div>
+              <div class="field-f2"><label>Hours/Month <span class="req">*</span></label><select id="hoursPerMonth"><option value="">Select</option><option>5-10 hrs</option><option>10-20 hrs</option><option>20+ hrs</option></select></div>
+              <div class="field-f2 full"><label>Engagement types open to <span class="req">*</span></label>
+                <div class="pill-grid">
+                  <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
+                  <label class="pill"><input type="checkbox" value="Advisory"/> Advisory / Mentoring</label>
+                  <label class="pill"><input type="checkbox" value="Board"/> Board Seat</label>
                 </div>
-
-                <div class="field-f2 full">
-                  <label>Notable Companies worked for</label>
-                  <div style="display:flex; gap:10px;">
-                    <input type="text" id="notableCoInput" placeholder="e.g. Google"/><button type="button" class="add-btn-f2" onclick="addTag('notableCoInput','coTags','coHidden')">+ Add</button>
-                  </div>
-                  <div id="coTags" class="pill-grid" style="margin-top:10px;"></div>
-                  <input type="hidden" id="coHidden"/>
-                </div>
-
-                <div class="field-f2 full">
-                  <label>Areas of Expertise <span class="req">*</span></label>
-                  <select onchange="addExpertiseTag(this)"><option value="">Select areas...</option><option>Fundraising</option><option>GTM Strategy</option></select>
-                  <div id="expTags" class="pill-grid" style="margin-top:10px;"></div>
-                  <input type="hidden" id="expHidden"/>
-                </div>
-              </div>
-              <div class="actions-f2">
-                <button type="button" class="btn-back-f2" onclick="prevStep(2)">Back</button>
-                <button type="button" class="btn-next-f2" onclick="nextStep(2)">Continue &#8594;</button>
               </div>
             </div>
+            <div class="actions-f2">
+              <button type="button" class="btn-back-f2" onclick="prevStep(3)">&#8592; Back</button>
+              <button type="button" class="btn-next-f2" onclick="nextStep(3)">Continue &#8594;</button>
+            </div>
+          </div>
 
-            <!-- STEP 3: Engagement -->
-            <div class="step" id="step3">
-              <span class="step-label">Step 03 of 05</span>
-              <h1 class="card-title-f2">Engagement & Rates</h1>
-              <hr class="divider"/>
-              <div class="form-grid">
-                <div class="field-f2"><label>Indian Rate (INR/hr) <span class="req">*</span></label><select id="rateINR"><option value="">Select</option><option>₹5,000-₹10,000</option><option>Negotiable</option></select></div>
-                <div class="field-f2"><label>Hours/Month <span class="req">*</span></label><select id="hoursMonth"><option value="">Select</option><option>5-10 hrs</option><option>20+ hrs</option></select></div>
-                <div class="field-f2 full"><label>Mandates open to <span class="req">*</span></label>
-                  <div class="pill-grid">
-                    <label class="pill"><input type="checkbox" value="Fractional"/> Fractional</label>
-                    <label class="pill"><input type="checkbox" value="Advisory"/> Advisory</label>
-                  </div>
-                </div>
+          <!-- STEP 4: Files -->
+          <div class="step" id="step4">
+            <span class="step-label">Step 04 of 05</span>
+            <h1 class="card-title">Verification</h1>
+            <hr class="divider"/>
+            <div class="form-grid">
+              <div class="field-f2 full"><label>LinkedIn URL <span class="req">*</span></label><input type="url" id="linkedin" placeholder="https://..."/></div>
+              <div class="field-f2 full"><label>Upload CV <span class="req">*</span></label>
+                <div class="upload-box" id="cvZone" onclick="triggerFile('cv')"><span id="cvLabel">Click to upload CV (PDF/Word)</span></div>
               </div>
-              <div class="actions-f2">
-                <button type="button" class="btn-back-f2" onclick="prevStep(3)">Back</button>
-                <button type="button" class="btn-next-f2" onclick="nextStep(3)">Continue &#8594;</button>
+              <div class="field-f2 full"><label>Upload Photo</label>
+                <div class="upload-box" id="photoZone" onclick="triggerFile('photo')"><span id="photoLabel">Click to upload Photo (JPG/PNG)</span></div>
               </div>
             </div>
-
-            <!-- STEP 4: Files -->
-            <div class="step" id="step4">
-              <span class="step-label">Step 04 of 05</span>
-              <h1 class="card-title-f2">Verification</h1>
-              <hr class="divider"/>
-              <div class="form-grid">
-                <div class="field-f2 full"><label>LinkedIn URL <span class="req">*</span></label><input type="url" id="linkedin" placeholder="https://..."/></div>
-                <div class="field-f2 full"><label>Upload CV <span class="req">*</span></label>
-                  <div class="upload-box" id="cvZone" onclick="triggerFile('cv')"><span id="cvLabel">Click to upload PDF/Word</span></div>
-                </div>
-                <div class="field-f2 full"><label>Upload Photo</label>
-                  <div class="upload-box" id="photoZone" onclick="triggerFile('photo')"><span id="photoLabel">Click to upload JPG/PNG</span></div>
-                </div>
-              </div>
-              <div class="actions-f2">
-                <button type="button" class="btn-back-f2" onclick="prevStep(4)">Back</button>
-                <button type="button" class="btn-next-f2" onclick="nextStep(4)">Continue &#8594;</button>
-              </div>
+            <div class="actions-f2">
+              <button type="button" class="btn-back-f2" onclick="prevStep(4)">&#8592; Back</button>
+              <button type="button" class="btn-next-f2" onclick="nextStep(4)">Continue &#8594;</button>
             </div>
+          </div>
 
-            <!-- STEP 5: Final -->
-            <div class="step" id="step5">
-              <span class="step-label">Step 05 of 05</span>
-              <h1 class="card-title-f2">Final Details</h1>
-              <hr class="divider"/>
-              <div class="field-f2 full"><label>Top Achievements <span class="req">*</span></label><textarea id="achievements" placeholder="Key outcomes delivered..."></textarea></div>
-              <label class="terms-box" style="margin-top:20px;">
-                <input type="checkbox" id="termsCheck"/>
-                <p>I confirm information is accurate and consent to SWYN processing my data.</p>
-              </label>
-              <div class="actions-f2">
-                <button type="button" class="btn-back-f2" onclick="prevStep(5)">Back</button>
-                <button type="button" class="btn-next-f2" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
-              </div>
+          <!-- STEP 5: Final Details -->
+          <div class="step" id="step5">
+            <span class="step-label">Step 05 of 05</span>
+            <h1 class="card-title">Final Details</h1>
+            <hr class="divider"/>
+            <div class="field-f2 full"><label>Top Achievements <span class="req">*</span></label><textarea id="achievements" placeholder="Key outcomes delivered..."></textarea></div>
+            <label class="terms-box" style="margin-top:20px;">
+              <input type="checkbox" id="termsCheck"/>
+              <p>I confirm the information is accurate and consent to SWYN processing my data for mandate matching in accordance with DPDPA 2023.</p>
+            </label>
+            <div class="actions-f2">
+              <button type="button" class="btn-back-f2" onclick="prevStep(5)">&#8592; Back</button>
+              <button type="button" class="btn-next-f2" id="submitBtn" onclick="doSubmit()">Submit Application →</button>
             </div>
+          </div>
 
-            <!-- SUCCESS -->
-            <div class="step" id="stepSuccess">
-                <div style="text-align:center; padding: 50px 0;">
-                    <div style="font-size:60px; color:var(--orange);">✓</div>
-                    <h2 class="card-title-f2" style="text-align:center;">Submission Successful</h2>
-                    <p>We will review your application and reach out within 3-5 business days.</p>
-                </div>
+          <!-- SUCCESS STATE -->
+          <div class="step" id="stepSuccess">
+            <div style="text-align:center; padding: 50px 0;">
+                <div style="font-size:60px; color:var(--orange);">✓</div>
+                <h2 class="card-title" style="text-align:center; margin-top:20px;">Submission Successful</h2>
+                <p>Thank you for applying. Our team will review your application and reach out within 3-5 business days.</p>
             </div>
+          </div>
 
-          </form>
         </div>
       </section>
     </main>
@@ -249,7 +258,7 @@
         const reqs = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
         let ok = true;
         reqs.forEach(r => { if(!r.value) { r.style.borderColor = 'var(--error)'; ok = false; } else { r.style.borderColor = ''; }});
-        if(s === 4 && !fileData.cv) { alert("Please upload CV"); ok = false; }
+        if(s === 4 && !fileData.cv) { alert("Please upload your CV document."); ok = false; }
         if(ok) {
             document.getElementById('step' + currentStep).classList.remove('active');
             currentStep++;
@@ -292,7 +301,7 @@
         document.getElementById(id).innerText = count + ' words';
     }
 
-    // Tag System Logic
+    // Tag Logic
     function addTag(inputId, cloudId, hiddenId) {
         const inp = document.getElementById(inputId);
         const val = inp.value.trim();
@@ -327,7 +336,7 @@
         renderTags(cloudId, tagsStore[key], hiddenId);
     }
 
-    // File Upload Engine
+    // File Logic
     function triggerFile(type) {
         const input = document.createElement('input');
         input.type = 'file';
@@ -344,9 +353,9 @@
         input.click();
     }
 
-    // Final Submission
+    // Submission Logic
     function doSubmit() {
-        if(!document.getElementById('termsCheck').checked) { alert("Accept terms"); return; }
+        if(!document.getElementById('termsCheck').checked) { alert("Please accept the terms to proceed."); return; }
         const btn = document.getElementById('submitBtn');
         btn.innerText = "Submitting...";
         btn.disabled = true;
@@ -355,7 +364,7 @@
             'Name': document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
             'Email': document.getElementById('primaryEmail').value,
             'CV': fileData.cv,
-            'Notable Companies': tagsStore.co.join(', '),
+            'Companies': tagsStore.co.join(', '),
             'Expertise': tagsStore.exp.join(', '),
             'Timestamp': new Date().toLocaleString()
         };
@@ -370,7 +379,7 @@
         });
     }
 
-    // Pill check logic
+    // Checkbox styling toggle
     document.querySelectorAll('.pill input').forEach(p => {
         p.onchange = () => p.closest('.pill').classList.toggle('selected', p.checked);
     });
