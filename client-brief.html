@@ -41,40 +41,41 @@
           <p>Five minutes around your mandate. We will take it from there.</p>
         </div>
         <div id="leadCardBody">
-          <form class="lead-form" action="https://formsubmit.co/aniket297706@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="New SWYN client brief" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="form_type" value="Client brief" />
+          <form class="lead-form" id="clientBriefForm">
+            <!-- ================================================
+                 GOOGLE SHEETS INTEGRATION
+                 Replace YOUR_GOOGLE_SCRIPT_URL below with the
+                 Web App URL you copied from Apps Script deploy.
+                 ================================================ -->
             <label class="lead-form__honeypot" aria-hidden="true">
               Leave this field empty
-              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" id="honeypot" />
             </label>
             <p class="lead-form__section-title">Basic Info</p>
             <div class="lead-form__row">
               <label>
                 Email
-                <input type="email" name="email" required />
+                <input type="email" name="email" id="f-email" required />
               </label>
               <label>
                 Phone
-                <input type="tel" name="phone" required />
+                <input type="tel" name="phone" id="f-phone" required />
               </label>
             </div>
             <div class="lead-form__row">
               <label>
                 Company
-                <input type="text" name="company" required />
+                <input type="text" name="company" id="f-company" required />
               </label>
               <label>
                 Website / LinkedIn URL
-                <input type="url" name="website_or_linkedin" required />
+                <input type="url" name="website_or_linkedin" id="f-website" required />
               </label>
             </div>
             <div class="lead-form__row">
               <label>
                 Function needed
-                <select name="fractional_role" required>
+                <select name="fractional_role" id="f-role" required>
                   <option value="" disabled selected>Select a function</option>
                   <option value="CFO">CFO — Finance</option>
                   <option value="CMO">CMO — Marketing</option>
@@ -85,34 +86,94 @@
               </label>
               <label>
                 Revenue
-                <input type="text" name="revenue" required />
+                <input type="text" name="revenue" id="f-revenue" required />
               </label>
             </div>
             <label>
               Need for CXO
-              <textarea name="cxo_need" required></textarea>
+              <textarea name="cxo_need" id="f-cxo" required></textarea>
             </label>
             <div class="lead-form__row">
               <label>
                 City
-                <input type="text" name="city" required />
+                <input type="text" name="city" id="f-city" required />
               </label>
               <label>
                 Engagement Type
-                <select name="engagement_type" required>
+                <select name="engagement_type" id="f-engagement" required>
                   <option value="" disabled selected>Select an option</option>
                   <option value="Virtual">Virtual</option>
                   <option value="In-person">In-person</option>
                 </select>
               </label>
             </div>
-            <button class="lead-form__submit" type="submit">Submit brief →</button>
-            <p class="lead-form__note">This page keeps the form flow on its own dedicated route instead of opening a popup.</p>
+            <button class="lead-form__submit" type="submit" id="submitBtn">Submit brief →</button>
+            <p class="lead-form__note" id="formStatus"></p>
           </form>
         </div>
       </section>
     </main>
   </div>
+
+  <script>
+    // ============================================================
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
+    // ============================================================
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwuI0zQyVd8oD_e3tv8pZk7urL2bswTiSNY8vbw3oh5kauTb9d_NGCWSWrA7gouPaZiwQ/exec";
+    // ============================================================
+
+    const form = document.getElementById("clientBriefForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Honeypot check
+      if (document.getElementById("honeypot").value) return;
+
+      const payload = {
+        email:               document.getElementById("f-email").value.trim(),
+        phone:               document.getElementById("f-phone").value.trim(),
+        company:             document.getElementById("f-company").value.trim(),
+        website_or_linkedin: document.getElementById("f-website").value.trim(),
+        fractional_role:     document.getElementById("f-role").value,
+        revenue:             document.getElementById("f-revenue").value.trim(),
+        cxo_need:            document.getElementById("f-cxo").value.trim(),
+        city:                document.getElementById("f-city").value.trim(),
+        engagement_type:     document.getElementById("f-engagement").value,
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+      formStatus.textContent = "";
+      formStatus.style.color = "";
+
+      try {
+        const res = await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" }, // avoids CORS preflight
+          body: JSON.stringify(payload),
+        });
+
+        const json = await res.json();
+
+        if (json.status === "success") {
+          form.reset();
+          formStatus.textContent = "✓ Brief received — we will be in touch shortly.";
+          formStatus.style.color = "green";
+          submitBtn.textContent = "Submitted ✓";
+        } else {
+          throw new Error("Unexpected response");
+        }
+      } catch (err) {
+        formStatus.textContent = "Something went wrong. Please try again or email us directly.";
+        formStatus.style.color = "red";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit brief →";
+      }
+    });
+  </script>
 
   <script type="module" src="./lead-form-pages.js"></script>
 </body>
