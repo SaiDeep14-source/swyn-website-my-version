@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWYN Expert Mentor Registration</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="./lead-pages.css" />
 
 <!-- 
   ==========================================================================
@@ -16,16 +17,48 @@
     margin: 0; padding: 0; background: #fffcf8; 
     overflow-x: hidden;
     font-family: 'DM Sans', sans-serif;
-  }<nav class="custom-nav">
-  <div class="logo">
-    <img src="./reallogo.png" alt="SWYN logo" height="36" />
-    <span class="logo-text-orange">SWYN</span>
-  </div>
-  <a class="back-link" href="./index.html">Back to website</a>
-</nav>
+  }
+  /* ── Client-style topbar ── */
+  .lead-topbar {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e8e0d4;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-sizing: border-box;
+  }
+  .lead-topbar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lead-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #1a1208;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .lead-brand img { height: 32px; }
+  .lead-topbar__link {
+    color: #7a6a54;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .lead-topbar__link:hover { color: #d4621a; }
+
   .page-container {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 64px);
     width: 100%;
   }
   .hero-side {
@@ -43,38 +76,6 @@
     justify-content: center;
     align-items: flex-start;
     padding: 80px 40px;
-  }
-
-.custom-nav {
-    position: absolute; /* Pins the bar to the top */
-    top: 0; 
-    left: 0; 
-    width: 100%;
-    padding: 30px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100; /* Ensures it stays above the hero and form sides */
-    box-sizing: border-box; 
-  }
-
-  .custom-nav .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .logo-text-orange {
-    color: #d4621a; /* Matches the SWYN orange brand color */
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 700;
-  }
-  .back-link {
-    color: #7a6a54;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
   }
 
   .badge {
@@ -482,17 +483,20 @@ function selectRating(fieldId, groupId, val) {
 </head>
 <body>
 
+<header class="lead-topbar">
+  <div class="lead-topbar__inner">
+    <a class="lead-brand" href="./index.html">
+      <img src="./reallogo.png" alt="SWYN logo" />
+      <span>SWYN</span>
+    </a>
+    <a class="lead-topbar__link" href="./index.html">Back to website</a>
+  </div>
+</header>
+
 <div class="page-container">
 
   <!-- Left Side: Hero Content -->
   <div class="hero-side">
-    <div class="custom-nav">
-        <div class="logo">
-            <img style="height:40px;" src="reallogo.png" alt="SWYN"/>
-          <span class="logo-text-orange">SWYN</span>
-        </div>
-    </div>
-
     <div class="badge">For Senior Leaders</div>
     <h1 class="hero-title">Join the bench<br>on your terms.</h1>
     <p class="hero-desc">If you have built something significant and want to engage selectively, this is where you can introduce yourself. We are looking for proven operators, not polished resumes.</p>
