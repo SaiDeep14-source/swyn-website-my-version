@@ -58,6 +58,24 @@
     font-size: 24px;
     font-weight: 700;
   }
+  .custom-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; /* Space between nav and the black header */
+  }
+  .custom-nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-text-orange {
+    color: #d4621a;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
   .back-link {
     color: #7a6a54;
     text-decoration: none;
@@ -473,15 +491,18 @@ function selectRating(fieldId, groupId, val) {
 <div class="page-container">
 
   <!-- Left Side: Hero Content -->
-  <div class="hero-side">
-    <div class="custom-nav">
-        <div class="logo">
-            <img style="height:40px;" src="reallogo.png" alt="SWYN"/>
-          <span class="logo-text-orange">SWYN</span>
+  <div class="form-side">
+    <div class="wrapper">
+      <div class="custom-nav">
+          <div class="logo">
+              <img style="height:40px;" src="reallogo.png" alt="SWYN"/>
+              <span class="logo-text-orange">SWYN</span>
+          </div>
           <a href="index.html" class="back-link">Back to website</a>
-        </div>
-    </div>
-
+      </div>
+      
+      <div class="card">
+      ...
     <div class="badge">For Senior Leaders</div>
     <h1 class="hero-title">Join the bench<br>on your terms.</h1>
     <p class="hero-desc">If you have built something significant and want to engage selectively, this is where you can introduce yourself. We are looking for proven operators, not polished resumes.</p>
