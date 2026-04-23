@@ -47,6 +47,16 @@
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+  }.custom-nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-text-orange {
+    color: #d4621a;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
   }
   .back-link {
     color: #7a6a54;
@@ -128,7 +138,7 @@
     line-height: 1.3;
   }
   .form-side .card { overflow: hidden; position: relative; }
-  .form-side .logo { display: none; } /* Hide internal logo in split screen */
+  .form-side . { display: none; } /* Hide internal logo in split screen */
 
   @media (max-width: 1100px) {
     .page-container { flex-direction: column; }
@@ -467,8 +477,8 @@ function selectRating(fieldId, groupId, val) {
     <div class="custom-nav">
         <div class="logo">
             <img style="height:40px;" src="reallogo.png" alt="SWYN"/>
+          <span class="logo-text-orange">SWYN</span>
         </div>
-        <a href="#" class="back-link">Back to website</a>
     </div>
 
     <div class="badge">For Senior Leaders</div>
