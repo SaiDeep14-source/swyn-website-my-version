@@ -116,11 +116,7 @@
   </div>
 
   <script>
-    // ============================================================
-    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
-    // ============================================================
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwuI0zQyVd8oD_e3tv8pZk7urL2bswTiSNY8vbw3oh5kauTb9d_NGCWSWrA7gouPaZiwQ/exec";
-    // ============================================================
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwo5odhjh9eIfDC-X5XO_5hT5gHNaCpAh1f2BAqF9q7HcllPF6BVRz4KJTDuFvAdleI/exec";
 
     const form = document.getElementById("clientBriefForm");
     const submitBtn = document.getElementById("submitBtn");
@@ -132,7 +128,7 @@
       // Honeypot check
       if (document.getElementById("honeypot").value) return;
 
-      const payload = {
+      const params = new URLSearchParams({
         email:               document.getElementById("f-email").value.trim(),
         phone:               document.getElementById("f-phone").value.trim(),
         company:             document.getElementById("f-company").value.trim(),
@@ -142,7 +138,7 @@
         cxo_need:            document.getElementById("f-cxo").value.trim(),
         city:                document.getElementById("f-city").value.trim(),
         engagement_type:     document.getElementById("f-engagement").value,
-      };
+      });
 
       submitBtn.disabled = true;
       submitBtn.textContent = "Submitting…";
@@ -150,22 +146,16 @@
       formStatus.style.color = "";
 
       try {
-        const res = await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" }, // avoids CORS preflight
-          body: JSON.stringify(payload),
+        // GET + no-cors avoids CORS preflight entirely
+        await fetch(GOOGLE_SCRIPT_URL + "?" + params.toString(), {
+          method: "GET",
+          mode: "no-cors",
         });
 
-        const json = await res.json();
-
-        if (json.status === "success") {
-          form.reset();
-          formStatus.textContent = "✓ Brief received — we will be in touch shortly.";
-          formStatus.style.color = "green";
-          submitBtn.textContent = "Submitted ✓";
-        } else {
-          throw new Error("Unexpected response");
-        }
+        form.reset();
+        formStatus.textContent = "✓ Brief received — we will be in touch shortly.";
+        formStatus.style.color = "green";
+        submitBtn.textContent = "Submitted ✓";
       } catch (err) {
         formStatus.textContent = "Something went wrong. Please try again or email us directly.";
         formStatus.style.color = "red";
