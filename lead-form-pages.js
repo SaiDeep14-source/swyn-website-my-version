@@ -16,12 +16,17 @@ const messages = {
 };
 
 function renderSuccess(message) {
-  cardBody.innerHTML = `
-    <div class="lead-success">
-      <h2>${message.title}</h2>
-      <p>${message.body}</p>
-    </div>
-  `;
+  const successDiv = document.createElement('div');
+  successDiv.className = 'lead-success';
+
+  const title = document.createElement('h2');
+  title.textContent = message.title;
+
+  const body = document.createElement('p');
+  body.textContent = message.body;
+
+  successDiv.append(title, body);
+  cardBody.replaceChildren(successDiv);
 }
 
 function ensureStatusMessage() {

@@ -22,3 +22,36 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+ode_modules/
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# Wrangler/Cloudflare logs
+.wrangler/
+wrangler-*.log
+
+npm-debug.log*
+.env*
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+# Wrangler/Cloudflare logs
+.wrangler/
+wrangler-*.log
+
+npm-debug.log*
+!.env.example

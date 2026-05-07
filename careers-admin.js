@@ -35,53 +35,65 @@ function renderJobs() {
   const jobs = readJobs();
 
   if (jobs.length === 0) {
-    list.innerHTML = '<p class="admin-empty">No roles yet. Use the form to create your first opening.</p>';
+    const p = document.createElement('p');
+    p.className = 'admin-empty';
+    p.textContent = 'No roles yet. Use the form to create your first opening.';
+    list.replaceChildren(p);
     return;
   }
 
-  list.innerHTML = jobs
-    .map((job) => {
-      return `
-        <article class="admin-job-card">
-          <div>
-            <div class="admin-job-card__topline">
-              <span class="admin-job-card__status admin-job-card__status--${job.status}">${job.status}</span>
-              <span class="admin-job-card__team">${job.team}</span>
-            </div>
-            <h3>${job.title}</h3>
-            <p>${job.summary}</p>
-            <div class="admin-job-card__meta">
-              <span>${job.location}</span>
-              <span>${job.workMode}</span>
-              <span>${job.employmentType}</span>
-            </div>
-          </div>
-          <div class="admin-job-card__actions">
-            <button type="button" data-edit="${job.id}">Edit</button>
-            <button type="button" data-delete="${job.id}">Delete</button>
-          </div>
-        </article>
-      `;
-    })
-    .join('');
+  const cards = jobs.map((job) => {
+    const article = document.createElement('article');
+    article.className = 'admin-job-card';
 
-  list.querySelectorAll('[data-edit]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const job = jobs.find((item) => item.id === button.dataset.edit);
-      if (job) populateForm(job);
-    });
-  });
+    const content = document.createElement('div');
+    const topline = document.createElement('div');
+    topline.className = 'admin-job-card__topline';
 
-  list.querySelectorAll('[data-delete]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const nextJobs = jobs.filter((job) => job.id !== button.dataset.delete);
-      writeJobs(nextJobs);
-      if (editingId === button.dataset.delete) {
-        resetForm();
-      }
-      renderJobs();
+    const status = document.createElement('span');
+    status.className = `admin-job-card__status admin-job-card__status--${job.status}`;
+    status.textContent = job.status;
+
+    const team = document.createElement('span');
+    team.className = 'admin-job-card__team';
+    team.textContent = job.team;
+
+    topline.append(status, team);
+
+    const h3 = document.createElement('h3');
+    h3.textContent = job.title;
+
+    const p = document.createElement('p');
+    p.textContent = job.summary;
+
+    const meta = document.createElement('div');
+    meta.className = 'admin-job-card__meta';
+    [job.location, job.workMode, job.employmentType].forEach(val => {
+      const span = document.createElement('span');
+      span.textContent = val;
+      meta.append(span);
     });
+
+    content.append(topline, h3, p, meta);
+
+    const actions = document.createElement('div');
+    actions.className = 'admin-job-card__actions';
+
+    const editBtn = document.createElement('button');
+    editBtn.type = 'button';
+    editBtn.textContent = 'Edit';
+    editBtn.addEventListener('click', () => populateForm(job));
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', () => deleteJob(job.id)); // Assuming deleteJob is defined elsewhere or will be added
+
+    actions.append(editBtn, deleteBtn);
+    article.append(content, actions);
+    return article;
   });
+  list.replaceChildren(...cards);
 }
 
 function handleFormSubmit(event) {

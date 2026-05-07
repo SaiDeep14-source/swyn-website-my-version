@@ -50,11 +50,13 @@ function setApplicationContext(job) {
 
   modalTitle.textContent = `Apply for ${job.title}`;
   modalBody.textContent = `Share the essentials, upload your resume, and we will review your application for ${job.title}.`;
-  modalMeta.innerHTML = `
-    <span>${escapeHtml(formatMetaLabel(job.team))}</span>
-    <span>${escapeHtml(formatMetaLabel(job.location))}</span>
-    <span>${escapeHtml(formatMetaLabel(job.employmentType))}</span>
-  `;
+
+  const metaItems = [job.team, job.location, job.employmentType].map(val => {
+    const span = document.createElement('span');
+    span.textContent = formatMetaLabel(val);
+    return span;
+  });
+  modalMeta.replaceChildren(...metaItems);
 }
 
 function openApplicationModal(job) {
@@ -78,10 +80,14 @@ function closeApplicationModal() {
 function renderSubmissionNotice(job) {
   const jobLabel = job?.title || 'your application';
   noticeRoot.hidden = false;
-  noticeRoot.innerHTML = `
-    <strong>Application received.</strong>
-    <span>Thanks for applying for ${escapeHtml(jobLabel)}. The form details have been sent to your email inbox.</span>
-  `;
+  
+  const strong = document.createElement('strong');
+  strong.textContent = 'Application received.';
+  
+  const span = document.createElement('span');
+  span.textContent = `Thanks for applying for ${jobLabel}. The form details have been sent to your email inbox.`;
+
+  noticeRoot.replaceChildren(strong, span);
 }
 
 function renderFilters(jobs) {
