@@ -2,13 +2,13 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 
 const allLogos = [
-  "public/logos/Citibank_id0l1hJpOt_1.svg",
-  "public/logos/Deloitte_idXbysKEDR_0.svg",
-  "public/logos/Goldman_Sachs_Logo_0.svg",
-  "public/logos/J-P-_Morgan_Logo_0.svg",
-  "public/logos/KPMG_id9tLD2YU7_1.png",
-  "public/logos/Morgan_Stanley_id2T3ziuIZ_0.svg",
-  "public/logos/Zoom_idWrhVhrtF_0.svg",
+  "/logos/Citibank_id0l1hJpOt_1.svg",
+  "/logos/Deloitte_idXbysKEDR_0.svg",
+  "/logos/Goldman_Sachs_Logo_0.svg",
+  "/logos/J-P-_Morgan_Logo_0.svg",
+  "/logos/KPMG_id9tLD2YU7_1.png",
+  "/logos/Morgan_Stanley_id2T3ziuIZ_0.svg",
+  "/logos/Zoom_idWrhVhrtF_0.svg",
 ];
 
 // Duplicate logos array so we can scroll infinitely
