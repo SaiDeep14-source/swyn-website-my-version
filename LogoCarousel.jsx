@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 
 const allLogos = [
-  "/logos/Citibank_id0l1hJpOt_1.svg",
-  "/logos/Deloitte_idXbysKEDR_0.svg",
+  "./logos/Citibank_id0l1hJpOt_1.svg",
+  "./logos/Deloitte_idXbysKEDR_0.svg",
   "/logos/Goldman_Sachs_Logo_0.svg",
   "/logos/J-P-_Morgan_Logo_0.svg",
   "/logos/KPMG_id9tLD2YU7_1.png",
