@@ -105,7 +105,8 @@ button {
 #carousel-root,
 #process-root,
 #hire,
-#join {
+#join,
+#about-us {
   scroll-margin-top: 7rem;
 }
 
@@ -918,6 +919,136 @@ button {
 }
 
 /* ══════════════════════════════════════════════════════════
+   ABOUT FOUNDER
+   ══════════════════════════════════════════════════════════ */
+.about-founder {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #eadfd0;
+}
+
+.about-founder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(246, 90, 38, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 250, 240, 0));
+  pointer-events: none;
+}
+
+.about-founder__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.about-founder__intro {
+  position: sticky;
+  top: 8rem;
+}
+
+.about-founder__intro .section__headline {
+  max-width: 12ch;
+  margin-bottom: var(--space-md);
+}
+
+.founder-card {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: var(--space-lg);
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 248, 238, 0.72) 100%);
+  border: 1px solid rgba(49, 42, 35, 0.1);
+  box-shadow: 0 28px 80px rgba(72, 45, 24, 0.1);
+}
+
+.founder-card__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 30%),
+    linear-gradient(135deg, #272329 0%, #141418 100%);
+  color: var(--text-cream);
+  font-family: var(--font-display);
+  font-size: 2.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.founder-card__content {
+  min-width: 0;
+}
+
+.founder-card__role {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--accent-orange);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.founder-card__name {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+.founder-card__bio,
+.founder-card__note {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.founder-card__note {
+  margin-top: 1rem;
+  color: #4c4850;
+}
+
+.founder-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: var(--space-lg);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(246, 90, 38, 0.42);
+  color: var(--accent-orange);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.founder-card__link:hover {
+  color: var(--accent-orange-hover);
+  border-color: var(--accent-orange-hover);
+}
+
+.founder-card__link span {
+  transition: transform 0.25s ease;
+}
+
+.founder-card__link:hover span {
+  transform: translateX(2px);
+}
+
+/* ══════════════════════════════════════════════════════════
    FOOTER
    ══════════════════════════════════════════════════════════ */
 .footer {
@@ -1192,12 +1323,28 @@ button {
    RESPONSIVE — Tablet (≤ 1024px)
    ══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+  .nav__links {
+    gap: var(--space-md);
+  }
+
   .functions-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .func-card:nth-child(2) {
     border-right: none;
+  }
+
+  .about-founder__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-founder__intro {
+    position: static;
+  }
+
+  .about-founder__intro .section__headline {
+    max-width: 16ch;
   }
 
   .func-card:nth-child(1),
@@ -1342,6 +1489,16 @@ button {
     padding: 1.25rem;
   }
 
+  /* About founder */
+  .founder-card {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-card__mark {
+    width: 6.5rem;
+    font-size: 1.9rem;
+  }
+
   /* Footer */
   .footer__grid {
     grid-template-columns: 1fr;
@@ -1391,6 +1548,15 @@ button {
 
   .cta-panel__visual {
     width: min(100%, 240px);
+  }
+
+  .founder-card {
+    padding: 1.25rem;
+  }
+
+  .founder-card__link {
+    align-items: flex-start;
+    white-space: normal;
   }
 
   .hero__ctas .btn {
