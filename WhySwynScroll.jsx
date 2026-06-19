@@ -37,7 +37,7 @@ function RevealToken({ value, animIndex, totalAnimated, progress, ghostOpacity }
 }
 
 export default function WhySwynScroll() {
-  const text = "We spent decades in India's leading financial and advisory institutions. We watched brilliant companies stall because they couldn't access Tier-1 leadership, while exceptional leaders sat on the sidelines locked out by rigid full-time models. SWYN was built to close that gap. We curate this network personally, because the quality of the introduction is our entire reputation.";
+  const text = "We spent decades in India's leading financial and advisory institutions. We watched brilliant companies stall because they couldn't access Tier-1 leadership, while exceptional leaders sat on the sidelines locked out by rigid full-time models. SWYN was built to close that gap.";
   
   const sectionHeightVh = 250; // Extra height for smooth reading scroll
 
