@@ -1,83 +1,120 @@
-import { useRef } from "react";
 import { motion } from "framer-motion";
 
-const allLogos = [
-  "/logos/Citibank_id0l1hJpOt_1.svg",
-  "/logos/Deloitte_idXbysKEDR_0.svg",
-  "/logos/Goldman_Sachs_Logo_0.svg",
-  "/logos/J-P-_Morgan_Logo_0.svg",
-  "/logos/KPMG_id9tLD2YU7_1.png",
-  "/logos/Morgan_Stanley_id2T3ziuIZ_0.svg",
-  "/logos/Zoom_idWrhVhrtF_0.svg",
+const industries = [
+  "Technology",
+  "Retail",
+  "BFSI",
+  "Lifestyle",
+  "Defence",
+  "Analytics",
+  "Entertainment",
+  "Advertising",
+  "Manufacturing",
+  "Healthcare",
+  "Education",
+  "Real Estate",
 ];
 
-// Duplicate logos array so we can scroll infinitely
-const repeatedLogos = [...allLogos, ...allLogos, ...allLogos];
-
-const LogoSet = ({ logos }) => (
-  <motion.div
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: 'clamp(3rem, 6vw, 6rem)',
-      paddingRight: 'clamp(3rem, 6vw, 6rem)', // Add gap after the last logo for seamless looping
-      flexShrink: 0,
-      width: 'max-content',
-    }}
-    animate={{ x: ["0%", "-33.333333%"] }} // scroll by 1/3 of the total width (since we repeated 3 times)
-    transition={{
-      duration: 30, // adjust speed here
-      ease: "linear",
-      repeat: Infinity,
-    }}
-  >
-    {logos.map((src, i) => (
-      <img
-        key={i}
-        src={src}
-        alt={`Logo ${i + 1}`}
-        style={{
-          maxHeight: '40px',
-          maxWidth: '160px',
-          objectFit: 'contain',
-          /* User requested Pure Black or Deep Gray conversion */
-          filter: 'grayscale(100%) brightness(0) opacity(0.8)',
-          mixBlendMode: 'multiply' // helps if the jpeg background is white
-        }}
-      />
-    ))}
-  </motion.div>
-);
+const repeatedIndustries = [...industries, ...industries];
 
 export default function LogoCarousel() {
   return (
-    <section className="built-in-boardrooms" style={{ background: 'var(--bg-white)', padding: '5rem 0', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '100%', margin: '0 auto', textAlign: 'center' }}>
-        <h3 style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: '0.875rem',
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
-          color: '#696774',
-          marginBottom: '3rem',
-          fontWeight: 500
-        }}>
-          Built in the boardrooms of:
+    <section
+      className="industries-marquee"
+      aria-labelledby="industries-title"
+      style={{ background: "var(--bg-white)", padding: "4.5rem 0", overflow: "hidden" }}
+    >
+      <div style={{ maxWidth: "100%", margin: "0 auto", textAlign: "center" }}>
+        <h3
+          id="industries-title"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.875rem",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "#696774",
+            marginBottom: "2.75rem",
+            fontWeight: 500,
+          }}
+        >
+          Industries we cover
         </h3>
 
-        <div style={{ position: 'relative', display: 'flex', overflow: 'hidden', padding: '0 1rem' }}>
-          {/* Fading left/right edges for a polished look */}
-          <div style={{
-            position: 'absolute', top: 0, bottom: 0, left: 0, width: '100px',
-            background: 'linear-gradient(to right, var(--bg-white) 0%, transparent 100%)', zIndex: 2
-          }} />
-          
-          <LogoSet logos={repeatedLogos} />
+        <div style={{ position: "relative", display: "flex", overflow: "hidden" }}>
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: "0 auto 0 0",
+              width: "clamp(2rem, 8vw, 8rem)",
+              background: "linear-gradient(to right, var(--bg-white) 0%, transparent 100%)",
+              zIndex: 2,
+            }}
+          />
 
-          <div style={{
-            position: 'absolute', top: 0, bottom: 0, right: 0, width: '100px',
-            background: 'linear-gradient(to left, var(--bg-white) 0%, transparent 100%)', zIndex: 2
-          }} />
+          <motion.div
+            className="industries-marquee__track"
+            aria-label={industries.join(", ")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "max-content",
+              flexShrink: 0,
+            }}
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              duration: 34,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+          >
+            {repeatedIndustries.map((industry, index) => (
+              <div
+                className="industries-marquee__item"
+                aria-hidden={index >= industries.length}
+                key={`${industry}-${index}`}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "clamp(2rem, 4vw, 4rem)",
+                  paddingRight: "clamp(2rem, 4vw, 4rem)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "clamp(1.75rem, 3vw, 3rem)",
+                    color: "var(--text-dark)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {industry}
+                </span>
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: "0.45rem",
+                    height: "0.45rem",
+                    borderRadius: "50%",
+                    background: "var(--accent-orange)",
+                    flex: "0 0 auto",
+                  }}
+                />
+              </div>
+            ))}
+          </motion.div>
+
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: "0 0 0 auto",
+              width: "clamp(2rem, 8vw, 8rem)",
+              background: "linear-gradient(to left, var(--bg-white) 0%, transparent 100%)",
+              zIndex: 2,
+            }}
+          />
         </div>
       </div>
     </section>
