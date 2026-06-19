@@ -971,15 +971,20 @@ button {
 }
 
 .founder-card__portrait {
+  position: relative;
+  flex: 0 0 auto;
   width: 6.5rem;
+  height: 6.5rem;
   aspect-ratio: 1;
   overflow: hidden;
   background: #e8ded3;
 }
 
 .founder-card__portrait img {
+  display: block;
   width: 100%;
   height: 100%;
+  color: transparent;
   object-fit: cover;
   object-position: center 24%;
 }
