@@ -4,38 +4,42 @@ import { motion, AnimatePresence } from 'framer-motion';
 const disciplines = [
   {
     id: '01',
-    title: 'CFO',
-    subtitle: 'Finance & Capital',
+    title: 'Revenue',
+    subtitle: 'Commercial performance',
     description: [
-      'Fundraising, cash flow, financial strategy, investor relations.',
-      'The person who makes growth fundable.',
+      'Pricing, sales structure, and pipeline optimization.',
     ],
   },
   {
     id: '02',
-    title: 'CMO',
-    subtitle: 'Brand & Growth',
+    title: 'Marketing & Branding',
+    subtitle: 'Market presence',
     description: [
-      'GTM, brand, demand generation.',
-      'The person who makes growth visible.',
+      'Positioning, go-to-market, and brand strategy.',
     ],
   },
   {
     id: '03',
-    title: 'CTO',
-    subtitle: 'Technology & Product',
+    title: 'Operations',
+    subtitle: 'Operating performance',
     description: [
-      'Architecture, team building, product-tech alignment.',
-      'The person who makes growth buildable.',
+      'Process design, team structure, and systems efficiency.',
     ],
   },
   {
     id: '04',
-    title: 'COO',
-    subtitle: 'Operations & Execution',
+    title: 'Growth',
+    subtitle: 'Scale and expansion',
     description: [
-      'Scaling systems, operational infrastructure, execution.',
-      'The person who makes growth sustainable.',
+      'Market expansion, partnerships, and scaling strategy.',
+    ],
+  },
+  {
+    id: '05',
+    title: 'Finance & Funding',
+    subtitle: 'Capital readiness',
+    description: [
+      'Fundraising, financial planning, and investor readiness.',
     ],
   },
 ];
@@ -102,7 +106,7 @@ export default function DisciplinesAccordion() {
       <section className="disciplines-section" style={{ background: 'var(--bg-white)', padding: '4rem 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
           <span className="eyebrow eyebrow--dark" style={{ display: 'block', marginBottom: '1rem' }}>The Capabilities</span>
-          <h2 className="section__headline section__headline--dark">The seats we fill</h2>
+          <h2 className="section__headline section__headline--dark">The problems we solve.</h2>
           <div style={{ marginTop: '2rem' }}>
             {disciplines.map((d, i) => {
               const isOpen = activeIndex === i;
@@ -211,7 +215,7 @@ export default function DisciplinesAccordion() {
         }}
       >
         <span className="eyebrow eyebrow--dark" style={{ display: 'block', marginBottom: '1rem' }}>The Capabilities</span>
-        <h2 className="section__headline section__headline--dark">The seats we fill</h2>
+        <h2 className="section__headline section__headline--dark">The problems we solve.</h2>
       </div>
 
       {/* Pillars */}
@@ -292,12 +296,12 @@ export default function DisciplinesAccordion() {
                     layout="position"
                     style={{
                       fontFamily: "'Playfair Display', serif",
-                      fontSize: isActive ? 'clamp(2rem, 2.5vw, 2.75rem)' : 'clamp(2rem, 2.5vw, 2.75rem)',
+                      fontSize: isActive ? 'clamp(1.75rem, 2.4vw, 2.65rem)' : 'clamp(1.25rem, 1.7vw, 2rem)',
                       fontWeight: 700,
                       color: isActive ? '#242329' : '#ccc',
-                      lineHeight: 1,
+                      lineHeight: 1.08,
                       transition: 'color 0.4s ease',
-                      whiteSpace: 'nowrap',
+                      maxWidth: isActive ? '15ch' : '11ch',
                     }}
                   >
                     {d.title}
