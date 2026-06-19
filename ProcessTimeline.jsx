@@ -4,18 +4,18 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const steps = [
   {
     number: '01',
-    title: 'You tell us what you need',
-    desc: 'Fill a short brief. What function, what stage, what challenge. Five minutes, not five pages.'
+    title: 'Share the challenge',
+    desc: 'Tell us what\'s not working and where the business stands today. A short brief is all it takes.'
   },
   {
     number: '02',
-    title: 'We curate your match',
-    desc: 'SWYN handpicks from our vetted bench. Not an algorithm. Not a marketplace. A considered introduction.'
+    title: 'Get a plan',
+    desc: 'A clear strategy tailored to the problem, with the right people assigned to deliver it. Not an algorithm. Not a marketplace. A considered match.'
   },
   {
     number: '03',
-    title: 'You meet your expert',
-    desc: 'A direct conversation. No middlemen in the room. You decide if it\'s the right fit.'
+    title: 'See it through',
+    desc: 'Execution starts with clear milestones and accountability. It ends when the results are in.'
   }
 ];
 
