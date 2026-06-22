@@ -23,7 +23,7 @@
     width: 100%;
   }
   .hero-side {
-    flex: 1.1;
+    flex: 0.9;
     padding: 60px 8%;
     background-color: #fffcf8;
     display: flex;
@@ -31,12 +31,12 @@
     justify-content: flex-start;
   }
   .form-side {
-    flex: 0.9;
+    flex: 1.1;
     background: linear-gradient(135deg, #fdf8f4 0%, #f7e9dd 100%);
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 80px 40px;
+    padding: 40px 28px;
   }
 
 .custom-nav {
@@ -125,7 +125,7 @@
   .form-side .wrapper {
     margin: 0;
     width: 100%;
-    max-width: 620px;
+    max-width: 720px;
     padding: 0;
   }
   /* The "Dark Header" style from the screenshot */
@@ -134,11 +134,11 @@
     display: block;
     background: #1a1a1a;
     color: white;
-    padding: 40px;
-    margin: -40px -44px 30px -44px;
+    padding: 28px 32px;
+    margin: -32px -34px 24px -34px;
     border-radius: 18px 18px 0 0;
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
     white-space: pre-wrap;
     line-height: 1.3;
@@ -169,7 +169,7 @@
   --shadow:0 4px 24px rgba(0,0,0,.08);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min-height:100vh;padding:36px 16px 80px}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min-height:100vh;padding:0}
 .wrapper{max-width:700px;margin:0 auto}
 
 /* Logo */
@@ -183,7 +183,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min
 .progress-label{font-size:11px;color:var(--muted);text-align:right;margin-top:6px;font-weight:500;letter-spacing:.04em}
 
 /* Card */
-.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px 44px;box-shadow:var(--shadow);transition:box-shadow .3s}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px 34px;box-shadow:var(--shadow);transition:box-shadow .3s}
 .step-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
 .card-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.2}
 .card-subtitle{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65}
@@ -194,7 +194,7 @@ hr.divider{border:none;border-top:1px solid var(--border);margin-bottom:24px}
 .section-head::before,.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
 
 /* Form grid */
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
 .form-grid .full{grid-column:1/-1}
 
 /* Fields */
@@ -264,7 +264,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 .rating-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
 
 /* Actions */
-.actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}
 .btn-back{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:var(--radius);padding:11px 22px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .18s}
 .btn-back:hover{border-color:var(--orange);color:var(--orange)}
 .btn-next{background:var(--orange);color:#fff;border:none;border-radius:var(--radius);padding:12px 28px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .18s;box-shadow:0 2px 8px rgba(212,98,26,.25)}
@@ -307,8 +307,9 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 .char-count.over{color:var(--error)}
 
 @media(max-width:580px){
-  body{padding:20px 12px 60px}
+  body{padding:0}
   .card{padding:24px 18px;border-radius:14px}
+  .form-side .card::before{margin:-24px -18px 24px;padding:24px 18px;font-size:24px}
   .form-grid{grid-template-columns:1fr}
   .form-grid .full{grid-column:1}
   .rating-btn{padding:8px 2px;font-size:12px}
@@ -424,46 +425,6 @@ function renderTags() {
   var wrap = c.closest('.field'); var e = wrap && wrap.querySelector('.err-msg'); if (e) e.remove();
 }
 function updateExpertiseHidden() { document.getElementById('areasOfExpertiseHidden').value = selectedExpertise.join(', '); }
-var notableCompanies = [];
-function addNotableCompany() {
-  var inp = document.getElementById('notableCompanyInput');
-  var val = inp.value.trim(); if (!val) return;
-  if (notableCompanies.indexOf(val) === -1) { notableCompanies.push(val); renderCompanyTags(); updateCompaniesHidden(); }
-  inp.value = '';
-}
-function removeNotableCompany(val) {
-  notableCompanies = notableCompanies.filter(function(v){return v!==val;}); renderCompanyTags(); updateCompaniesHidden();
-}
-function renderCompanyTags() {
-  var c = document.getElementById('notableCompanyTags'); c.innerHTML = '';
-  notableCompanies.forEach(function(val) {
-    var tag = document.createElement('span');
-    tag.style.cssText = 'display:inline-flex;align-items:center;gap:6px;background:var(--orange-muted);border:1.5px solid var(--orange);color:var(--orange);border-radius:20px;padding:4px 12px;font-size:13px;font-weight:500;';
-    tag.innerHTML = val + ' <button type="button" onclick="removeNotableCompany(\'' + val.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')" style="background:none;border:none;cursor:pointer;color:var(--orange);font-size:15px;line-height:1;padding:0;">&#10005;</button>';
-    c.appendChild(tag);
-  });
-}
-function updateCompaniesHidden() { document.getElementById('notableCompaniesHidden').value = notableCompanies.join(', '); }
-var pastClients = [];
-function addPastClient() {
-  var inp = document.getElementById('pastClientInput');
-  var val = inp.value.trim(); if (!val) return;
-  if (pastClients.indexOf(val) === -1) { pastClients.push(val); renderPastClientTags(); updatePastClientsHidden(); }
-  inp.value = '';
-}
-function removePastClient(val) {
-  pastClients = pastClients.filter(function(v){return v!==val;}); renderPastClientTags(); updatePastClientsHidden();
-}
-function renderPastClientTags() {
-  var c = document.getElementById('pastClientTags'); c.innerHTML = '';
-  pastClients.forEach(function(val) {
-    var tag = document.createElement('span');
-    tag.style.cssText = 'display:inline-flex;align-items:center;gap:6px;background:var(--orange-muted);border:1.5px solid var(--orange);color:var(--orange);border-radius:20px;padding:4px 12px;font-size:13px;font-weight:500;';
-    tag.innerHTML = val + ' <button type="button" onclick="removePastClient(\'' + val.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')" style="background:none;border:none;cursor:pointer;color:var(--orange);font-size:15px;line-height:1;padding:0;">&#10005;</button>';
-    c.appendChild(tag);
-  });
-}
-function updatePastClientsHidden() { document.getElementById('pastClientsHidden').value = pastClients.join(', '); }
 function selectRating(fieldId, groupId, val) {
   document.getElementById(fieldId).value = val;
   var btns = document.getElementById(groupId).querySelectorAll('.rating-btn');
@@ -644,58 +605,6 @@ function selectRating(fieldId, groupId, val) {
           </div>
         </div>
 
-        <!-- EXPERTISE section -->
-        <div class="full" style="margin-top:8px;">
-          <div class="section-head">Expertise</div>
-        </div>
-
-        <div class="field full">
-          <label>Key sectors / industries <span class="req">*</span></label>
-          <div class="pill-grid" id="sectorGrid">
-            <label class="pill"><input type="checkbox" value="BFSI"/> BFSI</label>
-            <label class="pill"><input type="checkbox" value="Technology / SaaS"/> Technology / SaaS</label>
-            <label class="pill"><input type="checkbox" value="Manufacturing"/> Manufacturing</label>
-            <label class="pill"><input type="checkbox" value="Retail / D2C"/> Retail / D2C</label>
-            <label class="pill"><input type="checkbox" value="Healthcare"/> Healthcare</label>
-            <label class="pill"><input type="checkbox" value="EdTech"/> EdTech</label>
-            <label class="pill"><input type="checkbox" value="Fintech"/> Fintech</label>
-            <label class="pill"><input type="checkbox" value="Real Estate"/> Real Estate</label>
-            <label class="pill"><input type="checkbox" value="FMCG"/> FMCG</label>
-            <label class="pill"><input type="checkbox" value="GCC / Captives"/> GCC / Captives</label>
-            <label class="pill"><input type="checkbox" value="Startups"/> Startups</label>
-            <label class="pill"><input type="checkbox" value="PSU / Government"/> PSU / Government</label>
-          </div>
-        </div>
-
-        <div class="field full">
-          <label>Type of companies you have worked with</label>
-          <div class="pill-grid" id="companyTypeGrid">
-            <label class="pill"><input type="checkbox" value="Listed corporates"/> Listed corporates</label>
-            <label class="pill"><input type="checkbox" value="Private equity backed"/> Private equity backed</label>
-            <label class="pill"><input type="checkbox" value="VC funded startups"/> VC funded startups</label>
-            <label class="pill"><input type="checkbox" value="Family businesses"/> Family businesses</label>
-            <label class="pill"><input type="checkbox" value="MSMEs / SMEs"/> MSMEs / SMEs</label>
-            <label class="pill"><input type="checkbox" value="MNCs / GCCs"/> MNCs / GCCs</label>
-            <label class="pill"><input type="checkbox" value="NGO / Social sector"/> NGO / Social sector</label>
-          </div>
-        </div>
-
-        <!-- NOTABLE COMPANIES section -->
-        <div class="full" style="margin-top:8px;">
-          <div class="section-head">Notable Companies</div>
-        </div>
-
-        <div class="field full">
-          <label>Notable companies / organisations you have worked for</label>
-          <span class="hint" style="margin-bottom:8px;display:block;">Type a company name and press <strong>Add</strong> or hit Enter. These will be highlighted on your SWYN profile.</span>
-          <div style="display:flex;gap:10px;align-items:flex-start;">
-            <input type="text" id="notableCompanyInput" placeholder="e.g. Goldman Sachs, Infosys, McKinsey…" style="flex:1;" onkeydown="if(event.key==='Enter'||event.key==='Go'||event.keyCode===13){event.preventDefault();event.stopPropagation();addNotableCompany();}"/>
-            <button type="button" onclick="addNotableCompany()" class="add-btn">+ Add</button>
-          </div>
-          <div id="notableCompanyTags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
-          <input type="hidden" id="notableCompaniesHidden"/>
-        </div>
-
         <!-- TYPES OF ENGAGEMENT section -->
         <div class="full" style="margin-top:8px;">
           <div class="section-head">Engagements</div>
@@ -712,22 +621,6 @@ function selectRating(fieldId, groupId, val) {
             <label class="pill"><input type="checkbox" value="Retaining"/> Retaining</label>
           </div>
           <input type="hidden" id="engagementTypes"/>
-        </div>
-
-        <!-- PAST CLIENTS section -->
-        <div class="full" style="margin-top:8px;">
-          <div class="section-head">Past Clients &amp; Advisory Work</div>
-        </div>
-
-        <div class="field full">
-          <label>Past clients or companies you've advised (as a consultant / advisor)</label>
-          <span class="hint" style="margin-bottom:8px;display:block;">Type a company or client name and press <strong>Add</strong> or hit Enter. You may anonymise if needed (e.g. "Series B Fintech, Mumbai").</span>
-          <div style="display:flex;gap:10px;align-items:flex-start;">
-            <input type="text" id="pastClientInput" placeholder="e.g. Razorpay, Nykaa, Mid-size FMCG brand…" style="flex:1;" onkeydown="if(event.key==='Enter'||event.key==='Go'||event.keyCode===13){event.preventDefault();event.stopPropagation();addPastClient();}"/>
-            <button type="button" onclick="addPastClient()" class="add-btn">+ Add</button>
-          </div>
-          <div id="pastClientTags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
-          <input type="hidden" id="pastClientsHidden"/>
         </div>
 
         <div class="field full">
@@ -775,42 +668,6 @@ function selectRating(fieldId, groupId, val) {
       <p class="card-subtitle">Let us know how and when you prefer to work with founders.</p>
       <hr class="divider"/>
       <div class="form-grid">
-
-        <div class="full"><div class="section-head" style="margin-top:0;margin-bottom:4px;">Rate Card</div></div>
-
-        <div class="field">
-          <label>International clients — rate (USD) <span class="req">*</span></label>
-          <div class="select-wrap">
-            <select id="hourlyRate" onchange="showOther(this,'rateNegotiableBox','Negotiable')">
-              <option value="">Select</option>
-              <option>$50–$100/hr</option><option>$100–$200/hr</option>
-              <option>$200–$300/hr</option><option>$300–$500/hr</option>
-              <option>$500+/hr</option><option>Negotiable</option>
-              <option>Pro bono / Equity only</option>
-            </select>
-          </div>
-        </div>
-        <div class="other-box field" id="rateNegotiableBox">
-          <label>If 'Negotiable' (USD), please specify</label>
-          <input type="text" id="rateNegotiable" placeholder="e.g. Depends on stage, equity arrangements…"/>
-        </div>
-
-        <div class="field">
-          <label>Indian clients — rate (INR) <span class="req">*</span></label>
-          <div class="select-wrap">
-            <select id="hourlyRateINR" onchange="showOther(this,'rateNegotiableINRBox','Negotiable')">
-              <option value="">Select</option>
-              <option>₹500–₹2,000/hr</option><option>₹2,000–₹5,000/hr</option><option>₹5,000–₹10,000/hr</option>
-              <option>₹10,000–₹20,000/hr</option><option>₹20,000–₹40,000/hr</option>
-              <option>₹40,000+/hr</option><option>Negotiable</option>
-              <option>Pro bono / Equity only</option>
-            </select>
-          </div>
-        </div>
-        <div class="other-box field" id="rateNegotiableINRBox">
-          <label>If 'Negotiable' (INR), please specify</label>
-          <input type="text" id="rateNegotiableINR" placeholder="e.g. Depends on stage, equity arrangements…"/>
-        </div>
 
         <div class="field">
           <label>Hours per month for mentoring startup founders <span class="req">*</span></label>
@@ -868,32 +725,6 @@ function selectRating(fieldId, groupId, val) {
           </div>
         </div>
 
-        <div class="field full">
-          <label>What kind of mandates excite you most?</label>
-          <div class="pill-grid" id="mandateGrid">
-            <label class="pill"><input type="checkbox" value="Pre-IPO / fundraise readiness"/> Pre-IPO / fundraise readiness</label>
-            <label class="pill"><input type="checkbox" value="Turnaround / restructuring"/> Turnaround / restructuring</label>
-            <label class="pill"><input type="checkbox" value="Building the finance / marketing function from scratch"/> Building the finance / marketing function from scratch</label>
-            <label class="pill"><input type="checkbox" value="GTM strategy"/> GTM strategy</label>
-            <label class="pill"><input type="checkbox" value="Interim leadership cover"/> Interim leadership cover</label>
-            <label class="pill"><input type="checkbox" value="Board / advisory seat"/> Board / advisory seat</label>
-            <label class="pill"><input type="checkbox" value="M&A / integration"/> M&amp;A / integration</label>
-            <label class="pill"><input type="checkbox" value="Process & systems overhaul"/> Process &amp; systems overhaul</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Do you require an NDA or formal agreement? <span class="req">*</span></label>
-          <div class="select-wrap">
-            <select id="requireNDA">
-              <option value="">Select</option>
-              <option>Yes, always</option>
-              <option>Depends on the engagement</option>
-              <option>No, not necessary</option>
-            </select>
-          </div>
-        </div>
-
         <div class="field">
           <label>Experience level in mentoring early-stage startups <span class="req">*</span></label>
           <div class="select-wrap">
@@ -902,28 +733,6 @@ function selectRating(fieldId, groupId, val) {
               <option>No experience yet</option><option>1–2 startups</option>
               <option>3–5 startups</option><option>5–10 startups</option><option>10+ startups</option>
             </select>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Previously served as a formal mentor / advisor / board member? <span class="req">*</span></label>
-          <div class="select-wrap">
-            <select id="formalMentor">
-              <option value="">Select</option>
-              <option>Yes</option><option>No</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="field full">
-          <label>Equipped to mentor stage of startup development <span class="req">*</span></label>
-          <div class="pill-grid" id="startupStageGrid">
-            <label class="pill"><input type="checkbox" value="Idea / Pre-product"/> Idea / Pre-product</label>
-            <label class="pill"><input type="checkbox" value="MVP / Early traction"/> MVP / Early traction</label>
-            <label class="pill"><input type="checkbox" value="Product-market fit"/> Product-market fit</label>
-            <label class="pill"><input type="checkbox" value="Growth / Scaling"/> Growth / Scaling</label>
-            <label class="pill"><input type="checkbox" value="Series A and beyond"/> Series A and beyond</label>
-            <label class="pill"><input type="checkbox" value="Any stage"/> Any stage</label>
           </div>
         </div>
 
@@ -977,16 +786,6 @@ function selectRating(fieldId, groupId, val) {
         <div class="field">
           <label>Any published articles or media mentions</label>
           <input type="url" id="articleUrl" placeholder="https://economictimes.com/…"/>
-        </div>
-
-        <div class="field full">
-          <label>Upload work samples <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
-          <div class="upload-box" id="workSamplesUploadBox" onclick="driveUpload('worksamples')" style="cursor:pointer;">
-            <div class="upload-icon">📁</div>
-            <p id="workSamplesLabel">Click to upload your file!</p>
-            <span>Anonymised deliverables, models, frameworks — choose from Disk to upload</span>
-          </div>
-          <input type="hidden" id="workSamplesDriveUrl"/>
         </div>
 
       </div>
@@ -1073,8 +872,7 @@ var totalSteps = 5;
 // Object to store file data locally (Base64)
 var uploadedFileData = {
   cv: null,
-  photo: null,
-  worksamples: null
+  photo: null
 };
 
 // ── UI Logic (Preserved) ──
@@ -1083,7 +881,8 @@ function showStep(n) {
   var t = n==='success' ? document.getElementById('stepSuccess') : document.getElementById('step'+n);
   t.classList.add('active');
   var pct = n==='success' ? 100 : (n/totalSteps)*100;
-  document.getElementById('progressFill').style.width = pct+'%';
+  var fill = document.getElementById('progressFill');
+  if(fill) fill.style.width = pct+'%';
   var lbl = document.getElementById('progressLabel');
   if(lbl) lbl.textContent = n==='success' ? 'Complete!' : 'Step '+n+' of '+totalSteps;
   document.querySelectorAll('.dot').forEach(function(d,i){
@@ -1150,8 +949,7 @@ function getPillValues(gridId) {
 function driveUpload(type) {
   var config = {
     cv: { labelId: 'cvLabel', boxId: 'cvUploadBox', accept: '.pdf,.doc,.docx' },
-    photo: { labelId: 'photoLabel', boxId: 'photoUploadBox', accept: '.jpg,.jpeg,.png' },
-    worksamples: { labelId: 'workSamplesLabel', boxId: 'workSamplesUploadBox', accept: '.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx' }
+    photo: { labelId: 'photoLabel', boxId: 'photoUploadBox', accept: '.jpg,.jpeg,.png' }
   };
   
   var cfg = config[type];
@@ -1202,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var active = document.activeElement;
     var tag = active ? active.tagName : '';
     var id  = active ? active.id : '';
-    var skipIds = ['notableCompanyInput', 'pastClientInput', 'expertiseOther'];
+    var skipIds = ['expertiseOther'];
     if (tag === 'TEXTAREA' || tag === 'SELECT') return;
     if (skipIds.indexOf(id) !== -1) return;
     e.preventDefault(); e.stopPropagation();
@@ -1276,14 +1074,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var checks = [{id:'jobTitle',msg:'Required'},{id:'yearsExperience',msg:'Required'},{id:'primaryIndustry',msg:'Required'},{id:'biography',msg:'Required'}];
     if (getVal('primaryIndustry')==='Other') checks.push({id:'industryOther',msg:'Required'});
     var ok = validate(checks);
-    if (!getPillValues('sectorGrid')) { setErr('sectorGrid', 'Select one'); ok = false; }
     if (!getVal('areasOfExpertiseHidden')) { setErr('areasOfExpertise', 'Select one'); ok = false; }
     if (ok) { current=3; showStep(3); } else { scrollToFirstError(); }
   });
 
   document.getElementById('back3').addEventListener('click', function(){ current=2; showStep(2); });
   document.getElementById('next3').addEventListener('click', function() {
-    var checks = [{id:'hourlyRate',msg:'Required'},{id:'hourlyRateINR',msg:'Required'},{id:'hoursPerMonth',msg:'Required'},{id:'requireNDA',msg:'Required'},{id:'mentoringExperience',msg:'Required'},{id:'formalMentor',msg:'Required'}];
+    var checks = [{id:'hoursPerMonth',msg:'Required'},{id:'mentoringExperience',msg:'Required'}];
     if (validate(checks)) { current=4; showStep(4); } else { scrollToFirstError(); }
   });
 
@@ -1331,26 +1128,14 @@ document.addEventListener('DOMContentLoaded', function() {
       'Total Years of Professional Experience': getVal('yearsExperience'),
       'Primary Industry of Expertise': getVal('primaryIndustry') === 'Other' ? getVal('industryOther') : getVal('primaryIndustry'),
       'Please provide a brief biography / professional summary': getVal('biography'),
-      'Key sectors / industries': getPillValues('sectorGrid'),
-      'Type of companies you have worked with': getPillValues('companyTypeGrid'),
-      'Notable companies / organisations you have worked for': getVal('notableCompaniesHidden'),
       'Types of engagements you\'re open to': getPillValues('engagementTypeGrid'),
-      'Past clients or companies you\'ve advised (as a consultant / advisor)': getVal('pastClientsHidden'),
       'Specific Areas of Expertise for Mentorship': getVal('areasOfExpertiseHidden'),
-      'International clients — rate (USD)': getVal('hourlyRate'),
-      'Indian clients — rate (INR)': getVal('hourlyRateINR'),
-      "If 'Negotiable' (USD), please specify": getVal('rateNegotiable'),
-      "If 'Negotiable' (INR), please specify": getVal('rateNegotiableINR'),
       'Hours per month for mentoring startup founders': getVal('hoursPerMonth'),
       'Number of simultaneous engagements you can handle': document.getElementById('simultaneousEngagements').value,
       'Work mode preference': getPillValues('workModeGrid'),
       'Willing to travel?': getPillValues('travelGrid'),
       'Client types you are most comfortable with': getPillValues('clientTypeGrid'),
-      'What kind of mandates excite you most?': getPillValues('mandateGrid'),
-      'Do you require an NDA or formal agreement?': getVal('requireNDA'),
       'Experience level in mentoring early-stage startups': getVal('mentoringExperience'),
-      'Previously served as a formal mentor / advisor / board member?': getVal('formalMentor'),
-      'Equipped to mentor stage of startup development': getPillValues('startupStageGrid'),
       'LinkedIn profile URL': getVal('linkedinProfile'),
       'Personal website / portfolio': getVal('websiteUrl'),
       'Any published articles or media mentions': getVal('articleUrl'),
@@ -1361,8 +1146,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // File objects for backend processing
       'cvFile': uploadedFileData.cv,
-      'photoFile': uploadedFileData.photo,
-      'workSamplesFile': uploadedFileData.worksamples
+      'photoFile': uploadedFileData.photo
     };
 
     var btn = document.getElementById('btnSubmit');
