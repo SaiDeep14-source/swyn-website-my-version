@@ -36,10 +36,10 @@ const disciplines = [
   },
   {
     id: '05',
-    title: 'Finance & Funding',
+    title: 'Finance',
     subtitle: 'Capital readiness',
     description: [
-      'Fundraising, financial planning, and investor readiness.',
+      'Financial planning, and investor readiness.',
     ],
   },
 ];
