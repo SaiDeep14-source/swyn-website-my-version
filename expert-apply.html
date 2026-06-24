@@ -130,7 +130,7 @@
   }
   /* The "Dark Header" style from the screenshot */
   .form-side .card::before {
-    content: "Expert application: Tell us who you are, what you have built.";
+    content: "Expert application: Tell us who you are, what you have built, and where you are most valuable.";
     display: block;
     background: #1a1a1a;
     color: white;
@@ -597,6 +597,27 @@ function selectRating(fieldId, groupId, val) {
           <input type="text" id="industryOther" placeholder="e.g. Agriculture, Media, Logistics…"/>
         </div>
         <div class="field full">
+          <label>Which CXO or executive leadership roles best describe your primary expertise? <span class="req">*</span></label>
+          <div class="pill-grid" id="executiveRoleGrid">
+            <label class="pill"><input type="checkbox" value="CEO (Chief Executive Officer)"/> CEO (Chief Executive Officer)</label>
+            <label class="pill"><input type="checkbox" value="CFO (Chief Financial Officer)"/> CFO (Chief Financial Officer)</label>
+            <label class="pill"><input type="checkbox" value="COO (Chief Operating Officer)"/> COO (Chief Operating Officer)</label>
+            <label class="pill"><input type="checkbox" value="CMO (Chief Marketing Officer)"/> CMO (Chief Marketing Officer)</label>
+            <label class="pill"><input type="checkbox" value="CHRO (Chief Human Resources Officer)"/> CHRO (Chief Human Resources Officer)</label>
+            <label class="pill"><input type="checkbox" value="CSO (Chief Strategy Officer)"/> CSO (Chief Strategy Officer)</label>
+            <label class="pill"><input type="checkbox" value="CGO (Chief Growth Officer)"/> CGO (Chief Growth Officer)</label>
+            <label class="pill"><input type="checkbox" value="CTO (Chief Technology Officer)"/> CTO (Chief Technology Officer)</label>
+            <label class="pill"><input type="checkbox" value="CIO (Chief Information Officer)"/> CIO (Chief Information Officer)</label>
+            <label class="pill"><input type="checkbox" value="General Counsel / CLO (Chief Legal Officer)"/> General Counsel / CLO (Chief Legal Officer)</label>
+            <label class="pill"><input type="checkbox" value="Other"/> Other (Please specify)</label>
+          </div>
+          <input type="hidden" id="executiveRole"/>
+        </div>
+        <div class="other-box field full" id="executiveRoleOtherBox">
+          <label>Please specify your executive leadership role <span class="req">*</span></label>
+          <input type="text" id="executiveRoleOther" placeholder="Enter your CXO or executive leadership role"/>
+        </div>
+        <div class="field full">
           <label>Please provide a brief biography / professional summary <span class="req">*</span></label>
           <textarea id="biography" placeholder="Share your career journey, key achievements, and what makes you a great mentor (100–250 words)…" oninput="updateCharCount(this,'biographyCount',100,250)"></textarea>
           <div style="display:flex;justify-content:space-between;align-items:center">
@@ -730,7 +751,8 @@ function selectRating(fieldId, groupId, val) {
           <div class="select-wrap">
             <select id="mentoringExperience">
               <option value="">Select</option>
-              <option>Yes</option><option>No</option>
+              <option>Yes</option>
+              <option>No</option>
             </select>
           </div>
         </div>
@@ -822,7 +844,7 @@ function selectRating(fieldId, groupId, val) {
       <div style="margin-top:28px;">
         <div class="section-head" style="margin-top:0;margin-bottom:20px;">Profile Listing</div>
         <div class="field full">
-          <label>May we feature your profile on the <a href="https://swyn.in" target="_blank" style="color:var(--orange);text-decoration:none;">swynconsulting.com</a> website? <span class="req">*</span></label>
+          <label>May we feature your profile on the <a href="https://swyn.in" target="_blank" style="color:var(--orange);text-decoration:none;">swyn.in</a> website? <span class="req">*</span></label>
           <span class="hint" style="margin-bottom:10px;display:block;">Your profile will be visible to startup founders and companies looking for expert mentors on our platform.</span>
           <div class="pill-grid" id="websiteListingGrid">
             <label class="pill"><input type="radio" name="websiteListing" value="Yes, list my full profile"/> Yes, list my full profile</label>
@@ -944,6 +966,19 @@ function getPillValues(gridId) {
   return Array.from(document.querySelectorAll('#'+gridId+' input:checked')).map(function(i){return i.value;}).join(', ');
 }
 
+function updateExecutiveRoleValue() {
+  var otherText = getVal('executiveRoleOther');
+  var roles = Array.from(document.querySelectorAll('#executiveRoleGrid input:checked')).map(function(i){
+    return i.value === 'Other' && otherText ? otherText : i.value;
+  });
+  document.getElementById('executiveRole').value = roles.join(', ');
+  return roles.join(', ');
+}
+
+function executiveRoleOtherSelected() {
+  return !!document.querySelector('#executiveRoleGrid input[value="Other"]:checked');
+}
+
 // ── NEW: File Upload via Base64 (No Google Login Required) ──
 function driveUpload(type) {
   var config = {
@@ -1056,10 +1091,16 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         inp.closest('.pill').classList.toggle('selected', inp.checked);
         var gridId = inp.closest('.pill-grid') && inp.closest('.pill-grid').id;
+        if (gridId === 'executiveRoleGrid') {
+          document.getElementById('executiveRoleOtherBox').classList.toggle('visible', executiveRoleOtherSelected());
+          updateExecutiveRoleValue();
+        }
         if (gridId) clearPillErr(gridId);
       }
     });
   });
+
+  document.getElementById('executiveRoleOther').addEventListener('input', updateExecutiveRoleValue);
 
   // Navigation & Validation (Steps 1-3 Preserved)
   document.getElementById('next1').addEventListener('click', function() {
@@ -1070,9 +1111,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('back2').addEventListener('click', function(){ current=1; showStep(1); });
   document.getElementById('next2').addEventListener('click', function() {
+    updateExecutiveRoleValue();
     var checks = [{id:'jobTitle',msg:'Required'},{id:'yearsExperience',msg:'Required'},{id:'primaryIndustry',msg:'Required'},{id:'biography',msg:'Required'}];
     if (getVal('primaryIndustry')==='Other') checks.push({id:'industryOther',msg:'Required'});
+    if (executiveRoleOtherSelected()) checks.push({id:'executiveRoleOther',msg:'Required'});
     var ok = validate(checks);
+    if (!document.querySelector('#executiveRoleGrid input:checked')) { setErr('executiveRoleGrid', 'Select one or more'); ok = false; }
     if (!getVal('areasOfExpertiseHidden')) { setErr('areasOfExpertise', 'Select one'); ok = false; }
     if (ok) { current=3; showStep(3); } else { scrollToFirstError(); }
   });
@@ -1126,6 +1170,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'Current Company / Organization': getVal('currentCompany'),
       'Total Years of Professional Experience': getVal('yearsExperience'),
       'Primary Industry of Expertise': getVal('primaryIndustry') === 'Other' ? getVal('industryOther') : getVal('primaryIndustry'),
+      'Which CXO or executive leadership role best describes your primary expertise?': updateExecutiveRoleValue(),
       'Please provide a brief biography / professional summary': getVal('biography'),
       'Types of engagements you\'re open to': getPillValues('engagementTypeGrid'),
       'Specific Areas of Expertise for Mentorship': getVal('areasOfExpertiseHidden'),
